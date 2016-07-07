@@ -1,0 +1,27 @@
+# Editor Configuration
+/.tern-project
+
+# Provider Libraries
+/node_modules
+/src/jspm_packages
+
+# Notes
+/TODO.md
+
+/data/boundaries/csas
+/data/boundaries/nsas
+/data/boundaries/subwatersheds
+/data/layers/sw/*.json
+/data/layers/cg/*.json
+/data/layers/ua/*.json
+/data/layers/gpb
+
+/public/build.js
+/public/build.js.map
+/public/config.js
+
+
+/src/build.js
+/src/build.js.map
+/src/**/*.css
+/server/options.json

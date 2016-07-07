@@ -1,0 +1,13 @@
+{
+    "extends": "google",
+    "installedESLint": true,
+    "env": {
+        "node": 1
+    },
+    "globals": {
+        "document": true
+    },
+    "rules": {
+      "no-warning-comments": 0
+    }
+}

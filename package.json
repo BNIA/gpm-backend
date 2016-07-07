@@ -1,0 +1,34 @@
+{
+  "name": "gpm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node scripts/create-database.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BNIA/green-pattern-map.git"
+  },
+  "author": "Evan Mahone",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/BNIA/green-pattern-map/issues"
+  },
+  "homepage": "https://github.com/BNIA/green-pattern-map#readme",
+  "dependencies": {
+    "bookshelf": "^0.9.5",
+    "express": "^4.14.0",
+    "fast-csv": "2.0.0",
+    "knex": "^0.11.7",
+    "lodash": "^4.13.1",
+    "pg": "^6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-google": "^0.6.0",
+    "gulp": "^3.9.1",
+    "jsonlint": "1.6.2"
+  }
+}
