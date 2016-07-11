@@ -18,16 +18,22 @@
   },
   "homepage": "https://github.com/BNIA/green-pattern-map#readme",
   "dependencies": {
+    "body-parser": "1.15.2",
     "bookshelf": "^0.9.5",
+    "cloudinary": "1.4.1",
     "express": "^4.14.0",
-    "fast-csv": "2.0.0",
     "knex": "^0.11.7",
     "lodash": "^4.13.1",
-    "pg": "^6.0.0"
+    "pg": "^6.0.0",
+    "pug": "2.0.0-beta3"
   },
   "devDependencies": {
+    "bluebird": "3.4.1",
+    "change-case": "3.0.0",
+    "dotenv": "2.0.0",
     "eslint": "^2.13.1",
     "eslint-config-google": "^0.6.0",
+    "fast-csv": "2.0.0",
     "gulp": "^3.9.1",
     "jsonlint": "1.6.2"
   }

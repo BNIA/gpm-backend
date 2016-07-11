@@ -8,6 +8,9 @@
 # Notes
 /TODO.md
 
+# Environmental Vars such as cloudinary url
+/.env
+
 /data/boundaries/csas
 /data/boundaries/nsas
 /data/boundaries/subwatersheds
