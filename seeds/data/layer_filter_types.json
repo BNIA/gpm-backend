@@ -1,0 +1,11 @@
+[
+  {"name": "site_uses", "layer_detail_type": "cmoss"},
+  {"name": "bmp_types", "layer_detail_type": "stormwaters"},
+  {"name": "statuses", "layer_detail_type": "stormwaters"},
+  {"name": "retro_types", "layer_detail_type": "stormwaters"},
+  {"name": "wtrshd_bfts", "layer_detail_type": "stormwaters"},
+  {"name": "priorities", "layer_detail_type": "stormwaters"},
+  {"name": "dsgn_dfclts", "layer_detail_type": "stormwaters"},
+  {"name": "feasabilities", "layer_detail_type": "stormwaters"},
+  {"name": "sources"}
+]

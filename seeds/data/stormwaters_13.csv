@@ -1,0 +1,243 @@
+site_id,name,address,point_x,point_y,site_use,status_id,drain_acres,imp_percent,imp_acres,an_runoff,retro_type_id,bmp_type_ids,feasibility_id,dsgn_dfclt_id,wtrshd_bft_id,priority_id,source_ids
+1,,pep boys harford rd and moravia rd,-76.56891258,39.34191187,dry swale to replace existing failed grass channel and treat parking lot runoff,2,0.75,100,0.75,97764.975,1,4,4,1,1,4,7
+2,,chinquapin ms,-76.57461707,39.33037024,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+3,,north harford recreation center northern pkwy and laurelton ave,-76.56038427,39.36728621,bioretention area in existing landscaping area to treat parking lot runoff,2,1,100,1,130353.3,1,"1, 16",4,3,1,3,7
+4,,leith walk es,-76.5915542,39.36469402,,2,0,0,0,0,,,,,,,7
+5,,good samaritan hospital,-76.58624207,39.35720356,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+6,,mt pleasant park between perring pkwy echodale ave and herring run,-76.57440009,39.35342445,,2,0,0,0,0,,,,,,,7
+7,,mt pleasant park between echodale ave laurelton ave and herring run,-76.57338618,39.35466505,,2,0,0,0,0,,,,,,,7
+8,,morgan state university,-76.583452,39.34193026,,2,0,0,0,0,,,,,,,7
+9,,brehms lane es,-76.56654167,39.32161208,bioretention areas in existing depressions to treat stormwater runoff from disturbed pervious area,2,1,40,0.4,56257.74,1,"1, 16",4,3,1,3,7
+10,,northeast ms,-76.5515817,39.32420187,,2,0,0,0,0,,,,,,,7
+11,,sinclair lane es,-76.56080832,39.31557288,bioretention area in existing landscaping area to treat stormwater runoff from parking lot and disturbed pervious area,2,5,30,1.5,219542.4,1,"1, 16",3,3,1,3,7
+12,,merganthaler vocational-technical hs,-76.59054125,39.33227546,dry swale/bioretention area in existing landscaping area to treat parking lot runoff,2,2,60,1.2,161912.52,1,"1, 16",3,1,1,3,7
+13,,archbishop curley hs,-76.56306762,39.31280255,bioretention area in existing landscaping area to treat parking lot runoff,2,2,100,2,260706.6,1,"1, 16",3,3,1,1,7
+14,,armistead gardens armistead way and hewitt dr,-76.54962256,39.30766419,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,25,40,10,1406443.5,2,14,3,4,4,3,7
+15,,walter p carter es,-76.60405654,39.34365112,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,60,60,36,4857375.6,2,14,3,4,4,3,7
+16,,winston ms,-76.60068482,39.34825585,,2,0,0,0,0,,,,,,,7
+17,,chinquapin run park between loch raven blvd and perring pkwy,-76.58958136,39.34810789,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+18,,chinquapin ms,-76.59973771,39.35516479,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+19,,walter de wees park,-76.60344709,39.35721521,stream daylighting with stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,44,50,22,3018708,2,14,1,5,4,1,7
+20,,north of sipple ave at end of mayview terr barbara ave parkwood ave and valley view ave,-76.54905155,39.33066542,stream daylighting with stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,345,50,172.5,23669415,2,14,1,4,4,3,7
+21,,hamilton es,-76.55738367,39.35967607,,2,0,0,0,0,,,,,,,7
+22,,hamilton ms,-76.55477718,39.35007226,,2,0,0,0,0,,,,,,,7
+23,,hazelwood es,-76.5387835,39.33839414,,2,0,0,0,0,,,,,,,7
+24,,radecke playfield radecke ave and gardenwood ave,-76.53702205,39.33137815,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,32,40,12.8,1800247.68,2,14,4,4,4,4,7
+25,,moores run park  between radecke ave and sinclair ln,-76.53378369,39.3275543,,2,0,0,0,0,,,,,,,7
+26,,wyman park below tudor arms ave and gilman terr,-76.62450889,39.33463964,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,60,30,18,2634508.8,2,14,3,4,4,3,7
+27,,cross country blvd and chilham ave,-76.66405792,39.36537629,,2,0,0,0,0,,9,,,,,7
+28,,glen ave and merville ave,-76.67883775,39.36007198,,2,0,0,0,0,,,,,,,7
+29,,cross country es,-76.68797089,39.36224958,permeable pavement to replace conventional pavement in existing parking lot,2,0.5,100,0.5,65176.65,1,"10, 16",4,4,1,3,7
+30,,pimlico ms,-76.68310844,39.35448221,impervious cover removal with site reforestation/revegetation,2,1,100,1,130353.3,1,6,4,1,1,4,7
+31,,northwestern hs,-76.70509953,39.36477252,,2,0,0,0,0,,,,,,,7
+32,,hamilton ms,-76.69832888,39.37762714,,2,0,0,0,0,,,,,,,7
+33,,hamilton es,-76.70541578,39.37791538,,2,0,0,0,0,,,,,,,7
+34,,hazelwood es,-76.68468031,39.38139969,,2,0,0,0,0,,,,,,,7
+35,,moores run park  between hamilton ave and radecke ave,-76.67901552,39.38710715,,2,0,0,0,0,,,,,,,7
+36,,moores run park  between radecke ave and sinclair ln,-76.681431,39.38618073,,2,0,0,0,0,,,,,,,7
+37,,radecke playfield radecke ave and gardenwood ave,-76.67995837,39.38095984,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,32,40,12.8,1800247.68,2,14,4,4,4,4,7
+38,,moores run park  between sinclair ln and i-895,-76.67271644,39.39211641,,2,0,0,0,0,,,,,,,7
+39,,parkside shopping center sinclair ln and moravia rd,-76.54604075,39.32354682,,2,0,0,0,0,,,,,,,7
+40,,herring run park between harford rd and argonne dr,-76.57649528,39.33444915,dry swale to convey and treat stormwater runoff from upstream drainage area,2,12,60,7.2,971475.12,2,4,3,4,4,3,7
+41,,safeway harford rd and montebello terr,-76.57157602,39.33959366,bioretention area in parking lot to treat parking lot runoff,2,0.6,100,0.6,78211.98,1,"1, 16",3,3,1,3,7
+42,,northwood shopping center hillen rd and wood rd,-76.58963864,39.34128574,,2,0,0,0,0,,,,,,,7
+43,,garrett heights es,-76.56902751,39.3493124,,2,0,0,0,0,,,,,,,7
+44,,mt pleasant park between perring pkwy laurelton ave and herring run,-76.57338949,39.35632086,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+45,,us marine corps training center,-76.56024159,39.36919816,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+46,,lacrosse field kelly ave and cottonworth ave,-76.64915674,39.36377792,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+47,,pimlico es,-76.66763212,39.34808379,bioretention area in existing landscaping areas in parking lot to treat parking lot runoff,2,1,90,0.9,118004.04,1,"1, 16",3,1,1,3,7
+48,,greenspring community center,-76.65553694,39.34618784,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+49,,greenspring ms,-76.6573088,39.34502427,,2,0,0,0,0,,,,,,,7
+50,,cold spring ln and greenspring ave,-76.65650826,39.34270669,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+51,,edgecombe park,-76.65976416,39.34244172,site reforestation/revegetation,2,5,10,0.5,96049.8,1,13,4,1,3,4,7
+52,,west old coldspring ln and brand ave,-76.64853052,39.34776032,stormwater wetland to treat stormwater runoff from upstream drainage area,2,22,40,8.8,1237670.28,2,11,1,4,4,3,7
+53,,medfield heights es,-76.64378082,39.34030519,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+54,,41st st and buena vista ave,-76.64009606,39.33556524,,2,0,0,0,0,,,,,,,7
+55,,druid hill park druid hill park dr and greenspring ave,-76.65373663,39.33027633,stream and floodplain restoration to treat stormwater runoff from upstream drainage area,2,90,30,27,3951763.2,2,15,3,4,4,3,7
+56,,martin luther king jr es,-76.65715512,39.33284311,,2,0,0,0,0,,,,,,,7
+57,,james d gross roosevelt park,-76.63583419,39.32914862,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+58,,i-83 and north ave,-76.62504875,39.3115541,,2,0,0,0,0,,,,,,,7
+59,,laurens st and bolton st,-76.63025333,39.30898313,,2,0,0,0,0,,,,,,,7
+60,,mount royal station howard st and mount royal ave,-76.61984947,39.30544249,,2,0,0,0,0,,,,,,,7
+61,,greenmount ave and loch raven blvd,-76.60882489,39.31612768,,2,0,0,0,0,,,,,,,7
+62,,cecil es,-76.60610932,39.31350804,,2,0,0,0,0,,,,,,,7
+63,,aisquith st and curtain ave,-76.60115073,39.31337179,,2,0,0,0,0,,,,,,,7
+64,,kirk ave and 25th st,-76.60198253,39.31760014,,2,0,0,0,0,,,,,,,7
+65,,coldstream park es,-76.60132058,39.32142961,,2,0,0,0,0,,,,,,,7
+66,,abbottson es/baltimore city college hs,-76.59708047,39.32601818,,2,0,0,0,0,,,,,,,7
+67,,homewood ave and biddle st,-76.6050094,39.30334652,,2,0,0,0,0,,,,,,,7
+68,,wyman park dell,-76.61866114,39.32441268,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+69,,waverly es/ms,-76.60498114,39.33023098,,2,0,0,0,0,,,,,,,7
+70,,dolphin st and mcculloh st,-76.62703886,39.30253133,,2,0,0,0,0,,,,,,,7
+71,,calhoun st and presstman st,-76.64013956,39.30601876,,2,0,0,0,0,,,,,,,7
+72,,ensor st and monument st,-76.60199292,39.29858915,,2,0,0,0,0,,,,,,,7
+73,,stony run park below wyman park dr,-76.62623662,39.32386491,,2,0,0,0,0,,,,,,,7
+74,,calvert school,-76.6218558,39.33946971,underground detention to provide extended detention and partial treatment of stormwater runoff from upstream drainage area,2,120,30,36,5269017.6,2,17,1,5,4,1,7
+75,,guilford neighborhood tulip park greenway and stratford rd,-76.61395492,39.34097672,stormwater pond/wetland system to treat stormwater runoff from upstream residential development.,2,45,30,13.5,1975881.6,2,14,1,4,4,3,7
+76,,loyola college fitness and aquatic center wyndhurst ave and charles st,-76.6246647,39.35222633,,2,0,0,0,0,,,,,,,7
+77,,friends school,-76.62744467,39.35757109,bioretention area in existing landscaping area in parking lot to treat parking lot runoff,2,0.8,100,0.8,104282.64,1,"1, 16",3,1,1,3,7
+78,,cathedral of mary our queen,-76.62726395,39.36063042,bioretention areas in existing landscaping areas in parking lot to treat parking lot runoff,2,2.5,100,2.5,325883.25,1,"1, 16",3,3,1,3,7
+79,,cotswold rd and amberly way,-76.63164289,39.36019793,convert/enhance existing outfall retrofit to stormwater pond/wetland system to provide additional treatment of stormwater runoff from upstream drainage area,2,55,35,19.25,2754571.05,2,14,3,4,4,3,7
+80,,thurgood marshall ms,-76.54567113,39.32077405,bioretention area in existing open space area to treat parking lot runoff,2,1.5,100,1.5,195529.95,1,"1, 16",3,3,1,3,7
+81,,mt pleasant park at perring pkwy and laurelton ave,-76.57417672,39.35551218,bioretention area in existing depression to treat roadway runoff,2,1.5,50,0.75,102910.5,1,"1, 16",4,3,1,3,7
+82,,bryn mawr,-76.63017698,39.36359772,,2,0,0,0,0,,,,,,,7
+83,,gilman country,-76.63329307,39.35933009,,2,0,0,0,0,,,,,,,7
+84,,roland park es/ms,-76.63284737,39.35743543,,2,0,0,0,0,,,,,,,7
+85,,knights of columbus,-76.61800694,39.35310711,bioretention area in existing pervious area to treat parking lot and rooftop runoff,2,0.3,100,0.3,39105.99,1,"1, 16",4,3,1,3,7
+86,,notre dame college of maryland,-76.61658281,39.35194144,multi-cell bioretention area in existing dry detention basin to treat stormwater runoff from upstream drainage area,2,25,30,7.5,1097712,2,"1, 16",4,3,4,4,7
+87,,wood heights ave and la plata ave,-76.6467323,39.34053943,wooded stormwater wetland to treat stormwater runoff from upstream drainage area,2,10,40,4,562577.4,2,12,3,4,4,3,7
+88,,baltimore city public works yard falls rd s of 28th st,-76.62597845,39.3172282,,2,0,0,0,0,,,,,,,7
+89,,memorial stadium,-76.60143374,39.33007714,,2,0,0,0,0,,,,,,,7
+90,,john eager howard elementary school,-76.63289727,39.31196465,,2,0,0,0,0,,,,,,,7
+91,,baltimore city community college reisterstown plaza center,-76.69622209,39.35842276,,2,0,0,0,0,,9,,,,,7
+92,,falls rd and hillside rd,-76.64099358,39.35092151,,2,0,0,0,0,,,,,,,7
+93,,patterson park adjunct,-76.57447296,39.2881642,dry swale in existing landscaping area at toe of slope to treat stormwater runoff from disturbed pervious area,2,11.9,5,0.595,155120.427,2,4,4,3,3,4,7
+94,,unnamed park at orleans st and ellwood ave,-76.57483551,39.29553286,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+95,,unnamed park at orleans st and ellwood ave,-76.57454475,39.29640828,dry swale/bioretention area in existing open space area to treat stormwater runoff from disturbed pervious area,2,2.4,5,0.12,31284.792,1,"1, 16",4,3,1,3,7
+96,,unnamed park at orleans st and ellwood ave,-76.57475402,39.29717432,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+97,,industrial site at edison hwy and madison st,-76.57021015,39.30110737,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+98,,frank c bocek park,-76.57458844,39.30143753,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+99,,highlandtown es,-76.56447951,39.28914824,,2,0,0,0,0,,,,,,,7
+100,,unnamed school at chase st and patterson park ave,-76.58384513,39.30296103,,2,0,0,0,0,,,,,,,7
+101,,fayette st and caroline st,-76.59866582,39.29327933,bioretention area in existing depression/open space area to treat parking lot and roadway runoff,2,1.4,85,1.19,156561.174,1,"1, 16",4,1,1,4,7
+102,,lombard ms,-76.59565242,39.29087636,,2,0,0,0,0,,,,,,,7
+103,,unnamed park at patterson park ave and preston st,-76.58673567,39.30657404,,2,0,0,0,0,,,,,,,7
+104,,unnamed park at caroline st and eager st,-76.59864191,39.30247145,,2,0,0,0,0,,,,,,,7
+105,,harford heights es,-76.59399622,39.31354447,bioretention area in exsiting open space area to treat stormwater runoff from small impervious area,2,0.68,100,0.68,88640.244,1,"1, 16",4,3,1,3,7
+106,,clifton park adjunct w of st lo dr at sinclair ln and wolfe st,-76.59116955,39.31524007,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,5.8,90,5.22,684423.432,2,14,3,4,3,3,7
+107,,clifton park adjunct e of st lo dr at sinclair ln and st lo dr,-76.58863382,39.31489448,limited retrofit potential,2,0,0,0,0,,,2,,,,7
+108,,clifton park harford rd and st lo dr,-76.59062883,39.31838884,bioretention area in existing landscaping area to treat roadway runoff,2,2.75,100,2.75,358471.575,1,"1, 16",3,3,1,3,7
+109,,fairmont harford hs,-76.58519537,39.31730572,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,34.4,55,18.92,2572488.072,2,14,4,3,4,4,7
+110,,moores run park  between sinclair ln and i-895,-76.53263738,39.32603064,,2,0,0,0,0,,,,,,,7
+111,,moores run park  between hamilton ave and radecke ave,-76.5403275,39.33700321,,2,0,0,0,0,,,,,,,7
+112,,west of erdman ave between duncanwood ln and macon st,-76.56348137,39.30707497,,2,0,0,0,0,,9,,,,,7
+113,,memorial stadium,-76.59106518,39.33155584,,2,0,0,0,0,,,,,,,7
+114,,cross country blvd and kelly ave,-76.66351208,39.36680162,,2,0,0,0,0,,9,,,,,7
+115,,kelly ave and poplin ave,-76.66158018,39.36690642,,2,0,0,0,0,,9,,,,,7
+116,,cross country blvd and dale rd,-76.67057632,39.36580206,,2,0,0,0,0,,9,,,,,7
+117,,below montebello filtration plant n of harford rd e of herring run,-76.57759147,39.33325148,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+118,,herring run park between belair rd and mannasota ave below shannon dr at kavon ave,-76.56619378,39.32548833,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,40,50,20,2744280,2,14,3,4,4,3,7
+119,,homewood homeland ave and spring lake way,-76.61584242,39.35366018,,2,0,0,0,0,,9,,,,,7
+120,,greenspring ave and shirley ave,-76.65611025,39.33658724,,2,0,0,0,0,,9,,,,,7
+121,,below san martin dr,-76.62556578,39.33015442,,2,0,0,0,0,,9,,,,,7
+122,,gilman terr and 33rd st,-76.62483129,39.3325779,,2,0,0,0,0,,9,,,,,7
+123,,falstaff rd and gage ct,-76.68551992,39.37061894,,2,0,0,0,0,,9,,,,,7
+124,,greenspring ave and fallstaff rd,-76.68211675,39.37208461,,2,0,0,0,0,,9,,,,,7
+125,,canton waterfront park below boston st at ellwood ave,-76.5723963,39.27665839,bioretention area in existing landscaping area to treat stormwater runoff from small impervious area,2,1.55,85,1.3175,173335.5855,1,"1, 16",4,3,1,3,7
+126,,canton waterfront park below boston st at linwood ave,-76.57561335,39.27720414,bioretention area in existing landscaping area to treat stormwater runoff from small impervious area,2,0.69,100,0.69,89943.777,1,"1, 16",4,3,1,3,7
+127,,canton waterfront park below boston st at east ave,-76.57097248,39.27636326,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+128,,below boston st between hudson st and lakewood ave,-76.58006615,39.28024929,,2,0,0,0,0,,,,,,,7
+129,,tamarind rd and springarden dr,-76.65434299,39.34847028,bioretention area at end of roadway to treat roadway runoff,2,1,80,0.8,105654.78,1,"1, 16",3,3,1,3,7
+130,northern parkway median,northern pkwy w of greenspring ave,-76.66549288,39.35575219,bioretention in existing landscaping area in roadway median to treat roadway runoff,2,1,100,1,130353.3,1,"1, 16",3,3,1,3,7
+131,boys latin school,boys latin hs,-76.63640095,39.3724608,,2,0,0,0,0,,,,,,,7
+132,bmp near boys latin school,lake ave and lakehurst dr,-76.63888428,39.37287093,,2,0,0,0,0,,,,,,,7
+133,notre dame college of maryland,elkridge hunt club,-76.61909156,39.3503342,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+134,john hopkins eastern campus,johns hopkins university east campus 33rd st,-76.60132378,39.32742312,bioretention in parking lot to treat parking lot runoff,2,4,100,4,521413.2,1,"1, 16",4,3,1,3,7
+135,herring run park,mercy hs,-76.57696856,39.33410778,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+136,herring run park,orangeville industrial area e of edison hwy and biddle st,-76.57155792,39.32666077,,2,0,0,0,0,,,,,,,7
+137,clifton park golf course,clifton park,-76.57698953,39.31930532,dry swale/bioretention area in existing depression to treat stormwater runoff from golf course,2,2,10,0.2,38419.92,1,"1, 16",4,3,1,3,7
+138,clifton golf course,clifton park,-76.5750945,39.32089381,bioretention area in existing depression to treat roadway runoff,2,4.5,50,2.25,308731.5,1,"1, 16",3,3,1,3,7
+139,herring run park,herring run park between mannasota ave and brehms ln below shannon dr at mannasota ave,-76.56245073,39.32369809,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,305,40,122,17158610.7,2,14,1,5,4,1,7
+140,chinquapin run park,chinquapin run park between northern pkwy and belvedere ave below chinquapin pkwy at sherwood ave,-76.59865601,39.36471417,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+141,chinquapin run park,chinquapin run park between northern pkwy and belvedere ave below chinquapin pkwy between elbank ave and gleneagle rd,-76.59776521,39.36262917,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,45,50,22.5,3087315,2,14,4,4,4,4,7
+142,chinquapin run park,chinquapin run park between belvedere ave and the alameda below northwood dr between st dunstans rd and the alameda,-76.59816827,39.35976786,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,84,60,50.4,6800325.84,2,14,3,4,4,3,7
+143,chinquapin run park,chinquapin run park between belvedere ave and the alameda below northwood dr between belvedere ave and the alameda,-76.59752859,39.35888485,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,300,60,180,24286878,2,14,1,5,4,1,7
+144,chinquapin run park,chinquapin run park between woodbourne ave and loch raven blvd below kelway rd at kitmore rd,-76.59357297,39.35166447,limited retrofit potential,2,0,0,0,0,,,2,,,2,7
+145,chinquapin run park,chinquapin run park between the alameda and woodbourne ave below northwood dr at woodbourne ave,-76.59494781,39.3547321,stormwater pond/wetland system to treat stormwater runoff from upstream drainage area,2,82.8,50,41.4,5680659.6,2,14,1,5,4,1,7
+146,herring run park,herring run park between mannasota ave and brehms ln below parkside dr at brehms ln,-76.56171821,39.32337619,,2,0,0,0,0,,9,,,,,7
+147,,,-76.56598773,39.36503485,,2,0,0,0,0,,,,,,,7
+148,,,-76.55705664,39.31971808,,2,0,0,0,0,,,,,,,7
+149,,,-76.7203832,39.37715704,,2,0,0,0,0,,,,,,,7
+150,,,-76.67560209,39.39321014,,2,0,0,0,0,,,,,,,7
+151,,,-76.67394794,39.38447261,,2,0,0,0,0,,,,,,,7
+152,,,-76.57996343,39.35131041,,2,0,0,0,0,,,,,,,7
+153,,,-76.55918008,39.36470821,,2,0,0,0,0,,,,,,,7
+154,,,-76.55813113,39.35534657,,2,0,0,0,0,,,,,,,7
+155,,,-76.55164524,39.36996091,,2,0,0,0,0,,,,,,,7
+156,,,-76.66878843,39.37299902,,2,0,0,0,0,,,,,,,7
+157,,,-76.60605453,39.32313432,,2,0,0,0,0,,,,,,,7
+158,,,-76.54587926,39.30771904,,2,0,0,0,0,,,,,,,7
+159,,,-76.62950467,39.37088337,,2,0,0,0,0,,,,,,,7
+160,,,-76.66488157,39.35374388,,2,0,0,0,0,,,,,,,7
+161,,,-76.55583011,39.31829793,,2,0,0,0,0,,,,,,,7
+162,,,-76.59240261,39.29687092,,2,0,0,0,0,,,,,,,7
+163,,,-76.57020959,39.33123363,,2,0,0,0,0,,,,,,,7
+164,,,-76.53531608,39.32138676,,2,0,0,0,0,,,,,,,7
+165,,,-76.57363287,39.33446129,,2,0,0,0,0,,,,,,,7
+166,,,-76.56810626,39.32863141,,2,0,0,0,0,,,,,,,7
+167,,,-76.57077857,39.32704078,,2,0,0,0,0,,,,,,,7
+168,,,-76.5514909,39.31834132,,2,0,0,0,0,,,,,,,7
+169,,,-76.54984978,39.31680067,,2,0,0,0,0,,,,,,,7
+170,,,-76.53725143,39.3049701,,2,0,0,0,0,,,,,,,7
+171,,,-76.5608377,39.32165686,,2,0,0,0,0,,,,,,,7
+172,,,-76.67855661,39.38885689,,2,0,0,0,0,,,,,,,7
+173,overlea hs,,-76.51341354,39.34916101,,2,0,0,0,0,,,,,,,7
+174,overlea hs,,-76.51323543,39.34934903,,2,0,0,0,0,,,,,,,7
+175,bel mar park,,-76.52702584,39.35112378,,2,0,0,0,0,,,,,,,7
+176,bel mar park,,-76.52706842,39.35229831,,2,0,0,0,0,,,,,,,7
+177,,,-76.57782972,39.36875954,,2,0,0,0,0,,,,,,,7
+178,,,-76.58104881,39.36351466,,2,0,0,0,0,,,,,,,7
+179,,,-76.57286818,39.33167103,,2,0,0,0,0,,,,,,,7
+180,,,-76.55618619,39.32105397,,2,0,0,0,0,,,,,,,7
+181,,,-76.58801996,39.35213836,,2,0,0,0,0,,,,,,,7
+182,,,-76.54089196,39.36685883,,2,0,0,0,0,,,,,,,7
+183,,,-76.70510994,39.36234067,,2,0,0,0,0,,,,,,,7
+184,,,-76.65832643,39.35369973,,2,0,0,0,0,,,,,,,7
+185,,,-76.70422022,39.40053123,,2,0,0,0,0,,,,,,,7
+186,,,-76.57267878,39.36309322,,2,0,0,0,0,,,,,,,7
+187,,,-76.56993363,39.36572787,,2,0,0,0,0,,,,,,,7
+188,,,-76.65589308,39.34740074,,2,0,0,0,0,,,,,,,7
+189,,,-76.66307119,39.34422307,,2,0,0,0,0,,,,,,,7
+190,,,-76.60698129,39.3218503,,2,0,0,0,0,,,,,,,7
+191,,,-76.56244928,39.32382697,,2,0,0,0,0,,,,,,,7
+192,,,-76.58565519,39.32809598,,2,0,0,0,0,,,,,,,7
+193,,,-76.64354035,39.34823221,,2,0,0,0,0,,,,,,,7
+194,,,-76.59764856,39.35833163,,2,0,0,0,0,,,,,,,7
+195,,,-76.59803676,39.36321266,,2,0,0,0,0,,,,,,,7
+196,,,-76.58026133,39.28907702,,2,0,0,0,0,,,,,,,7
+197,,,-76.58228496,39.32223161,,2,0,0,0,0,,,,,,,7
+198,,,-76.55197876,39.31668027,,2,0,0,0,0,,,,,,,7
+199,,,-76.54943722,39.31515701,,2,0,0,0,0,,,,,,,7
+200,western high school,,-76.64362184,39.34737555,,2,0,0,0,0,,,,,,,7
+201,baltimore polytechnic institute high school,,-76.64476386,39.35142641,,2,0,0,0,0,,,,,,,7
+202,fullerton elementary,,-76.51855986,39.36068261,,2,0,0,0,0,,,,,,,7
+203,overlea hs,,-76.51089544,39.35054054,,2,0,0,0,0,,,,,,,7
+204,bel mar park,,-76.52640384,39.3506437,,2,0,0,0,0,,,,,,,7
+205,park,,-76.52255026,39.35087082,,2,0,0,0,0,,,,,,,7
+206,morgan state,,-76.58271862,39.33835392,,2,0,0,0,0,,,,,,,7
+207,morgan state,,-76.58157384,39.34449566,,2,0,0,0,0,,,,,,,7
+208,golden ring ms,,-76.49910235,39.33308067,,2,0,0,0,0,,,,,,,7
+209,firehouse,,-76.51227004,39.3218169,,2,0,0,0,0,,,,,,,7
+210,herring run park,,-76.55475371,39.31903495,,2,0,0,0,0,,,,,,,7
+211,herring run park,,-76.55678245,39.32095064,,2,0,0,0,0,,,,,,,7
+212,herring run park,,-76.5575346,39.32154056,,2,0,0,0,0,,,,,,,7
+213,brooklyn park er4003,brooklyn,-76.60055833,39.21744284,"extended detention basin, wetlands",1,,,,,,"5, 19",,,,,7
+214,gwynns run er4000,gwynns run,-76.6536881,39.27496031,"extended detention basin, wetlands, debris collector",1,,,,,,"5, 19, 3",,,,,7
+215,calverton middle school greening phase i,calverton middle school,-76.65910899,39.30006302,2.8 ac unused impervious area replaced with vegetation,1,,,2.8,,,8,,,,,7
+216,bentalou elementary school greening phase i,bentalou elem,-76.65359381,39.29173324,0.69 ac unused impervious area replaced with vegetation,1,,,0.69,,,8,,,,,7
+217,harlem park elementary school greening phase i,harlem park elementary,-76.64130356,39.29719616,0.72 ac unused impervious area replaced with vegetation,1,,,0.72,,,8,,,,,7
+218,hilton elementary school greening phase i,hilton elem,-76.67367228,39.31912975,0.93 ac unused impervious area replaced with vegetation,1,,,0.93,,,8,,,,,7
+219,west baltimore middle school greening phase i,west baltimore middle,-76.69878791,39.2832104,1.22 ac unused impervious area replaced with vegetation,1,,,1.22,,,8,,,,,7
+220,gilmor elementary school greening phase i,gilmor elementary school,-76.64251707,39.30366325,0.39 ac unused impervious area replaced with vegetation,1,,,0.39,,,8,,,,,7
+221,hamilton middle school greening phase ii,hamilton ms (sefton ave) (jhh),-76.55465783,39.3500449,1.80 ac unused impervious area replaced with vegetation,1,,,1.8,,,8,,,,,7
+222,brehms lane elementary school greening phase ii,brehms lane elementary school,-76.56644519,39.32169624,1.70 ac unused impervious area replaced with vegetation,1,,,1.7,,,8,,,,,7
+223,middle stony run er4008,wyndhurst ave w coldspring lane,-76.62647679,39.34491358,"stream restoration, utility protection, improve bio-habitat",1,,,,,,"15, 18, 7",,,,,7
+224,upper stony run er4007,northern pkwy to wyndhurst ave,-76.6293394,39.35371913,"stream restoration, utility protection, improve bio-habitat",1,,,,,,"15, 18, 7",,,,,7
+225,lower stony run er4010,coldspring lane to univ pkwy,-76.62600785,39.32294604,"stream restoration, utility protection, improve bio-habitat",1,,,,,,"15, 18, 7",,,,,7
+226,biddison run phase i er4003,confluence with herring run,-76.54705296,39.3099963,"stream restoration, utility protection, improve bio-habitat",1,,,,,,"15, 18, 7",,,,,7
+227,western run phase i er4014,green spring ave,-76.67284409,39.36466192,"stream restoration, utility protection, improve bio-habitat",1,,,,,,"15, 18, 7",,,,,7
+228,ben franklin middle school greening phase iii,ben franklin middle school ps239,-76.59404147,39.23198528,3.01 ac unused impervious area replaced with vegetation,1,,,3.01,,,8,,,,,7
+229,franklin square elementary school greening phase iii,franklin square elem school ps95,-76.64042939,39.29148972,1.39 ac unused impervious area replaced with vegetation,1,,,1.39,,,8,,,,,7
+230,watershed 263 phase i,baltimore st & frederick ave b1,-76.64259438,39.2883019,unused impervious area replaced with vegetation,1,,,,,,8,,,,,7
+231,watershed 263 phase i,nw cnr n. mount w. lexington b10,-76.64405699,39.29071612,unused impervious area replaced with vegetation,1,,,,,,8,,,,,7
+232,barclay em school,2900 barclay st es/msps54,-76.61194353,39.32394433,unused impervious area replaced with vegetation,1,,,,,,8,,,,,7
+233,curtis bay em school,4301 10th st,-76.59827042,39.22613004,unused impervious area replaced with vegetation,1,,,,,,8,,,,,7
+234,mad cho stream restoration p1 (mc10),beechfield ave,-76.68589393,39.27814093,"stream restoration, utility protection, improve bio-habitat",1,,,,,,"15, 18, 7",,,,,7
+235,watershed 263 phase i,nwcnr wfairmount &fulton ave c13,-76.64541398,39.28897877,unused impervious area replaced with vegetation,1,,,,,,8,,,,,7
+236,watershed 263 phase i,alley bet nfulton nbruce st i1,-76.64474264,39.29146525,unused impervious area replaced with vegetation,1,,,,,,8,,,,,7
+237,watershed 263 phase i,nwcnr w.fayettest n.mount st b13,-76.64393571,39.28972967,unused impervious area replaced with vegetation,1,,,,,,8,,,,,7
+238,watershed 263 phase i,nwcnr nfulton wlexington st b15,-76.64541483,39.29084132,unused impervious area replaced with vegetation,1,,,,,,8,,,,,7
+239,charles street culvert repair,n charles st over remove,-76.62247815,39.34748981,culvert repair,1,,,,,,2,,,,,7
+240,yorkwood elementary school greening phase iii,yorkwood elementary school,-76.58131652,39.36322209,xx ac unused impervious area replaced with vegetation,1,,,,,,8,,,,,7
+241,francis scott key em school greening phase - mpa,"francis scott key es/ms, ps #76",0,0,greening project only no asphalt removed - phill lee mpa,1,,,,,,8,,,,,7
+242,windsor hills em school greening phase - mpa,"windsor hills es/ms, ps#87",0,0,xx ac unused impervious area replaced with vegetation,1,,,,,,8,,,,,7

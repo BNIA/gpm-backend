@@ -1,18 +1,105 @@
-// Create the Layers Table
+var createLayerDetailTypesTable = function(knex) {
+  return knex.schema.createTable('layer_detail_types', table => {
+    table.string('name').primary();
+  });
+};
+
+var createLayerFilterTypesTable = function(knex) {
+  return knex.schema.createTable('layer_filter_types', table => {
+    table.string('name').primary();
+  });
+};
+
+var createBmpTypesTable = function(knex) {
+  return knex.schema.createTable('bmp_types', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('description');
+  });
+};
+
+var createDsgnDfcltsTable = function(knex) {
+  return knex.schema.createTable('dsgn_dfclts', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('description');
+  });
+};
+
+var createFeasabilitiesTable = function(knex) {
+  return knex.schema.createTable('feasabilities', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('description');
+  });
+};
+
+var createPrioritiesTable = function(knex) {
+  return knex.schema.createTable('priorities', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('description');
+  });
+};
+
+var createRetroTypesTable = function(knex) {
+  return knex.schema.createTable('retro_types', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('description');
+  });
+};
+
+var createSourcesTable = function(knex) {
+  return knex.schema.createTable('sources', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('description');
+  });
+};
+
+var createSiteUsesTable = function(knex) {
+  return knex.schema.createTable('site_uses', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('description');
+  });
+};
+
+var createStatusesTable = function(knex) {
+  return knex.schema.createTable('statuses', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('description');
+  });
+};
+
+var createWtrshdBftsTable = function(knex) {
+  return knex.schema.createTable('wtrshd_bfts', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('description');
+  });
+};
+
 var createLayersTable = function(knex) {
   return knex.schema.createTable('layers', table => {
-    table.increments('id');
-    table.integer('csa_id').references('id')
-      .inTable('boundaries.csas').onDelete('CASCADE');
-    table.integer('nsa_id').references('id')
-      .inTable('boundaries.nsas').onDelete('CASCADE');
-    table.integer('subwatershed_id').references('id')
-      .inTable('boundaries.subwatersheds').onDelete('CASCADE');
+    table.increments('id').primary();
+    table.integer('layer_detail_id');
+    table.string('layer_detail_type')
+      .references('layer_detail_types.name').onDelete('CASCADE')
+      .notNullable();
+    table.integer('csa_id').references('csas.id')
+      .onDelete('CASCADE');
+    table.integer('nsa_id').references('nsas.id')
+      .onDelete('CASCADE');
+    table.integer('subwatershed_id').references('subwatersheds.id')
+      .onDelete('CASCADE');
     table.integer('site_id').notNullable();
-    table.specificType('source', 'layer_source').notNullable();
-    table.specificType('geometry', 'geometry'); // .notNullable();
-    table.json('geojson'); // .notNullable();
+    table.specificType('geometry', 'geometry');
+    table.json('geojson');
     table.timestamps();
+    table.date('data_date');
   })
   .then(() => {
     return knex.raw(
@@ -23,11 +110,20 @@ var createLayersTable = function(knex) {
   });
 };
 
-// Create the Boundaries Table
+var createLayersSourcesTable = function(knex) {
+  return knex.schema.createTable('layers_sources', table => {
+    table.integer('layer_id').references('layers.id').onDelete('CASCADE');
+    table.integer('source_id').references('sources.id').onDelete('CASCADE');
+  });
+};
+
 var createBoundariesTable = function(knex) {
-  knex.schema.createTable('boundaries', table => {
-    table.increments('id');
-    table.string('name').notNullable();
+  return knex.schema.createTable('boundaries', table => {
+    table.increments('id').primary();
+    table.integer('boundary_detail_id');
+    table.specificType('boundary_detail_type', 'boundary_detail_type')
+      .notNullable();
+    table.string('name').notNullable(); // maybe not...
     table.json('geojson'); // .notNullable();
     table.specificType('geometry', 'geometry'); // .notNullable();
     table.timestamps();
@@ -40,282 +136,79 @@ var createBoundariesTable = function(knex) {
   });
 };
 
-// Create the Layers Schema
-var createLayersSchema = function(knex) {
-  var q = knex.raw("CREATE SCHEMA IF NOT EXISTS ??", ["layers"])
-    .toString();
-  return knex.raw(q);
-};
-
-var createSwStatusType = function(knex) {
-  var q = knex.raw(
-    "CREATE TYPE ?? as ENUM (?,?)", [
-      "layers.sw_status",
-      'active',
-      'identified'
-    ]
-  ).toString();
-  return knex.raw(q);
-};
-
-var createBmpTypeType = function(knex) {
-  var q = knex.raw(
-    'CREATE TYPE ?? as ENUM (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
-      'layers.bmp_type',
-      'bioretention area',
-      'culvert repair',
-      'debris collector',
-      'dry swale',
-      'extended detention basin',
-      'impervious cover removal',
-      'improve bio-habitat',
-      'landscape',
-      'outfall retrofit',
-      'permeable pavement',
-      'shallow extended detention wetland',
-      'shallow wetland',
-      'site reforestation/revegetation',
-      'stormwater pond/wetland system',
-      'stream restoration',
-      'underdrain',
-      'underground detention system',
-      'utility protection',
-      'wetlands'
-    ]).toString();
-  return knex.raw(q);
-};
-
-var createRetroTypeType = function(knex) {
-  var q = knex.raw(
-    'CREATE TYPE ?? as ENUM (?,?)', ['layers.retro_type',
-      'on site', 'storage'
-    ]
-  ).toString();
-  return knex.raw(q);
-};
-
-var createFeasabilityType = function(knex) {
-  var q = knex.raw(
-    'CREATE TYPE ?? as ENUM (?,?,?,?,?)', [
-      'layers.feasability',
-      'low',
-      'very low',
-      'medium',
-      'high',
-      'very high'
-    ]
-    ).toString();
-  return knex.raw(q);
-};
-
-var createDsgnDfcltType = function(knex) {
-  var q = knex.raw(
-    'CREATE TYPE ?? as ENUM (?,?,?,?,?)', [
-      'layers.dsgn_dfclt',
-      'low',
-      'very low',
-      'medium',
-      'high',
-      'very high'
-    ]
-  ).toString();
-  return knex.raw(q);
-};
-
-var createWtrshdBftType = function(knex) {
-  var q = knex.raw(
-    'CREATE TYPE ?? as ENUM (?,?,?,?,?)', [
-      'layers.wtrshd_bft',
-      'low',
-      'very low',
-      'medium',
-      'high',
-      'very high'
-    ]
-  ).toString();
-  return knex.raw(q);
-};
-
-var createPriorityType = function(knex) {
-  var q = knex.raw(
-    'CREATE TYPE ?? as ENUM (?,?,?,?,?)', [
-      'layers.priority',
-      'low',
-      'very low',
-      'medium',
-      'high',
-      'very high'
-    ]
-  ).toString();
-  return knex.raw(q);
-};
-
-var createSiteUseType = function(knex) {
-  var q = knex.raw(
-    'CREATE TYPE ?? as ENUM (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
-      'layers.site_use',
-      'Active/Rectrational',
-      'Adopt-a-Lot',
-      'Art Inc.',
-      'Beautification',
-      'Children\'s Activities',
-      'Conntected to Schools',
-      'Container Garden',
-      'Flower Beds',
-      'Food Grown: Co-Op',
-      'Food Grown: Individual Plots',
-      'Food Grown: Organic',
-      'Income Generating',
-      'Memorial',
-      'Rain Garden',
-      'Trees',
-      'Wildlife Habitat/Animals Kept'
-    ]
-  ).toString();
-  return knex.raw(q);
-};
-
-var createLayerSourceType = function(knex) {
-  var q = knex.raw(
-    'CREATE TYPE ?? as ENUM (?,?,?,?,?,?,?)', [
-      'layer_source',
-      'Baltimore Green Space',
-      'Baltimore City Master Gardeners',
-      'Parks and People',
-      'Power in Dirt',
-      'Center for a Livable Future',
-      'Growing Green Initiative',
-      'DPW-MS4'
-    ]
-  ).toString();
-  return knex.raw(q);
-};
-
-var createLayersTypes = function(knex, Promise) {
-  return Promise.all([
-    createLayerSourceType(knex)
-  ]);
-};
-
-var createCmosTypes = function(knex, Promise) {
-  return Promise.all([
-    createSiteUseType(knex)
-  ]);
-};
-
-var createCmosTable = function(knex) {
-  return knex.schema.createTable('layers.cmoss', table => {
-    table.increments('id');
-    table.integer('layer_id').references('id').inTable('layers')
-      .onDelete('CASCADE');
+var createStormwatersTable = function(knex) {
+  return knex.schema.createTable('stormwaters', table => {
+    table.increments('id').primary();
     table.string('name');
     table.string('address');
-    table.string('block');
-    table.string('lot');
-    table.specificType('site_use', 'layers.site_use');
-    table.timestamps();
-  }).then(() => {
-    return knex.raw(
-      'ALTER TABLE layers.cmoss ' +
-      'ALTER COLUMN created_at ' +
-      'SET DEFAULT CURRENT_TIMESTAMP'
-    );
-  });
-};
-
-var createStormwaterTypes = function(knex, Promise) {
-  return Promise.all([
-    createSwStatusType(knex),
-    createBmpTypeType(knex),
-    createRetroTypeType(knex),
-    createFeasabilityType(knex),
-    createDsgnDfcltType(knex),
-    createWtrshdBftType(knex),
-    createPriorityType(knex)
-  ]);
-};
-
-var createStormwaterTable = function(knex) {
-  return knex.schema.createTable('layers.stormwaters', table => {
-    table.increments('id');
-    table.integer('layer_id').references('id').inTable('layers')
-      .onDelete('CASCADE');
-    table.string('name');
-    table.string('address');
-    table.specificType('status', 'layers.sw_status').notNullable();
-    table.specificType('bmp_type', 'layers.bmp_type[]');
+    // table.specificType('bmp_type_id', 'integer[]').references('bmp_type.id');
     table.string('site_use');
     table.float('drain_acres');
     table.float('imp_acres');
     table.float('imp_percent');
     table.float('an_runoff');
-    table.specificType('retro_type', 'layers.retro_type');
-    table.specificType('feasability', 'layers.feasability');
-    table.specificType('dsgn_dfclt', 'layers.dsgn_dfclt');
-    table.specificType('wtrshd_bft', 'layers.wtrshd_bft');
-    table.specificType('priority', 'layers.priority');
+    table.integer('status_id').references('statuses.id')
+      .onDelete('CASCADE');
+    table.integer('retro_type_id').references('retro_types.id')
+      .onDelete('CASCADE');
+    table.integer('feasability_id').references('feasabilities.id')
+      .onDelete('CASCADE');
+    table.integer('dsgn_dfclt_id').references('dsgn_dfclts.id')
+      .onDelete('CASCADE');
+    table.integer('wtrshd_bft_id').references('wtrshd_bfts.id')
+      .onDelete('CASCADE');
+    table.integer('priority_id').references('priorities.id')
+      .onDelete('CASCADE');
     table.timestamps();
   }).then(() => {
     return knex.raw(
-        'ALTER TABLE layers.stormwaters ' +
+        'ALTER TABLE stormwaters ' +
         'ALTER COLUMN created_at ' +
         'SET DEFAULT CURRENT_TIMESTAMP'
     );
   });
 };
 
-var dropLayersTypes = function(knex, Promise) {
-  return Promise.all([
-    knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'layer_source')
-      .toString())
-  ]);
-};
-
-var dropCmosTypes = function(knex, Promise) {
-  return Promise.all([
-    knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'layers.site_use')
-      .toString())
-  ]);
-};
-
-var dropStormwaterTypes = function(knex, Promise) {
-  return Promise.all([
-    knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'layers.sw_status')
-      .toString()),
-    knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'layers.bmp_type')
-      .toString()),
-    knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'layers.feasability')
-      .toString()),
-    knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'layers.dsgn_dfclt')
-      .toString()),
-    knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'layers.retro_type')
-      .toString()),
-    knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'layers.wtrshd_bft')
-      .toString()),
-    knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'layers.priority')
-      .toString())
-  ]);
-};
-
-// Create the Boundaries Schema
-var createBoundariesSchema = function(knex) {
-  return knex.raw("CREATE SCHEMA IF NOT EXISTS ??", [
-    "boundaries"
-  ]);
-};
-
-// Create the Csas Table
-var createCsasTable = function(knex) {
-  return knex.schema.createTable('boundaries.csas', table => {
+var createCmossTable = function(knex) {
+  return knex.schema.createTable('cmoss', table => {
     table.increments('id');
-    table.integer('boundary_id').references('id').inTable(
-        'boundaries').onDelete(
-        'CASCADE');
+    table.string('name');
+    table.string('address');
+    table.string('block');
+    table.string('lot');
+    table.timestamps();
+  }).then(() => {
+    return knex.raw(
+      'ALTER TABLE cmoss ' +
+      'ALTER COLUMN created_at ' +
+      'SET DEFAULT CURRENT_TIMESTAMP'
+    );
+  });
+};
+
+var createCmossSiteUsesTable = function(knex) {
+  return knex.schema.createTable('cmoss_site_uses', table => {
+    table.integer('cmos_id').references('cmoss.id').onDelete('CASCADE');
+    table.integer('site_use_id').references('site_uses.id').onDelete('CASCADE');
+  });
+};
+
+var createBmpTypesStormwatersTable = function(knex) {
+  return knex.schema.createTable('bmp_types_stormwaters', table => {
+    table.integer('stormwater_id').references('stormwaters.id')
+      .onDelete('CASCADE');
+    table.integer('bmp_type_id').references('bmp_types.id').onDelete('CASCADE');
+  });
+};
+
+var createCsasTable = function(knex) {
+  return knex.schema.createTable('csas', table => {
+    table.increments('id');
     table.timestamps();
   })
     .then(() => {
       return knex.raw(
-          'ALTER TABLE boundaries.csas ' +
+          'ALTER TABLE csas ' +
           'ALTER COLUMN created_at ' +
           'SET DEFAULT CURRENT_TIMESTAMP'
       );
@@ -323,16 +216,13 @@ var createCsasTable = function(knex) {
 };
 
 var createNsasTable = function(knex) {
-  return knex.schema.createTable('boundaries.nsas', table => {
+  return knex.schema.createTable('nsas', table => {
     table.increments('id');
-    table.integer('boundary_id').references('id').inTable(
-        'boundaries').onDelete(
-        'CASCADE');
     table.timestamps();
   })
   .then(() => {
     return knex.raw(
-      'ALTER TABLE boundaries.nsas ' +
+      'ALTER TABLE nsas ' +
       'ALTER COLUMN created_at ' +
       'SET DEFAULT CURRENT_TIMESTAMP'
     );
@@ -340,20 +230,18 @@ var createNsasTable = function(knex) {
 };
 
 var createSubwatershedsTable = function(knex) {
-  return knex.schema.createTable('boundaries.subwatersheds',
+  return knex.schema.createTable('subwatersheds',
       table => {
         table.increments('id');
         table.string("mde6name");
         table.string("mde8name");
         table.integer("mde8digt");
         table.integer("mde6digt");
-        table.integer('boundary_id').references('id').inTable('boundaries')
-          .onDelete('CASCADE');
         table.timestamps();
       })
   .then(() => {
     return knex.raw(
-      'ALTER TABLE boundaries.subwatersheds ' +
+      'ALTER TABLE subwatersheds ' +
       'ALTER COLUMN created_at ' +
       'SET DEFAULT CURRENT_TIMESTAMP'
       );
@@ -364,7 +252,7 @@ var createImagesTable = function(knex) {
   return knex.schema.createTable('images', table => {
     table.increments('id');
     table.string('public_id').notNullable();
-    table.integer('layer_id').references('id').inTable('layers')
+    table.integer('layer_id').references('layers.id')
       .onDelete('CASCADE');
     table.timestamps();
   }).then(() => {
@@ -376,63 +264,116 @@ var createImagesTable = function(knex) {
   });
 };
 
+var createLayerFilterOptionsTable = function(knex) {
+  return knex.schema.createTable('layer_filter_options', table => {
+    table.increments('id').primary();
+    table.string('layer_detail_type')
+      .references('layer_detail_types.name')
+      .onDelete('CASCADE');
+    table.string('layer_filter_type')
+      .references('layer_filter_types.name')
+      .onDelete('CASCADE');
+    table.integer('layer_filter_id');
+  });
+};
+
+var createBoundaryDetailType = function(knex) {
+  var q = knex.raw(
+    'CREATE TYPE ?? as ENUM (?,?,?)', [
+      'boundary_detail_type',
+      'csas',
+      'nsas',
+      'subwatersheds'
+    ]
+  ).toString();
+  return knex.raw(q);
+};
+
 exports.up = function(knex, Promise) {
   return Promise.all([
-    createBoundariesTable(knex),
-    createBoundariesSchema(knex)
-  ])
-  .then(() => {
+    createLayerDetailTypesTable(knex),
+    createLayerFilterTypesTable(knex),
+    createBmpTypesTable(knex),
+    createDsgnDfcltsTable(knex),
+    createFeasabilitiesTable(knex),
+    createPrioritiesTable(knex),
+    createRetroTypesTable(knex),
+    createSiteUsesTable(knex),
+    createWtrshdBftsTable(knex),
+    createSourcesTable(knex),
+    createStatusesTable(knex),
+    createBoundaryDetailType(knex)
+  ]).then(() => {
+    return createBoundariesTable(knex);
+  }).then(() => {
     return Promise.all([
       createCsasTable(knex),
       createNsasTable(knex),
       createSubwatershedsTable(knex)
     ]);
   }).then(() => {
-    return createLayersSchema(knex);
-  }).then(() => {
-    return createLayersTypes(knex, Promise);
-  }).then(() => {
     return createLayersTable(knex);
   }).then(() => {
-    return createCmosTypes(knex, Promise);
+    return createLayersSourcesTable(knex);
   }).then(() => {
-    return createCmosTable(knex);
+    return createCmossTable(knex);
   }).then(() => {
-    return createStormwaterTypes(knex, Promise);
+    return createCmossSiteUsesTable(knex);
   }).then(() => {
-    return createStormwaterTable(knex);
+    return createStormwatersTable(knex);
+  }).then(() => {
+    return createBmpTypesStormwatersTable(knex);
   }).then(() => {
     return createImagesTable(knex);
+  }).then(() => {
+    return createLayerFilterOptionsTable(knex);
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('layers.stormwaters')
-  .then(() => {
-    return dropStormwaterTypes(knex, Promise);
+  return knex.schema.dropTableIfExists('bmp_types_stormwaters').then(() => {
+    return knex.schema.dropTableIfExists('stormwaters');
   }).then(() => {
-    return knex.schema.dropTableIfExists('layers.cmos');
+    return knex.schema.dropTableIfExists('cmoss_site_uses');
   }).then(() => {
-    return dropCmosTypes(knex, Promise);
+    return knex.schema.dropTableIfExists('cmoss');
   }).then(() => {
     return knex.schema.dropTableIfExists('images');
   }).then(() => {
+    return knex.schema.dropTableIfExists('layers_sources');
+  }).then(() => {
     return knex.schema.dropTableIfExists('layers');
   }).then(() => {
-    return dropLayersTypes(knex, Promise);
-  }).then(() => {
-    var q = knex.raw('DROP SCHEMA IF EXISTS ??', ['layers']).toString();
-    return knex.raw(q);
+    return knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'layer_detail_type')
+      .toString());
   }).then(() => {
     return Promise.all([
-      knex.schema.dropTableIfExists('boundaries.csas'),
-      knex.schema.dropTableIfExists('boundaries.nsas'),
-      knex.schema.dropTableIfExists(
-            'boundaries.subwatersheds')]);
-  }).then(() => {
-    var q = knex.raw('DROP SCHEMA IF EXISTS ??', ['boundaries']).toString();
-    return knex.raw(q);
+      knex.schema.dropTableIfExists('csas'),
+      knex.schema.dropTableIfExists('nsas'),
+      knex.schema.dropTableIfExists('subwatersheds')]);
   }).then(() => {
     return knex.schema.dropTableIfExists('boundaries');
+  }).then(() => {
+    return knex.raw(knex.raw('DROP TYPE IF EXISTS ??', 'boundary_detail_type')
+      .toString());
+  }).then(() => {
+    return Promise.all([
+      knex.schema.dropTableIfExists('bmp_types'),
+      knex.schema.dropTableIfExists('dsgn_dfclts'),
+      knex.schema.dropTableIfExists('feasabilities'),
+      knex.schema.dropTableIfExists('priorities'),
+      knex.schema.dropTableIfExists('retro_types'),
+      knex.schema.dropTableIfExists('site_uses'),
+      knex.schema.dropTableIfExists('statuses'),
+      knex.schema.dropTableIfExists('sources'),
+      knex.schema.dropTableIfExists('wtrshd_bfts')
+    ]);
+  }).then(() => {
+    return knex.schema.dropTableIfExists('layer_filter_options');
+  }).then(() => {
+    return Promise.all([
+      knex.schema.dropTableIfExists('layer_filter_types'),
+      knex.schema.dropTableIfExists('layer_detail_types')
+    ]);
   });
 };

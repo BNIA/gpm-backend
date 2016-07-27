@@ -1,7 +1,13 @@
 var baseModel = require('./base');
 
 var Boundary = baseModel.Model.extend({
-  tableName: 'boundaries'
+  tableName: 'boundaries',
+  hasTimestamps: true
 });
 
-module.exports = baseModel.model('Boundary', Boundary);
+var Boundaries = baseModel.Collection.extend({model: Boundary});
+
+module.exports = {
+  Boundary: baseModel.model('Boundary', Boundary),
+  Boundaries: baseModel.collection('Boundaries', Boundaries)
+};

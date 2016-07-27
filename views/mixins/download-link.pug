@@ -1,0 +1,2 @@
+mixin downloadLink(dataType,data,fileName,text)
+  a(href='data:' +  dataType + ';charset=utf-8,' + encodeURIComponent(JSON.stringify(data)), download=fileName)=text

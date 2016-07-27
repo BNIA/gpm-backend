@@ -1,15 +1,26 @@
-var Boundary = require('./boundary');
-var Csa = require('./csa');
-var Nsa = require('./nsa');
-var Subwatershed = require('./subwatershed');
-var Layer = require('./layer');
-var Stormwater = require('./stormwater');
+var _ = require('lodash');
 
-module.exports = {
-  Boundary,
-  Csa,
-  Nsa,
-  Subwatershed,
-  Layer,
-  Stormwater
-};
+var models = [
+  'bmp-type',
+  'boundary',
+  'cmos',
+  'csa',
+  'dsgn-dfclt',
+  'feasability',
+  'image',
+  'layer-filter-option',
+  'layer',
+  'nsa',
+  'priority',
+  'retro-type',
+  'site-use',
+  'source',
+  'status',
+  'stormwater',
+  'subwatershed',
+  'wtrshd-bft'
+];
+
+module.exports = _.reduce(models, (res, model) => {
+  return _.assign(res, require('./' + model));
+}, {});

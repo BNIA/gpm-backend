@@ -3,10 +3,19 @@ var baseModel = require('./base');
 require('./layer');
 
 var Stormwater = baseModel.Model.extend({
-  tableName: 'layers.stormwaters',
+  tableName: 'stormwaters',
+  hasTimestamps: true,
   layer: function() {
-    return this.belongsTo('Layer');
+    return this.morphOne('Layer', 'layer_detail');
+  },
+  bmpTypes: function() {
+    return this.belongsToMany('BmpType');
   }
 });
 
-module.exports = baseModel.model('Stormwater', Stormwater);
+var Stormwaters = baseModel.Collection.extend({model: Stormwater});
+
+module.exports = {
+  Stormwater: baseModel.model('Stormwater', Stormwater),
+  Stormwaters: baseModel.collection('Stormwaters', Stormwaters)
+};

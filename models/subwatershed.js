@@ -3,10 +3,19 @@ var baseModel = require('./base');
 require('./boundary');
 
 var Subwatershed = baseModel.Model.extend({
-  tableName: 'boundaries.subwatersheds',
-  layer: function() {
+  tableName: 'subwatersheds',
+  hasTimestamps: true,
+  boundary: function() {
     return this.belongsTo('Boundary');
+  },
+  layers: function() {
+    return this.hasMany('Layer');
   }
 });
 
-module.exports = baseModel.model('Subwatershed', Subwatershed);
+var Subwatersheds = baseModel.Collection.extend({model: Subwatershed});
+
+module.exports = {
+  Subwatershed: baseModel.model('Subwatershed', Subwatershed),
+  Subwatersheds: baseModel.collection('Subwatersheds', Subwatersheds)
+};

@@ -1,0 +1,18 @@
+[
+  {"id": 1, "name": "active/recreational", "description": "placeholder"},
+  {"id": 2, "name": "adopt-a-lot", "description": "placeholder"},
+  {"id": 3, "name": "art inc.", "description": "placeholder"},
+  {"id": 4, "name": "beautification", "description": "placeholder"},
+  {"id": 5, "name": "children's activities", "description": "placeholder"},
+  {"id": 6, "name": "conntected to schools", "description": "placeholder"},
+  {"id": 7, "name": "container garden", "description": "placeholder"},
+  {"id": 8, "name": "flower beds", "description": "placeholder"},
+  {"id": 9, "name": "food grown: co-op", "description": "placeholder"},
+  {"id": 10, "name": "food grown: individual plots", "description": "placeholder"},
+  {"id": 11, "name": "food grown: organic", "description": "placeholder"},
+  {"id": 12, "name": "income generating", "description": "placeholder"},
+  {"id": 13, "name": "memorial", "description": "placeholder"},
+  {"id": 14, "name": "rain garden", "description": "placeholder"},
+  {"id": 15, "name": "trees", "description": "placeholder"},
+  {"id": 16, "name": "wildlife habitat/animals kept", "description": "placeholder"}
+]

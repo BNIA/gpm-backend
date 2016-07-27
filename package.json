@@ -19,7 +19,7 @@
   "homepage": "https://github.com/BNIA/green-pattern-map#readme",
   "dependencies": {
     "body-parser": "1.15.2",
-    "bookshelf": "^0.9.5",
+    "bookshelf": "0.10.0",
     "cloudinary": "1.4.1",
     "express": "^4.14.0",
     "knex": "^0.11.7",
@@ -35,6 +35,23 @@
     "eslint-config-google": "^0.6.0",
     "fast-csv": "2.0.0",
     "gulp": "^3.9.1",
-    "jsonlint": "1.6.2"
+    "jsonlint": "1.6.2",
+    "jspm": "0.16.40",
+    "postgres-array": "1.0.0",
+    "request": "2.73.0",
+    "request-promise": "4.0.2"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "jquery": "npm:jquery@^3.1.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }
