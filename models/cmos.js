@@ -1,16 +1,28 @@
 var baseModel = require('./base');
 
-var Cmos = baseModel.Model.extend({
-  tableName: 'cmoss',
+var CommunityManagedOpenSpace = baseModel.Model.extend({
+  tableName: 'CommunityManagedOpenSpaces',
   hasTimestamps: true,
+  visible: ['name', 'description'],
   layer: function() {
     return this.morphOne('Layer', 'layer_detail');
+  },
+  siteUses: function() {
+    return this.belongsToMany(
+    'SiteUse',
+    'cmoss_site_uses',
+    'cmos_id',
+    'site_use_id');
   }
 });
 
-var Cmoss = baseModel.Collection.extend({model: Cmos});
+var CommunityManagedOpenSpaces = baseModel.Collection.extend({
+  model: CommunityManagedOpenSpace
+});
 
 module.exports = {
-  Cmos: baseModel.model('Cmos', Cmos),
-  Cmoss: baseModel.collection('Cmoss', Cmoss)
+  CommunityManagedOpenSpace:
+  baseModel.model('CommunityManagedOpenSpace', CommunityManagedOpenSpace),
+  CommunityManagedOpenSpaces:
+  baseModel.collection('CommunityManagedOpenSpaces', CommunityManagedOpenSpaces)
 };

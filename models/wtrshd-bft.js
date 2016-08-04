@@ -1,18 +1,23 @@
 var baseModel = require('./base');
 
-var WtrshdBft = baseModel.Model.extend({
+var WatershedBenefit = baseModel.Model.extend({
   tableName: 'wtrshd_bfts',
-  stormwaters: function() {
-    return this.hasMany('Stormwater');
+  visible: ['name', 'description'],
+  stormwaterRemediationSites: function() {
+    return this.hasMany('StormwaterRemediationSite');
   },
   layerFilter: function() {
     return this.morphOne('LayerFilterOption', 'layer_filter');
   }
 });
 
-var WtrshdBfts = baseModel.Collection.extend({model: WtrshdBft});
+var WatershedBenefits = baseModel.Collection.extend({
+  model: WatershedBenefit
+});
 
 module.exports = {
-  WtrshdBft: baseModel.model('WtrshdBft', WtrshdBft),
-  WtrshdBfts: baseModel.collection('WtrshdBfts', WtrshdBfts)
+  WatershedBenefit:
+  baseModel.model('WatershedBenefit', WatershedBenefit),
+  WatershedBenefits:
+  baseModel.collection('WatershedBenefits', WatershedBenefits)
 };

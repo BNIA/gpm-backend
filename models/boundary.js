@@ -2,7 +2,8 @@ var baseModel = require('./base');
 
 var Boundary = baseModel.Model.extend({
   tableName: 'boundaries',
-  hasTimestamps: true
+  hasTimestamps: true,
+  visible: ['name']
 });
 
 var Boundaries = baseModel.Collection.extend({model: Boundary});

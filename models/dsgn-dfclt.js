@@ -1,18 +1,23 @@
 var baseModel = require('./base');
 
-var DsgnDfclt = baseModel.Model.extend({
+var DesignDifficulty = baseModel.Model.extend({
   tableName: 'dsgn_dfclts',
-  stormwaters: function() {
-    return this.hasMany('Stormwater');
+  visible: ['name', 'description'],
+  stormwaterRemediationSites: function() {
+    return this.hasMany('StormwaterRemediationSite');
   },
   layerFilter: function() {
     return this.morphOne('LayerFilterOption', 'layer_filter');
   }
 });
 
-var DsgnDfclts = baseModel.Collection.extend({model: DsgnDfclt});
+var DesignDifficulties = baseModel.Collection.extend({
+  model: DesignDifficulty
+});
 
 module.exports = {
-  DsgnDfclt: baseModel.model('DsgnDfclt', DsgnDfclt),
-  DsgnDfclts: baseModel.collection('DsgnDfclts', DsgnDfclts)
+  DesignDifficulty:
+  baseModel.model('DesignDifficulty', DesignDifficulty),
+  DesignDifficulties:
+  baseModel.collection('DesignDifficulties', DesignDifficulties)
 };

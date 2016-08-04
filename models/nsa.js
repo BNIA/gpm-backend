@@ -2,9 +2,10 @@ var baseModel = require('./base');
 
 require('./boundary');
 
-var Nsa = baseModel.Model.extend({
+var NeighborhoodStatisticalArea = baseModel.Model.extend({
   tableName: 'nsas',
   hasTimestamps: true,
+  visible: ['name', 'description'],
   boundary: function() {
     return this.belongsTo('Boundary');
   },
@@ -13,9 +14,15 @@ var Nsa = baseModel.Model.extend({
   }
 });
 
-var Nsas = baseModel.Collection.extend({model: Nsa});
+var NeighborhoodStatisticalAreas = baseModel.Collection.extend({
+  model: NeighborhoodStatisticalArea
+});
 
 module.exports = {
-  Nsa: baseModel.model('Nsa', Nsa),
-  Nsas: baseModel.collection('Nsas', Nsas)
+  NeighborhoodStatisticalArea:
+  baseModel.model('NeighborhoodStatisticalArea',
+  NeighborhoodStatisticalArea),
+  NeighborhoodStatisticalAreas:
+  baseModel.collection('NeighborhoodStatisticalAreas',
+  NeighborhoodStatisticalAreas)
 };

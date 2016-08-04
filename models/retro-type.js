@@ -1,18 +1,21 @@
 var baseModel = require('./base');
 
-var RetroType = baseModel.Model.extend({
+var RetrofitType = baseModel.Model.extend({
   tableName: 'retro_types',
-  stormwaters: function() {
-    return this.hasMany('Stormwater');
+  visible: ['name', 'description'],
+  stormwaterRemediationSites: function() {
+    return this.hasMany('StormwaterRemediationSite');
   },
   layerFilter: function() {
     return this.morphOne('LayerFilterOption', 'layer_filter');
   }
 });
 
-var RetroTypes = baseModel.Collection.extend({model: RetroType});
+var RetrofitTypes = baseModel.Collection.extend({
+  model: RetrofitType
+});
 
 module.exports = {
-  RetroType: baseModel.model('RetroType', RetroType),
-  RetroTypes: baseModel.collection('RetroTypes', RetroTypes)
+  RetrofitType: baseModel.model('RetrofitType', RetrofitType),
+  RetrofitTypes: baseModel.collection('RetrofitTypes', RetrofitTypes)
 };

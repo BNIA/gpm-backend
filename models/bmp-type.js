@@ -1,18 +1,26 @@
 var baseModel = require('./base');
 
-var BmpType = baseModel.Model.extend({
+var BestManagementPractice = baseModel.Model.extend({
   tableName: 'bmp_types',
-  stormwaters: function() {
-    return this.belongsToMany('Stormwater');
+  visible: ['name'],
+  stormwaterRemediationSites: function() {
+    return this.belongsToMany(
+      'StormwaterRemediationSite',
+      'bmp_types_stormwaters'
+    );
   },
   layerFilter: function() {
     return this.morphOne('LayerFilterOption', 'layer_filter');
   }
 });
 
-var BmpTypes = baseModel.Collection.extend({model: BmpType});
+var BestManagementPractices = baseModel.Collection.extend({
+  model: BestManagementPractice
+});
 
 module.exports = {
-  BmpType: baseModel.model('BmpType', BmpType),
-  BmpTypes: baseModel.collection('BmpTypes', BmpTypes)
+  BestManagementPractice:
+  baseModel.model('BestManagementPractice', BestManagementPractice),
+  BestManagementPractices:
+  baseModel.collection('BestManagementPractices', BestManagementPractices)
 };

@@ -112,6 +112,7 @@ var createLayersTable = function(knex) {
 
 var createLayersSourcesTable = function(knex) {
   return knex.schema.createTable('layers_sources', table => {
+    table.increments('id').primary();
     table.integer('layer_id').references('layers.id').onDelete('CASCADE');
     table.integer('source_id').references('sources.id').onDelete('CASCADE');
   });
@@ -188,6 +189,7 @@ var createCmossTable = function(knex) {
 
 var createCmossSiteUsesTable = function(knex) {
   return knex.schema.createTable('cmoss_site_uses', table => {
+    table.increments('id').primary();
     table.integer('cmos_id').references('cmoss.id').onDelete('CASCADE');
     table.integer('site_use_id').references('site_uses.id').onDelete('CASCADE');
   });
@@ -195,6 +197,7 @@ var createCmossSiteUsesTable = function(knex) {
 
 var createBmpTypesStormwatersTable = function(knex) {
   return knex.schema.createTable('bmp_types_stormwaters', table => {
+    table.increments('id').primary();
     table.integer('stormwater_id').references('stormwaters.id')
       .onDelete('CASCADE');
     table.integer('bmp_type_id').references('bmp_types.id').onDelete('CASCADE');

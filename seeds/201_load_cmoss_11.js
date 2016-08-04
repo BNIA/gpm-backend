@@ -26,16 +26,57 @@ exports.seed = function(knex, Promise) {
     });
   }).return(data).map(row => {
     row.site_use_ids = row.site_use_ids === null ?
-         [] : row.bmp_type_ids.split(', ');
+         [] : row.site_use_ids.split(', ');
     row.source_ids = row.source_ids === null ?
       [] : row.source_ids.split(', ');
     row.geojson = {
       type: 'Point',
       coordinates: [row.point_x, row.point_y]
     };
-    console.log(row);
     return row;
   }).map(row => {
+    return knex('cmoss')
+      .insert({
+        name: row.name,
+        address: row.address,
+        block: row.block,
+        lot: row.lot
+      })
+      .returning('id')
+      .then(id => {
+        row.cmos_id = parseInt(id, 10);
+        return row;
+      });
+  }).map(row => {
+    return Promise.map(row.site_use_ids, id => {
+      return knex('cmoss_site_uses').insert({
+        site_use_id: id,
+        cmos_id: row.cmos_id
+      });
+    }).return(row);
+  }).map(row => {
+    return knex('layers').insert({
+      data_date: '2011-01-01',
+      layer_detail_id: row.cmos_id,
+      layer_detail_type: 'cmoss',
+      site_id: row.site_id,
+      geojson: row.geojson,
+      geometry: knex.raw('ST_SetSRID(ST_Point(?,?),?)', [
+        row.point_x, row.point_y, '4326'
+      ]),
+      updated_at: knex.fn.now()
+    }).returning('id')
+      .then(id => {
+        row.layer_id = parseInt(id, 10);
+        return row;
+      });
+  }).map(row => {
+    return Promise.map(row.source_ids, id => {
+      return knex('layers_sources').insert({
+        source_id: id,
+        layer_id: row.layer_id
+      });
+    });
   });
 };
 //   }).then(() => {

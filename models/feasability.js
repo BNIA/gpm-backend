@@ -2,15 +2,19 @@ var baseModel = require('./base');
 
 var Feasability = baseModel.Model.extend({
   tableName: 'feasabilities',
-  stormwaters: function() {
-    return this.hasMany('Stormwater');
+  visible: ['name', 'description'],
+  stormwaterRemediationSites: function() {
+    return this.hasMany('StormwaterRemediationSite');
   },
   layerFilter: function() {
     return this.morphOne('LayerFilterOption', 'layer_filter');
   }
 });
 
-var Feasabilities = baseModel.Collection.extend({model: Feasability});
+var Feasabilities = baseModel.Collection.extend({
+  model: Feasability,
+  prettyName: 'Feasabilities'
+});
 
 module.exports = {
   Feasability: baseModel.model('Feasability', Feasability),

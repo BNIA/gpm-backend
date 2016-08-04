@@ -5,6 +5,7 @@ require('./boundary');
 var Subwatershed = baseModel.Model.extend({
   tableName: 'subwatersheds',
   hasTimestamps: true,
+  visible: ['name'],
   boundary: function() {
     return this.belongsTo('Boundary');
   },

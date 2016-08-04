@@ -2,7 +2,7 @@ var baseModel = require('./base');
 
 require('./boundary');
 
-var Csa = baseModel.Model.extend({
+var CommunityStatisticalArea = baseModel.Model.extend({
   tableName: 'csas',
   hasTimestamps: true,
   boundary: function() {
@@ -13,9 +13,13 @@ var Csa = baseModel.Model.extend({
   }
 });
 
-var Csas = baseModel.Collection.extend({model: Csa});
+var CommunityStatisticalAreas = baseModel.Collection.extend({
+  model: CommunityStatisticalArea
+});
 
 module.exports = {
-  Csa: baseModel.model('Csa', Csa),
-  Csas: baseModel.collection('Csas', Csas)
+  CommunityStatisticalArea:
+  baseModel.model('CommunityStatisticalArea', CommunityStatisticalArea),
+  CommunityStatisticalAreas:
+  baseModel.collection('CommunityStatisticalAreas', CommunityStatisticalAreas)
 };

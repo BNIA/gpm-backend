@@ -2,11 +2,12 @@ var baseModel = require('./base');
 
 var LayerFilterOption = baseModel.Model.extend({
   tableName: 'layer_filter_options',
+  visible: ['layer_filter_type', 'layer_detail_type'],
   layerFilter: function() {
     return this.morphTo(
       'layer_filter',
       'SiteUse',
-      'BmpType',
+      'BestManagementPractice',
       'Status',
       'RetroType',
       'WtrshdBft',
