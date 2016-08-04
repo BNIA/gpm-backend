@@ -1,0 +1,51 @@
+<div layout="column" flex>
+  <md-toolbar class="my-nav-toolbar">
+    <div class="md-toolbar-tools">
+      <md-button
+        aria-label="menu"
+        class="md-icon-button"
+        ng-click="$ctrl.navBack()"
+        ng-show="!($ctrl.$mdMedia('gt-md'))">
+          <i class="material-icons">arrow_back</i>
+      </md-button>
+      <md-icon
+        md-svg-icon="logo"
+        aria-label="logo"
+        style="height:36;width:36;">
+      </md-icon>
+      <h3 flex>
+          <span>{{$ctrl.title}}</span>
+      </h3>
+      </div>
+  </md-toolbar>
+  <md-divider></md-divider>
+  <md-content class="my-nav-content" flex>
+    <md-subheader class="md-no-sticky my-nav-subhead">Layers</md-subheader>
+    <md-list>
+      <md-list-item ng-repeat="(k,v) in $ctrl.layerFilters" ng-if="k != 'Global'">
+        <md-button
+          ng-class="($ctrl.selectedKey == k) ?
+            'my-nav-button md-focused' :
+            'my-nav-button'"
+          ng-click="$ctrl.selectItem(v, k)"
+          flex>
+          {{k}}
+        </md-button>
+      </md-list-item>
+    </md-list>
+    <md-divider></md-divider>
+    <md-subheader class="md-no-sticky my-nav-subhead">Vital Signs</md-subheader>
+    <md-list>
+      <md-list-item ng-repeat="o in $ctrl.vitalSigns">
+        <md-button
+          ng-class="($ctrl.selected.key == o.key) ?
+            'my-nav-button md-focused' :
+            'my-nav-button'"
+          ng-click="$ctrl.selectItem(o)"
+          flex>
+          {{o.val}}
+      </md-list-item>
+    </md-list>
+  <md-divider></md-divider>
+  </md-content>
+</div>

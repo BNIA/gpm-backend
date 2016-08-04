@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title= title
+    meta(name='viewport', content='initial-scale=1, maximum-scale=1, user-scalable=no')
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic")
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    body
+      if dev
+        script(src="jspm_packages/system.js")
+      if prod
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.28/system-csp-production.js')
+      script(src='config.js')
+      if prod
+        script(src='build.js')
+      script.
+        System.import('app/main.js').catch(console.error.bind(console));
+      app

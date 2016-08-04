@@ -3,6 +3,7 @@ var baseModel = require('./base');
 var RetrofitType = baseModel.Model.extend({
   tableName: 'retro_types',
   visible: ['name', 'description'],
+  prettyValues: ['name'],
   stormwaterRemediationSites: function() {
     return this.hasMany('StormwaterRemediationSite');
   },

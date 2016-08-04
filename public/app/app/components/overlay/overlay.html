@@ -1,0 +1,29 @@
+<md-menu>
+<md-button
+  class="md-fab my-top-right-ctrl"
+  ng-click="$ctrl.openMenu($mdOpenMenu, ev)">
+  <i class="material-icons">filter</i>
+</md-button>
+<md-menu-content class="md-padding" layout="row">
+  <div layout="column">
+    <md-menu-item
+      layout="row"
+      ng-repeat="o in $ctrl.boundaryChoices.opt">
+      <md-checkbox ng-model="o.isOn" ng-click="$ctrl.boundaryChoicesChange(o)">
+        {{o.val}}
+      </md-checkbox>
+    </md-menu-item>
+  </div>
+  <div layout="column">
+    <md-menu-item ng-repeat="o in $ctrl.boundaryChoices.opt">
+      <md-button class="md-icon-button" ng-click="$ctrl.boundaryChoicesMore(o)" ng-if="o.configs.length > 0">
+        <i class="material-icons">more_vert</i>
+      </md-button>
+    </md-menu-item>
+  </div>
+  <!-- <md-menu-item>Hi</md-menu-item>
+    <md-menu-item>Good</md-menu-item>
+      <md-menu-item>Luck</md-menu-item> -->
+
+</md-menu-content>
+</md-menu>

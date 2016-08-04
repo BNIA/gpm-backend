@@ -1,0 +1,106 @@
+<div layout="column" flex>
+  <md-toolbar class="md-accent">
+    <div class="md-toolbar-tools" layout="row">
+      <md-button
+        aria-label="menu"
+        class="md-icon-button"
+        ng-click="$ctrl.navBack()"
+        ng-show="!($ctrl.$mdMedia('gt-md'))">
+          <i class="material-icons">arrow_back</i>
+      </md-button>
+      <h2>{{$ctrl.selectedKey}}</h2>
+    </div>
+  </md-toolbar>
+  <md-divider></md-divider>
+  <md-content>
+    <div ng-if="($ctrl.selectedVal.class == 'Layer Filter')">
+      <div ng-repeat="(k,v) in $ctrl.selectedVal" ng-if="k != 'class'">
+      <md-subheader>{{k}}</md-subheader>
+      <md-list>
+        <md-list-item ng-repeat="n in v" layout="row">
+          <p flex="90">
+            {{n['Layer Filter']['Name']}}
+          </p>
+          <md-checkbox
+            class="md-secondary my-right-sidenav-checkbox"
+            ng-model="n.on"
+            ng-click="$ctrl.select(n)"
+            flex="10">
+          </md-checkbox>
+        </md-list-item>
+      </md-list>
+      </div>
+    </div>
+    <div ng-if="$ctrl.selected.type =='boundary-choice-config'">
+      <md-list>
+        <md-radio-group>
+        <md-list-item ng-repeat="o in $ctrl.selected['opt']" layouy="row">
+          <p flex="90">
+            {{o.val}}
+          </p>
+          <md-radio-button
+            class="md-secondary my-right-sidenav-checkbox"
+            ng-model="o.isOn"
+            ng-value="o.key"
+            ng-click="$ctrl.select(o)"
+            flex="10">
+          </md-radio-button>
+        </md-list-item>
+        </md-radio-group>
+      </md-list>
+    </div>
+    <div ng-if="$ctrl.selected.type =='layer'">
+      <!---<p>{{$ctrl.selected.properties}}</p>---->
+<img ng-src="../../../assets/img/map.jpg"  style="width:95%;height:228px; margin-left:10px; margin-right:10px; padding-top:10px"/>
+
+<jk-carousel data="$ctrl.test" item-template-url="'../../app/templates/item-template.html'"auto-slide="true" max-width="700" max-height="400" >
+</jk-carousel>
+    <md-button class="md-raised md-primary">Add picture +</md-button>
+      <md-list>
+        <md-list-item class="md-2-line" >
+
+    <div class="md-list-item-text">
+      <h3>Location</h3>
+      <p>{{$ctrl.selected.properties.site_name}}</p>
+    </div>
+  </md-list-item>
+  <md-list-item class="md-2-line" >
+
+<div class="md-list-item-text">
+<h3>Status</h3>
+<p>{{$ctrl.selected.properties.status}}</p>
+</div>
+</md-list-item>
+<md-list-item class="md-2-line" >
+
+<div class="md-list-item-text">
+<h3>Purpose</h3>
+<p>{{$ctrl.selected.properties.sw_siteuse}}</p>
+</div>
+</md-list-item>
+
+      </md-list>
+<div style="margin-left:10px; margin-right:10px">
+
+
+      <dir-disqus config="$ctrl.disqusConfig"></dir-disqus>
+      </div>
+      <!-- <md-list>
+        <md-radio-group>
+        <md-list-item ng-repeat="o in $ctrl.selected['opt']" layouy="row">
+          <p flex="90">
+            {{o.val}}
+          </p>
+          <md-radio-button
+            class="md-secondary my-right-sidenav-checkbox"
+            ng-model="o.isOn"
+            ng-value="o.key"
+            ng-click="$ctrl.select(o)"
+            flex="10">
+          </md-radio-button>
+        </md-list-item>
+        </md-radio-group>
+      </md-list> -->
+    </div>
+  </md-content>
+</div>

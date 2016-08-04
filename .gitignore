@@ -28,5 +28,7 @@
 /src/**/*.css
 /server/options.json
 
+/public/app/**/*.css
+
 /**/*.backup
 /backup

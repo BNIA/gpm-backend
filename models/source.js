@@ -3,6 +3,7 @@ var baseModel = require('./base');
 var Source = baseModel.Model.extend({
   tableName: 'sources',
   visible: ['name', 'description'],
+  prettyValues: ['name'],
   layers: function() {
     return this.belongsToMany('Layer');
   },

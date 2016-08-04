@@ -3,6 +3,7 @@ var baseModel = require('./base');
 var BestManagementPractice = baseModel.Model.extend({
   tableName: 'bmp_types',
   visible: ['name'],
+  prettyValues: ['name'],
   stormwaterRemediationSites: function() {
     return this.belongsToMany(
       'StormwaterRemediationSite',

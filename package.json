@@ -22,7 +22,6 @@
     "bookshelf": "0.10.0",
     "cloudinary": "1.4.1",
     "express": "^4.14.0",
-    "inflection": "1.10.0",
     "knex": "^0.11.7",
     "lodash": "^4.13.1",
     "pg": "^6.0.0",
@@ -36,18 +35,27 @@
     "eslint-config-google": "^0.6.0",
     "fast-csv": "2.0.0",
     "gulp": "^3.9.1",
+    "gulp-less": "3.1.0",
     "jsonlint": "1.6.2",
     "jspm": "0.16.40",
     "postgres-array": "1.0.0",
     "request": "2.73.0",
-    "request-promise": "4.0.2"
+    "request-promise": "4.0.2",
+    "require-dir": "0.3.0"
   },
   "jspm": {
     "directories": {
       "baseURL": "public"
     },
     "dependencies": {
-      "jquery": "npm:jquery@^3.1.0"
+      "angular": "github:angular/bower-angular@1.5.5",
+      "angular-jk-carousel": "npm:angular-jk-carousel@^0.1.5",
+      "angular-material": "github:angular/bower-material@^1.0.9",
+      "angular-route": "github:angular/bower-angular-route@^1.5.8",
+      "angular-utils-disqus": "npm:angular-utils-disqus@^1.0.1",
+      "css": "github:systemjs/plugin-css@^0.1.26",
+      "lodash": "npm:lodash@^4.14.1",
+      "text": "github:systemjs/plugin-text@^0.0.8"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

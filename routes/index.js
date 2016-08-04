@@ -1,4 +1,5 @@
 module.exports = {
+  app: require('./app'),
   boundaries: require('./boundaries'),
   cmoss: require('./cmoss'),
   csas: require('./csas'),
@@ -8,6 +9,5 @@ module.exports = {
   nsas: require('./nsas'),
   stormwaters: require('./stormwaters'),
   subwatersheds: require('./subwatersheds'),
-  test: require('./test'),
   layerFilterOptions: require('./layer-filter-options')
 };

@@ -16,6 +16,7 @@ bookshelf.Model = bookshelf.Model.extend({
   initialize: function() {
     var self = this;
     this.pretty = this.pretty || {};
+    this.prettyValues = this.prettyValues || [];
     this.virtuals = this.virtuals || {};
 
     this.attributes = _.reduce(this.virtuals, (res, value, key) => {
@@ -26,11 +27,14 @@ bookshelf.Model = bookshelf.Model.extend({
     this.prettyTableName = _.startCase(this.tableName);
 
     this.pretty = _.reduce(_.keys(this.attributes), (res, k) => {
+      var val;
       if (self.pretty[k]) {
-        res[k] = self.pretty[k];
+        val = self.pretty[k];
       } else {
-        res[k] = _.startCase(k);
+        val = _.startCase(k);
       }
+      res[k] = val;
+
       return res;
     }, {});
 
@@ -57,8 +61,17 @@ bookshelf.Model = bookshelf.Model.extend({
       this.publicAttributes = _.omit(this.publicAttributes, this.hidden);
     }
 
+    this.prettyPublicAttributes = _.reduce(
+    this.publicAttributes, (res, v, k) => {
+      if (_.indexOf(self.prettyValues, k) >= 0) {
+        v = _.startCase(v);
+      }
+      res[k] = v;
+      return res;
+    }, {});
+
     this.prettyPublicAttributes = _.mapKeys(
-    this.publicAttributes, (p, k) => {
+    this.prettyPublicAttributes, (p, k) => {
       return this.pretty[k];
     });
 

@@ -1,7 +1,7 @@
 var baseModel = require('./base');
 
 var CommunityManagedOpenSpace = baseModel.Model.extend({
-  tableName: 'CommunityManagedOpenSpaces',
+  tableName: 'cmoss',
   hasTimestamps: true,
   visible: ['name', 'description'],
   layer: function() {

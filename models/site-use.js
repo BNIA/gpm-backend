@@ -3,7 +3,8 @@ var baseModel = require('./base');
 var SiteUse = baseModel.Model.extend({
   tableName: 'site_uses',
   visible: ['name', 'description'],
-  CommunityManagesOpenSpaces: function() {
+  prettyValues: ['name'],
+  communityManagedOpenSpaces: function() {
     return this.belongsToMany('CommunityManagedOpenSpace',
     'cmoss_site_uses', 'site_use_id', 'cmos_id');
   },

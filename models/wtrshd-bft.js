@@ -3,6 +3,7 @@ var baseModel = require('./base');
 var WatershedBenefit = baseModel.Model.extend({
   tableName: 'wtrshd_bfts',
   visible: ['name', 'description'],
+  prettyValues: ['name'],
   stormwaterRemediationSites: function() {
     return this.hasMany('StormwaterRemediationSite');
   },

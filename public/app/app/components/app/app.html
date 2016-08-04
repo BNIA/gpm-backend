@@ -1,0 +1,71 @@
+<section layout="row" flex class="my-app-container">
+    <md-sidenav
+        class="md-sidenav-left my-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$ctrl.path == '/map' && $mdMedia('gt-md')"
+        md-disable-backdrop
+        md-whiteframe="4"
+        layout="column">
+        <left-sidenav-content
+          layer-filters="$ctrl.layerFilters"
+          vital-signs="$ctrl.vitalSigns"
+          on-select="$ctrl.selectLayerFilter(value, key)"
+          on-nav-back="$ctrl.toggleSidenav('left',false)"
+          layout="column"
+          flex>
+        </left-sidenav-content>
+    </md-sidenav>
+<div layout='column' flex>
+  <md-toolbar md-whiteframe="2" class="my-toolbar">
+      <div class="md-toolbar-tools">
+          <md-button
+            aria-label="menu"
+            class="md-icon-button"
+            ng-click="$ctrl.toggleSidenav('left')"
+            ng-show="$ctrl.path == '/map' && !($ctrl.$mdMedia('gt-md'))">
+              <i class="material-icons">menu</i>
+          </md-button>
+            <md-icon
+              md-svg-icon="logo"
+              aria-label="logo"
+              style="height:36;width:36;"
+              ng-show="$ctrl.path == '/home' || ($ctrl.path == '/map' && !$ctrl.$mdMedia('gt-md'))">
+            </md-icon>
+          <h2 ng-show="$ctrl.path == '/home' || ($ctrl.path == '/map' && !$ctrl.$mdMedia('gt-md'))">
+              <span>{{$ctrl.title}}</span>
+          </h2>
+          <span flex></span>
+          <input type="search" placeholder="Search">
+          <md-button
+            aria-label="map"
+            ng-click="$ctrl.reroute('/map')">
+            Map
+          </md-button>
+          <md-button
+            aria-label="map"
+            ng-click="$ctrl.reroute('/home')">
+            Home
+          </md-button>
+          <md-button aria-label="more" class="md-icon-button" ng-click="">
+              <i class="material-icons">more_vert</i>
+          </md-button>
+      </div>
+  </md-toolbar>
+  <div ng-view layout='column' flex></div>
+</div>
+    <md-sidenav
+        layout="column"
+        flex
+        class="md-sidenav-right my-sidenav-right"
+        md-component-id="right"
+        ng-show="$ctrl.path == '/map'"
+        md-whiteframe="4">
+        <right-sidenav-content
+        selected-key="$ctrl.selectedKey"
+        selected-val="$ctrl.selectedVal"
+        disqus-config="$ctrl.disqusConfig"
+        on-select-layer-filter-option="$ctrl.selectLayerFilterOption(opt)"
+        on-nav-back="$ctrl.toggleSidenav('right',false)">
+        </right-sidenav-content>
+    </md-sidenav>
+</section>

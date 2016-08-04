@@ -4,7 +4,7 @@ var _ = require('lodash');
 var Layer = baseModel.Model.extend({
   tableName: 'layers',
   hasTimestamps: true,
-  visible: ['layer_detail_type', 'longitude', 'latitude'],
+  visible: ['layer_detail_type', 'longitude', 'latitude', 'id', 'site_id'],
   layerDetail: function() {
     return this.morphTo('layer_detail', 'Cmos', 'Stormwater');
   },

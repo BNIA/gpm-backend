@@ -2,7 +2,8 @@
     "extends": "google",
     "installedESLint": true,
     "env": {
-        "node": 1
+        "node": 1,
+        "browser": 1
     },
     "globals": {
         "document": true

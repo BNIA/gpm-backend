@@ -3,6 +3,7 @@ var baseModel = require('./base');
 var Priority = baseModel.Model.extend({
   tableName: 'priorities',
   visible: ['name', 'description'],
+  prettyValues: ['name'],
   stormwaterRemediationSites: function() {
     return this.hasMany('StormwaterRemediationSite');
   },
