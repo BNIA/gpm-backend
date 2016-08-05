@@ -1,0 +1,41 @@
+<md-menu>
+  <md-button aria-label="more" class="md-icon-button" ng-click="$ctrl.openMenu($mdOpenMenu, $event)">
+      <md-icon md-font-set="md">more_vert</i>
+  </md-button>
+  <md-menu-content style="overflow-y:hidden;">
+    <md-menu-item><md-menu>
+      <md-button ng-click="$ctrl.openMenu($mdOpenMenu, $event)"> Download Layers </md-button>
+      <md-menu-content>
+        <md-menu-item>
+          <md-button ng-click="$ctrl.selectLayersDownload('csv')">
+            <md-icon md-font-set="md" md-menu-align-target>file_download</md-icon>
+            ...as CSV
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="$ctrl.selectLayersDownload('json')">
+            <md-icon md-font-set="md" md-menu-align-target>file_download</md-icon>
+            ...as JSON
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="$ctrl.selectLayersDownload('geojson')">
+            <md-icon md-font-set="md" md-menu-align-target>file_download</md-icon>
+            ...as GeoJSON
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu></md-menu-item>
+    <md-menu-item><md-menu>
+      <md-button ng-click="$ctrl.openMenu($mdOpenMenu, $event)"> Download Boundary </md-button>
+      <md-menu-content>
+        <md-menu-item>
+          <md-button>
+            <md-icon md-font-set="md" md-menu-align-target>file_download</md-icon>
+            ...as GeoJSON
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu></md-menu-item>
+  </md-menu-content>
+</md-menu>

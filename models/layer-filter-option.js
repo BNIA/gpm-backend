@@ -1,11 +1,12 @@
 var baseModel = require('./base');
 
+var _ = require('lodash');
 var proto = baseModel.Model.prototype;
 
 var LayerFilterOption = baseModel.Model.extend({
   tableName: 'layer_filter_options',
   visible: ['id', 'layer_filter_type', 'layer_detail_type'],
-  prettyValues: ['layer_filter_type'],
+  prettyValues: ['layer_filter_type', 'layer_detail_type'],
   layerFilter: function() {
     return this.morphTo(
       'layer_filter',
@@ -25,14 +26,11 @@ var LayerFilterOption = baseModel.Model.extend({
     var serialized = proto.serialize.call(this, options);
     if (this.pretty) {
       var prettyName = this.pretty.layer_detail_type;
-      if (serialized[prettyName] === 'cmoss') {
-        serialized[prettyName] = 'Community Managed Open Spaces';
-      } else if (serialized[prettyName] === 'stormwaters') {
-        serialized[prettyName] = 'Stormwater Remediation Sites';
-      } else {
+      if (serialized[prettyName] === undefined ||
+      serialized[prettyName] === null ||
+      serialized[prettyName] === '') {
         serialized[prettyName] = 'Global';
       }
-
       prettyName = this.pretty.layer_filter_type;
       if (serialized[prettyName] === 'Bmp Types') {
         serialized[prettyName] = 'Best Management Practices';

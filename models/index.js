@@ -3,7 +3,7 @@ var _ = require('lodash');
 var models = [
   'bmp-type',
   'boundary',
-  'cmos',
+  'community-managed-open-space',
   'csa',
   'dsgn-dfclt',
   'feasability',
@@ -16,7 +16,7 @@ var models = [
   'site-use',
   'source',
   'status',
-  'stormwater',
+  'stormwater-remediation-site',
   'subwatershed',
   'wtrshd-bft'
 ];

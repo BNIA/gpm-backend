@@ -12,7 +12,8 @@ import 'angular-utils-disqus';
 import 'angular-jk-carousel/dist/jk-carousel.js';
 import 'angular-jk-carousel/dist/jk-carousel.css!';
 
+import 'angular-file-saver';
+
 // Other Modules
-// import '../options-segment/options-segment.module';
-// import '../landing-page/landing-page.module';
-// import '../map-page/map-page.module';
+import '../landing-page/landing-page.module';
+import '../map-page/map-page.module';

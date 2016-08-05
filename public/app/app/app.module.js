@@ -14,18 +14,23 @@ import RightSidenavContentComponent from
   './components/right-sidenav-content/right-sidenav-content.component';
 import OverlayComponent from
   './components/overlay/overlay.component';
+import ToolbarVertMenuComponent from
+  './components/toolbar-vert-menu/toolbar-vert-menu.component';
 
 // Import services
 import LayerFilterOptionsService from
   './services/layer-filter-options.service.js';
+import LayersService from
+  './services/layers.service.js';
 
 var dependencies = [
   'ngMaterial',
   'ngRoute',
-  // 'landingPage',
-  // 'mapPage',
+  'landingPage',
+  'mapPage',
   'angularUtils.directives.dirDisqus',
-  'jkAngularCarousel'
+  'jkAngularCarousel',
+  'ngFileSaver'
 ];
 
 let app = angular.module('app', dependencies);
@@ -40,9 +45,11 @@ app.component('app', AppComponent);
 app.component('leftSidenavContent', LeftSidenavContentComponent);
 app.component('rightSidenavContent', RightSidenavContentComponent);
 app.component('overlay', OverlayComponent);
+app.component('toolbarVertMenu', ToolbarVertMenuComponent);
 
 // Load services into the app
 app.service('layerFilterOptionsService', LayerFilterOptionsService);
+app.service('layersService', LayersService);
 
 // Bootstrap the app
 angular.element(document).ready(() => {

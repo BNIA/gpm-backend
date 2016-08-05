@@ -5,8 +5,7 @@ var SiteUse = baseModel.Model.extend({
   visible: ['name', 'description'],
   prettyValues: ['name'],
   communityManagedOpenSpaces: function() {
-    return this.belongsToMany('CommunityManagedOpenSpace',
-    'cmoss_site_uses', 'site_use_id', 'cmos_id');
+    return this.belongsToMany('CommunityManagedOpenSpace');
   },
   layerFilter: function() {
     return this.morphOne('LayerFilterOption', 'layer_filter');

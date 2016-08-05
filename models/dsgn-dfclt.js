@@ -3,6 +3,7 @@ var baseModel = require('./base');
 var DesignDifficulty = baseModel.Model.extend({
   tableName: 'dsgn_dfclts',
   visible: ['name', 'description'],
+  prettyValues: ['name'],
   stormwaterRemediationSites: function() {
     return this.hasMany('StormwaterRemediationSite');
   },

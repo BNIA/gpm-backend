@@ -6,8 +6,7 @@ var BestManagementPractice = baseModel.Model.extend({
   prettyValues: ['name'],
   stormwaterRemediationSites: function() {
     return this.belongsToMany(
-      'StormwaterRemediationSite',
-      'bmp_types_stormwaters'
+      'StormwaterRemediationSite'
     );
   },
   layerFilter: function() {

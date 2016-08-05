@@ -3,20 +3,22 @@ var path = require('path');
 // var _ = require('lodash');
 
 exports.seed = function(knex, Promise) {
-  var dataPath = path.join(__dirname, './data/stormwaters_13.csv');
+  var dataPath = path.join(__dirname,
+    './data/stormwater_remediation_sites_13.csv');
   var data = helpers.readCsv(dataPath);
 
-  return knex('layers').select('id').where({layer_detail_type: 'stormwaters'})
-  .map(row => {
+  return knex('layers').select('id').where(
+    {layer_detail_type: 'stormwater_remediation_sites'
+  }).map(row => {
     return knex('layers_sources').del().where({layer_id: row.id});
   }).then(() => {
     return knex('layers').del().where({
-      layer_detail_type: 'stormwaters'
+      layer_detail_type: 'stormwater_remediation_sites'
     });
   }).then(() => {
-    return knex('bmp_types_stormwaters').del();
+    return knex('bmp_types_stormwater_remediation_sites').del();
   }).then(() => {
-    return knex('stormwaters').del().return(data);
+    return knex('stormwater_remediation_sites').del().return(data);
   }).map(row => {
     // Any Modifications go here
     row.bmp_type_ids = row.bmp_type_ids === null ?
@@ -24,17 +26,19 @@ exports.seed = function(knex, Promise) {
     row.source_ids = row.source_ids === null ?
       [] : row.source_ids.split(', ');
     row.geojson = {
-      type: 'Point',
-      coordinates: [row.point_x, row.point_y]
+      type: "Feature",
+      geometry: {
+        type: 'Point',
+        coordinates: [row.point_x, row.point_y]
+      }
     };
     return row;
   }).map(row => {
-    return knex('stormwaters')
+    return knex('stormwater_remediation_sites')
       .insert({
         name: row.name,
         address: row.address,
         status_id: row.status_id,
-        // bmp_type_id: row.bmp_type,
         site_use: row.site_use,
         drain_acres: row.drain_acres,
         imp_acres: row.imp_acres,
@@ -49,21 +53,21 @@ exports.seed = function(knex, Promise) {
       })
       .returning('id')
       .then(id => {
-        row.stormwater_id = parseInt(id, 10);
+        row.stormwater_remediation_site_id = parseInt(id, 10);
         return row;
       });
   }).map(row => {
     return Promise.map(row.bmp_type_ids, id => {
-      return knex('bmp_types_stormwaters').insert({
+      return knex('bmp_types_stormwater_remediation_sites').insert({
         bmp_type_id: id,
-        stormwater_id: row.stormwater_id
+        stormwater_remediation_site_id: row.stormwater_remediation_site_id
       });
     }).return(row);
   }).map(row => {
     return knex('layers').insert({
       data_date: '2013-01-01',
-      layer_detail_id: row.stormwater_id,
-      layer_detail_type: 'stormwaters',
+      layer_detail_id: row.stormwater_remediation_site_id,
+      layer_detail_type: 'stormwater_remediation_sites',
       site_id: row.site_id,
       geojson: row.geojson,
       geometry: knex.raw('ST_SetSRID(ST_Point(?,?),?)', [

@@ -1,0 +1,22 @@
+<md-card class="my-phases-card-md-card" md-whiteframe="2">
+  <md-list>
+    <md-list-item ng-repeat = "phase in $ctrl.current">
+      <img ng-src="{{phase.imgPath}}" alt="{{phase.shortName}}" class= "{{'md-avatar ' + phase.avatarClass}}" />
+      <div class="md-list-item-text" layout="column">
+        <h5 class="md-subhead">{{ phase.name }}</h5>
+      </div>
+      <md-divider></md-divider>
+    </md-list-item>
+    <md-list-item class="future-iterations">
+      <img ng-src="{{$ctrl.clgr.imgPath}}" alt="{{$ctrl.clgr.shortName}}" class= "{{'md-avatar ' + $ctrl.clgr.avatarClass}}" />
+      <div class="md-list-item-text" layout="column">
+        <h5 class="md-subhead">Future Iterations</h5>
+        <ul>
+          <li class="md-caption"  ng-repeat = "phase in $ctrl.future">
+            {{phase.name}}
+          </li>
+        </ul>
+      </div>
+    </md-list-item>
+  </md-list>
+</md-card>

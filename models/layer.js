@@ -5,8 +5,13 @@ var Layer = baseModel.Model.extend({
   tableName: 'layers',
   hasTimestamps: true,
   visible: ['layer_detail_type', 'longitude', 'latitude', 'id', 'site_id'],
+  prettyValues: ['layer_detail_type'],
   layerDetail: function() {
-    return this.morphTo('layer_detail', 'Cmos', 'Stormwater');
+    return this.morphTo(
+      'layer_detail',
+      'CommunityManagedOpenSpace',
+      'StormwaterRemediationSite'
+    );
   },
   csa: function() {
     return this.belongsTo('Csa');
@@ -27,12 +32,12 @@ var Layer = baseModel.Model.extend({
     longitude: function(self) {
       self = self || this;
       var g = self.get('geojson');
-      return _.isNil(g) ? null : g.coordinates[0];
+      return _.isNil(g) ? null : g.geometry.coordinates[0];
     },
     latitude: function(self) {
       self = self || this;
       var g = self.get('geojson');
-      return _.isNil(g) ? null : g.coordinates[1];
+      return _.isNil(g) ? null : g.geometry.coordinates[1];
     }
   },
   toGeoJSON: function(options) {
@@ -41,11 +46,8 @@ var Layer = baseModel.Model.extend({
     obj = _.omit(obj, ['geojson', 'latitude', 'longitude']);
 
     var geo = this.get('geojson') || {};
-    return {
-      type: 'Feature',
-      geometry: geo,
-      properties: obj
-    };
+    geo.properties = obj;
+    return geo;
   }
 });
 

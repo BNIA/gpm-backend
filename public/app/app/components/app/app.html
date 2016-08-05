@@ -23,19 +23,23 @@
             class="md-icon-button"
             ng-click="$ctrl.toggleSidenav('left')"
             ng-show="$ctrl.path == '/map' && !($ctrl.$mdMedia('gt-md'))">
-              <i class="material-icons">menu</i>
+            <md-icon md-font-set="md">menu</md-icon>
           </md-button>
-            <md-icon
-              md-svg-icon="logo"
-              aria-label="logo"
-              style="height:36;width:36;"
-              ng-show="$ctrl.path == '/home' || ($ctrl.path == '/map' && !$ctrl.$mdMedia('gt-md'))">
-            </md-icon>
+          <md-icon
+            md-svg-icon="logo"
+            aria-label="logo"
+            class="s36"
+            ng-show="$ctrl.path == '/home' || ($ctrl.path == '/map' && !$ctrl.$mdMedia('gt-md'))">
+          </md-icon>
           <h2 ng-show="$ctrl.path == '/home' || ($ctrl.path == '/map' && !$ctrl.$mdMedia('gt-md'))">
               <span>{{$ctrl.title}}</span>
           </h2>
           <span flex></span>
-          <input type="search" placeholder="Search">
+          <!-- <input type="search" placeholder="Search"> -->
+          <!-- <md-autocomplete
+            md-disabled="true"
+            placeholder="Search by Address...">
+          </md-autocomplete> -->
           <md-button
             aria-label="map"
             ng-click="$ctrl.reroute('/map')">
@@ -46,9 +50,9 @@
             ng-click="$ctrl.reroute('/home')">
             Home
           </md-button>
-          <md-button aria-label="more" class="md-icon-button" ng-click="">
-              <i class="material-icons">more_vert</i>
-          </md-button>
+          <toolbar-vert-menu
+            on-select-layers-download="$ctrl.layersDownload(fileType)">
+          </toolbar-vert-menu>
       </div>
   </md-toolbar>
   <div ng-view layout='column' flex></div>

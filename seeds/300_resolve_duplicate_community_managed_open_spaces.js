@@ -2,15 +2,15 @@ var _ = require('lodash');
 var pgArray = require('postgres-array');
 
 exports.seed = function(knex, Promise) {
-  return knex('cmoss')
+  return knex('community_managed_open_spaces')
   .select([
     'site_id',
     'data_date',
     'layers.id',
     'layers.layer_detail_id'
   ])
-  .leftJoin('layers', 'layer_detail_id', 'cmoss.id')
-  .where({layer_detail_type: 'cmoss'})
+  .leftJoin('layers', 'layer_detail_id', 'community_managed_open_spaces.id')
+  .where({layer_detail_type: 'community_managed_open_spaces'})
   .then(rows => {
     var grouped = _.groupBy(rows, 'site_id');
     var dupes = _.reduce(grouped, (result, g) => {
@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
     _.forEach(dupes, d => {
       var update = _.assign({}, d[0]);
       var rest = _.tail(d);
-      update.replace_cmoss_ids = _.map(rest, r => {
+      update.replace_community_managed_open_spaces_ids = _.map(rest, r => {
         return r.layer_detail_id;
       });
       update.replace_layer_ids = _.map(rest, r => {
@@ -41,12 +41,12 @@ exports.seed = function(knex, Promise) {
     return [toUpdate, toDelete];
   }).spread((toUpdate, toDelete) => {
     return Promise.map(toUpdate, u => {
-      return Promise.map(u.replace_cmoss_ids, id => {
-        return knex('cmoss_site_uses')
+      return Promise.map(u.replace_community_managed_open_spaces_ids, id => {
+        return knex('community_managed_open_spaces_site_uses')
           .update({
-            cmos_id: u.layer_detail_id
+            community_managed_open_space_id: u.layer_detail_id
           }).where({
-            cmos_id: id
+            community_managed_open_space_id: id
           });
       })
       .then(() => {
@@ -71,15 +71,15 @@ exports.seed = function(knex, Promise) {
         ') ?? WHERE ?? > 1' +
         ')',
         [
-          'cmoss_site_uses',
+          'community_managed_open_spaces_site_uses',
           'id',
           'id',
           'id',
           'site_use_id',
-          'cmos_id',
+          'community_managed_open_space_id',
           'id',
           'rnum',
-          'cmoss_site_uses',
+          'community_managed_open_spaces_site_uses',
           't',
           't.rnum'
         ]
@@ -114,7 +114,7 @@ exports.seed = function(knex, Promise) {
     }).return([toUpdate, toDelete]);
   }).spread((toUpdate, toDelete) => {
     return Promise.map(toDelete, d => {
-      return knex('cmoss')
+      return knex('community_managed_open_spaces')
         .del()
         .where({id: d.layer_detail_id})
         .return(d);

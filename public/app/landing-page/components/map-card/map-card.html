@@ -1,0 +1,12 @@
+<md-card class="my-map-card-md-card" md-whiteframe="2">
+  <img ng-src="{{$ctrl.imgPath}}" class="md-card-image" alt="map" />
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">{{$ctrl.title}}</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-actions layout="row">
+    <md-button aria-label="map-card-button1" ng-click="$ctrl.clickButton()">{{$ctrl.buttonTitle1}}</md-button>
+    <md-button aria-lavel="map-card-button2">{{$ctrl.buttonTitle2}}</md-button>
+  </md-card-actions>
+</md-card>

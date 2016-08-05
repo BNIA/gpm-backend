@@ -137,8 +137,8 @@ var createBoundariesTable = function(knex) {
   });
 };
 
-var createStormwatersTable = function(knex) {
-  return knex.schema.createTable('stormwaters', table => {
+var createStormwaterRemediationSitesTable = function(knex) {
+  return knex.schema.createTable('stormwater_remediation_sites', table => {
     table.increments('id').primary();
     table.string('name');
     table.string('address');
@@ -163,15 +163,15 @@ var createStormwatersTable = function(knex) {
     table.timestamps();
   }).then(() => {
     return knex.raw(
-        'ALTER TABLE stormwaters ' +
+        'ALTER TABLE stormwater_remediation_sites ' +
         'ALTER COLUMN created_at ' +
         'SET DEFAULT CURRENT_TIMESTAMP'
     );
   });
 };
 
-var createCmossTable = function(knex) {
-  return knex.schema.createTable('cmoss', table => {
+var createCommunityManagedOpenSpacesTable = function(knex) {
+  return knex.schema.createTable('community_managed_open_spaces', table => {
     table.increments('id');
     table.string('name');
     table.string('address');
@@ -180,25 +180,27 @@ var createCmossTable = function(knex) {
     table.timestamps();
   }).then(() => {
     return knex.raw(
-      'ALTER TABLE cmoss ' +
+      'ALTER TABLE community_managed_open_spaces ' +
       'ALTER COLUMN created_at ' +
       'SET DEFAULT CURRENT_TIMESTAMP'
     );
   });
 };
 
-var createCmossSiteUsesTable = function(knex) {
-  return knex.schema.createTable('cmoss_site_uses', table => {
+var createCommunityManagedOpenSpacesSiteUsesTable = function(knex) {
+  return knex
+  .schema.createTable('community_managed_open_spaces_site_uses', table => {
     table.increments('id').primary();
-    table.integer('cmos_id').references('cmoss.id').onDelete('CASCADE');
+    table.integer('community_managed_open_space_id')
+    .references('community_managed_open_spaces.id').onDelete('CASCADE');
     table.integer('site_use_id').references('site_uses.id').onDelete('CASCADE');
   });
 };
 
-var createBmpTypesStormwatersTable = function(knex) {
-  return knex.schema.createTable('bmp_types_stormwaters', table => {
+var createBmpTypesStormwaterRemediationSitesTable = function(knex) {
+  return knex.schema.createTable('bmp_types_stormwater_remediation_sites', table => {
     table.increments('id').primary();
-    table.integer('stormwater_id').references('stormwaters.id')
+    table.integer('stormwater_remediation_site_id').references('stormwater_remediation_sites.id')
       .onDelete('CASCADE');
     table.integer('bmp_type_id').references('bmp_types.id').onDelete('CASCADE');
   });
@@ -319,13 +321,13 @@ exports.up = function(knex, Promise) {
   }).then(() => {
     return createLayersSourcesTable(knex);
   }).then(() => {
-    return createCmossTable(knex);
+    return createCommunityManagedOpenSpacesTable(knex);
   }).then(() => {
-    return createCmossSiteUsesTable(knex);
+    return createCommunityManagedOpenSpacesSiteUsesTable(knex);
   }).then(() => {
-    return createStormwatersTable(knex);
+    return createStormwaterRemediationSitesTable(knex);
   }).then(() => {
-    return createBmpTypesStormwatersTable(knex);
+    return createBmpTypesStormwaterRemediationSitesTable(knex);
   }).then(() => {
     return createImagesTable(knex);
   }).then(() => {
@@ -334,12 +336,13 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('bmp_types_stormwaters').then(() => {
-    return knex.schema.dropTableIfExists('stormwaters');
+  return knex.schema.dropTableIfExists('bmp_types_stormwater_remediation_sites').then(() => {
+    return knex.schema.dropTableIfExists('stormwater_remediation_sites');
   }).then(() => {
-    return knex.schema.dropTableIfExists('cmoss_site_uses');
+    return knex
+    .schema.dropTableIfExists('community_managed_open_spaces_site_uses');
   }).then(() => {
-    return knex.schema.dropTableIfExists('cmoss');
+    return knex.schema.dropTableIfExists('community_managed_open_spaces');
   }).then(() => {
     return knex.schema.dropTableIfExists('images');
   }).then(() => {

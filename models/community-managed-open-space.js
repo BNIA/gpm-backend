@@ -1,18 +1,15 @@
 var baseModel = require('./base');
 
 var CommunityManagedOpenSpace = baseModel.Model.extend({
-  tableName: 'cmoss',
+  tableName: 'community_managed_open_spaces',
   hasTimestamps: true,
-  visible: ['name', 'description'],
+  visible: ['name', 'address', 'block', 'lot'],
+  prettyValues: ['name', 'address'],
   layer: function() {
     return this.morphOne('Layer', 'layer_detail');
   },
   siteUses: function() {
-    return this.belongsToMany(
-    'SiteUse',
-    'cmoss_site_uses',
-    'cmos_id',
-    'site_use_id');
+    return this.belongsToMany('SiteUse');
   }
 });
 

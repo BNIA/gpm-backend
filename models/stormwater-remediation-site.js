@@ -4,7 +4,7 @@ var _ = require('lodash');
 require('./layer');
 
 var StormwaterRemediationSite = baseModel.Model.extend({
-  tableName: 'stormwaters',
+  tableName: 'stormwater_remediation_sites',
   hasTimestamps: true,
   visible: [
     'name',
@@ -20,13 +20,13 @@ var StormwaterRemediationSite = baseModel.Model.extend({
     imp_percent: 'Impervious Percent',
     an_runoff: 'Annual Runoff'
   },
+  prettyValues: ['name', 'address', 'site_use'],
   layer: function() {
     return this.morphOne('Layer', 'layer_detail');
   },
   bestManagementPractices: function() {
     return this.belongsToMany(
-      'BestManagementPractice',
-      'bmp_types_stormwaters'
+      'BestManagementPractice'
     );
   },
   status: function() {

@@ -177,12 +177,12 @@ bookshelf.Model = bookshelf.Model.extend({
     var obj = this.serialize(options);
     var headVals = _.keys(obj);
     headVals = _.map(headVals, v => {
-      return '"' + v + '"';
+      return '\\"' + v + '\\"';
     });
     var headLine = headVals.join(", ");
     var row = _.values(obj);
     row = _.map(row, r => {
-      return '"' + JSON.stringify(r) + '"';
+      return '\\"' + JSON.stringify(r) + '\\"';
     });
     var rowLine = row.join(", ");
 
@@ -248,14 +248,14 @@ bookshelf.Collection = bookshelf.Collection.extend({
     }, []);
     // var headVals = _.keys(obj);
     headVals = _.map(headVals, v => {
-      return '"' + v + '"';
+      return '\\"' + v + '\\"';
     });
     var headLine = headVals.join(", ");
     rowVals = _.map(rowVals, row => {
       var newRow = _.map(row, r => {
         var str = JSON.stringify(r);
         str = str.replace(/"/gi, '');
-        return '"' + str + '"';
+        return '\\"' + str + '\\"';
       });
       return newRow.join(', ');
     });

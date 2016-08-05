@@ -23,10 +23,10 @@ router.post('/layers', (req, res, next) => {
   ]}).then(collection => collection.models).map(model => {
     var lft = model.get('layer_detail_type');
     var r = model.related('layerFilter');
-    if (lft === 'cmoss') {
+    if (lft === 'community_managed_open_spaces') {
       r = r.related('communityManagedOpenSpaces')
         .models.map(m => m.related('layer'));
-    } else if (lft === 'stormwaters') {
+    } else if (lft === 'stormwater_remediation_sites') {
       r = r.related('stormwaterRemediationSites')
         .models.map(m => m.related('layer'));
     } else {

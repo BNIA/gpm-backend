@@ -1,0 +1,74 @@
+@import '../../../shared/styles/colors.less';
+
+.my-landing-footer-container{
+  color:@accent;
+  background-color:@primary;
+  font-size: 14px;
+  line-height: 150%;
+  padding: 2em 0;
+  h3 {
+    color: #fff;
+    font-size: 1.25em;
+    margin: 0 0 1em 0;
+  }
+  p {
+    color: #b2d8e9;
+    margin: 0 0 .5em 0;
+  }
+  a {
+    color: #faa732;
+  }
+  ul.social-media {
+    margin: 0 0 1em 0;
+    padding: 0;
+    li {
+      position: relative;
+      display: inline-block;
+      line-height: 2em;
+      margin: 0 0 1em 0;
+      padding: 0 1em 0 2.5em;
+      &:last-of-type {
+        padding: 0 0 0 2.5em;
+      }
+      a {
+        color: #b2d8e9;
+        text-decoration: none;
+        span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 2em;
+          height: 2em;
+          background-image: url({{$ctrl.socialIcons}});
+          background-size: 6em 2em;
+          background-repeat: no-repeat;
+        }
+      }
+      &.twitter {
+        a {
+          span {
+            background-position: 0 0;
+          }
+        }
+      }
+      &.facebook {
+        a {
+          span {
+            background-position: -2em 0;
+          }
+        }
+      }
+      &.youtube {
+        a {
+          span {
+            background-position: -4em 0;
+          }
+        }
+      }
+    }
+  }
+  div.bnia-logo {
+    text-align: center;
+  }
+}

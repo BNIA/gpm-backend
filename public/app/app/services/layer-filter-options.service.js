@@ -26,7 +26,6 @@ export default class LayerFilterOptionsService {
     var query = {
       ids: JSON.stringify(ids)
     };
-    console.log(ids);
     return this.$http.post(this._layersUrl, query)
       .then(this._extractLayersData)
       .catch(this._handleError);
@@ -78,9 +77,16 @@ export default class LayerFilterOptionsService {
   }
 
   _extractLayersData(data) {
-    data = data.data || {};
-    console.log(data);
-    return data;
+    data = data.data.features || {};
+    var markers = map(data, d => {
+      return {
+        lat: parseFloat(d.properties.Latitude),
+        lng: parseFloat(d.properties.Longitude),
+        properties: d.properties
+      };
+    });
+    console.log(markers);
+    return markers;
   }
 
   _handleError(error) {

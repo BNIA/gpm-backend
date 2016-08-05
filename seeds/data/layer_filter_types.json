@@ -1,11 +1,11 @@
 [
-  {"name": "site_uses", "layer_detail_type": "cmoss"},
-  {"name": "bmp_types", "layer_detail_type": "stormwaters"},
-  {"name": "statuses", "layer_detail_type": "stormwaters"},
-  {"name": "retro_types", "layer_detail_type": "stormwaters"},
-  {"name": "wtrshd_bfts", "layer_detail_type": "stormwaters"},
-  {"name": "priorities", "layer_detail_type": "stormwaters"},
-  {"name": "dsgn_dfclts", "layer_detail_type": "stormwaters"},
-  {"name": "feasabilities", "layer_detail_type": "stormwaters"},
+  {"name": "site_uses", "layer_detail_type": "community_managed_open_spaces"},
+  {"name": "bmp_types", "layer_detail_type": "stormwater_remediation_sites"},
+  {"name": "statuses", "layer_detail_type": "stormwater_remediation_sites"},
+  {"name": "retro_types", "layer_detail_type": "stormwater_remediation_sites"},
+  {"name": "wtrshd_bfts", "layer_detail_type": "stormwater_remediation_sites"},
+  {"name": "priorities", "layer_detail_type": "stormwater_remediation_sites"},
+  {"name": "dsgn_dfclts", "layer_detail_type": "stormwater_remediation_sites"},
+  {"name": "feasabilities", "layer_detail_type": "stormwater_remediation_sites"},
   {"name": "sources"}
 ]
