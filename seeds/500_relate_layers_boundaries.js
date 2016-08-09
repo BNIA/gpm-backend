@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
     ' WHERE ST_CONTAINS(??, ??) AND ?? = ?',
     [
       'layers',
-      'csa_id',
+      'community_statistical_area_id',
       'boundary_detail_id',
       'updated_at',
       knex.fn.now(),
@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
       'boundaries.geometry',
       'layers.geometry',
       'boundary_detail_type',
-      'csas'
+      'community_statistical_areas'
     ]
   ).toString();
 
@@ -21,7 +21,7 @@ exports.seed = function(knex, Promise) {
     ' WHERE ST_CONTAINS(??, ??) AND ?? = ?',
     [
       'layers',
-      'nsa_id',
+      'neighborhood_statistical_area_id',
       'boundary_detail_id',
       'updated_at',
       knex.fn.now(),
@@ -29,7 +29,7 @@ exports.seed = function(knex, Promise) {
       'boundaries.geometry',
       'layers.geometry',
       'boundary_detail_type',
-      'nsas'
+      'neighborhood_statistical_areas'
     ]
   ).toString();
 

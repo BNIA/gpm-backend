@@ -3,6 +3,25 @@ import reduce from 'lodash/reduce';
 import map from 'lodash/map';
 import filter from 'lodash/filter';
 import union from 'lodash/union';
+import kebabCase from 'lodash/kebabCase';
+
+var processClassName = function(layer) {
+  var c = 'layer-point';
+  c += ' ' + kebabCase(layer.properties["Layer Detail Type"]) + '-layer';
+  if (layer.properties['Layer Detail'] &&
+  layer.properties['Layer Detail'].Status) {
+    console.log("HELLO");
+    var status = layer.properties['Layer Detail'].Status;
+    console.log(status.Name);
+    if (status.Name === 'Active') {
+      c += " var-1";
+    } else if (status.Name === 'Identified') {
+      c += " var-2";
+    }
+  }
+  console.log(c);
+  return c;
+};
 
 export default class LayerFilterOptionsService {
   constructor($http) {
@@ -78,14 +97,24 @@ export default class LayerFilterOptionsService {
 
   _extractLayersData(data) {
     data = data.data.features || {};
+    var len = data.length;
     var markers = map(data, d => {
-      return {
+      var m = {
         lat: parseFloat(d.properties.Latitude),
         lng: parseFloat(d.properties.Longitude),
         properties: d.properties
       };
+      m.icon = {
+        type: 'div',
+        iconSize: [12, 12],
+        className: processClassName(d),
+        iconAnchor: [6, 6]
+      };
+      if (len > 500) {
+        m.group = 'layers';
+      }
+      return m;
     });
-    console.log(markers);
     return markers;
   }
 

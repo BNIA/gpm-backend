@@ -7,7 +7,9 @@ export default class AppController {
     this.$scope = $scope;
     this.$rootScope = $rootScope;
     this.$element = $element;
+
     this.markers = [];
+
     angular.extend($scope, {
       baltimore: baltimore,
       defaults: {
@@ -16,6 +18,7 @@ export default class AppController {
         zoomControl: false
       }
     });
+
     this.$rootScope.$on('setLayers', (event, layers) => {
       this.onSetLayers(layers);
     });

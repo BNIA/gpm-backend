@@ -32,6 +32,7 @@ app.use('/api/boundaries/nsas', routes.nsas);
 app.use('/api/boundaries/subwatersheds', routes.subwatersheds);
 app.use('/api/images', routes.images);
 app.use('/api/layer-filter-options', routes.layerFilterOptions);
+app.use('/test', routes.test);
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('Running in ' + env + ' Mode');

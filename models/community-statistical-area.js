@@ -1,15 +1,16 @@
 var baseModel = require('./base');
 
-require('./boundary');
-
 var CommunityStatisticalArea = baseModel.Model.extend({
-  tableName: 'csas',
+  tableName: 'community_statistical_areas',
   hasTimestamps: true,
   boundary: function() {
     return this.belongsTo('Boundary');
   },
   layers: function() {
     return this.hasMany('Layer');
+  },
+  vitalSignsDataPoint() {
+    return this.belongsTo('VitalSignsDataPoint');
   }
 });
 

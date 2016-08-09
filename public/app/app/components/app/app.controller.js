@@ -1,6 +1,6 @@
 export default class AppController {
   constructor($scope, $rootScope, $route, $location, $mdSidenav, $mdMedia,
-    FileSaver, Blob, layerFilterOptionsService, layersService) {
+    FileSaver, Blob, cloudinary, layerFilterOptionsService, layersService) {
     var self = this;
     this.$scope = $scope;
     this.$rootScope = $rootScope; // The Root Scope of the app
@@ -10,16 +10,11 @@ export default class AppController {
     this.$mdMedia = $mdMedia;
     this.FileSaver = FileSaver;
     this.Blob = Blob;
+    this.cloudinary = cloudinary;
     // this.optionsService = optionsService;
     // this.layersService = layersService;
     this.layerFilterOptionsService = layerFilterOptionsService;
     this.layersService = layersService;
-    this.test = [
-      {src: 'http://orig12.deviantart.net/8670/f/2016/152/b/6/placeholder_1_by_sketchymouse-da4nvhb.png'},
-      {src: "http://orig12.deviantart.net/8670/f/2016/152/b/6/placeholder_1_by_sketchymouse-da4nvhb.png"},
-      {src: "http://orig12.deviantart.net/8670/f/2016/152/b/6/placeholder_1_by_sketchymouse-da4nvhb.png"},
-      {src: "../../../assets/img/map.jpg"}
-    ];
     this.disqusConfig = {
       disqus_shortname: 'greenpatternmap',
       disqus_identifier: '2583577',
@@ -162,6 +157,7 @@ AppController.$inject = [
   '$mdMedia',
   'FileSaver',
   'Blob',
+  'cloudinary',
   'layerFilterOptionsService',
   'layersService'
 ];

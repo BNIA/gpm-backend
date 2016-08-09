@@ -14,7 +14,8 @@ router.get('/', (req, res, next) => {
         'feasability',
         'designDifficulty',
         'watershedBenefit',
-        'priority'
+        'priority',
+        'images'
       ]
     }).then(result => {
       console.log(result.toCSV({pretty: true}));
@@ -60,7 +61,8 @@ router.post('/layer_detail', (req, res, next) => {
       'layerDetail.watershedBenefit',
       'layerDetail.priority',
       'layerDetail.siteUses',
-      'sources'
+      'sources',
+      'images'
     ],
     debug: true
   }).catch(error => {

@@ -89,9 +89,11 @@ var createLayersTable = function(knex) {
     table.string('layer_detail_type')
       .references('layer_detail_types.name').onDelete('CASCADE')
       .notNullable();
-    table.integer('csa_id').references('csas.id')
+    table.integer('community_statistical_area_id')
+      .references('community_statistical_areas.id')
       .onDelete('CASCADE');
-    table.integer('nsa_id').references('nsas.id')
+    table.integer('neighborhood_statistical_area_id')
+      .references('neighborhood_statistical_areas.id')
       .onDelete('CASCADE');
     table.integer('subwatershed_id').references('subwatersheds.id')
       .onDelete('CASCADE');
@@ -198,36 +200,39 @@ var createCommunityManagedOpenSpacesSiteUsesTable = function(knex) {
 };
 
 var createBmpTypesStormwaterRemediationSitesTable = function(knex) {
-  return knex.schema.createTable('bmp_types_stormwater_remediation_sites', table => {
+  return knex.schema.createTable(
+  'bmp_types_stormwater_remediation_sites', table => {
     table.increments('id').primary();
-    table.integer('stormwater_remediation_site_id').references('stormwater_remediation_sites.id')
+    table.integer(
+    'stormwater_remediation_site_id')
+      .references('stormwater_remediation_sites.id')
       .onDelete('CASCADE');
     table.integer('bmp_type_id').references('bmp_types.id').onDelete('CASCADE');
   });
 };
 
-var createCsasTable = function(knex) {
-  return knex.schema.createTable('csas', table => {
+var createCommunityStatisticalAreasTable = function(knex) {
+  return knex.schema.createTable('community_statistical_areas', table => {
     table.increments('id');
     table.timestamps();
   })
     .then(() => {
       return knex.raw(
-          'ALTER TABLE csas ' +
+          'ALTER TABLE community_statistical_areas ' +
           'ALTER COLUMN created_at ' +
           'SET DEFAULT CURRENT_TIMESTAMP'
       );
     });
 };
 
-var createNsasTable = function(knex) {
-  return knex.schema.createTable('nsas', table => {
+var createNeighborhoodStatisticalAreasTable = function(knex) {
+  return knex.schema.createTable('neighborhood_statistical_areas', table => {
     table.increments('id');
     table.timestamps();
   })
   .then(() => {
     return knex.raw(
-      'ALTER TABLE nsas ' +
+      'ALTER TABLE neighborhood_statistical_areas ' +
       'ALTER COLUMN created_at ' +
       'SET DEFAULT CURRENT_TIMESTAMP'
     );
@@ -282,12 +287,77 @@ var createLayerFilterOptionsTable = function(knex) {
   });
 };
 
+var createVitalSignsSectionsTable = function(knex) {
+  return knex.schema.createTable('vital_signs_sections', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('color_1');
+    table.string('color_2');
+    table.string('color_3');
+    table.string('color_4');
+    table.string('color_5');
+  });
+};
+
+var createVitalSignsColorsTable = function(knex) {
+  return knex.schema.createTable('vital_signs_colors', table => {
+    table.increments('id').primary();
+    table.integer('vital_signs_section_id')
+      .references('vital_signs_sections.id').onDelete('CASCADE');
+    table.integer('break_number');
+    table.string('value');
+  });
+};
+
+var createVitalSignsIndicatorsTable = function(knex) {
+  return knex.schema.createTable('vital_signs_indicators', table => {
+    table.increments('id').primary();
+    table.string('name');
+    table.string('short_name');
+    table.integer('vital_signs_section_id')
+      .references('vital_signs_sections.id')
+      .onDelete('CASCADE');
+    table.string('source_name');
+    table.string('description', 2048);
+    table.float('city_total');
+  });
+};
+
+var createVitalSignsDataPointsTable = function(knex) {
+  return knex.schema.createTable('vital_signs_data_points', table => {
+    table.increments('id').primary();
+    table.integer('community_statistical_area_id')
+      .references('community_statistical_areas.id')
+      .onDelete('CASCADE');
+    table.integer('vital_signs_data_break_id')
+      .references('vital_signs_data_breaks.id')
+      .onDelete('CASCADE');
+    table.integer('vital_signs_indicator_id')
+      .references('vital_signs_indicators.id')
+      .onDelete('CASCADE');
+    table.float('value', 20);
+  });
+};
+
+var createVitalSignsDataBreaksTable = function(knex) {
+  return knex.schema.createTable('vital_signs_data_breaks', table => {
+    table.increments('id').primary();
+    table.integer('break_number');
+    table.float('upper_bound', 20);
+    table.float('lower_bound', 20);
+    table.integer('vital_signs_indicator_id')
+      .references('vital_signs_indicators.id').onDelete('CASCADE');
+    table.integer('vital_signs_color_id')
+      .references('vital_signs_colors.id').onDelete('CASCADE');
+  });
+};
+
 var createBoundaryDetailType = function(knex) {
   var q = knex.raw(
     'CREATE TYPE ?? as ENUM (?,?,?)', [
       'boundary_detail_type',
-      'csas',
-      'nsas',
+      'community_statistical_areas',
+      'neighborhood_statistical_areas',
       'subwatersheds'
     ]
   ).toString();
@@ -312,8 +382,8 @@ exports.up = function(knex, Promise) {
     return createBoundariesTable(knex);
   }).then(() => {
     return Promise.all([
-      createCsasTable(knex),
-      createNsasTable(knex),
+      createCommunityStatisticalAreasTable(knex),
+      createNeighborhoodStatisticalAreasTable(knex),
       createSubwatershedsTable(knex)
     ]);
   }).then(() => {
@@ -332,11 +402,32 @@ exports.up = function(knex, Promise) {
     return createImagesTable(knex);
   }).then(() => {
     return createLayerFilterOptionsTable(knex);
+  }).then(() => {
+    return createVitalSignsSectionsTable(knex);
+  }).then(() => {
+    return createVitalSignsColorsTable(knex);
+  }).then(() => {
+    return createVitalSignsIndicatorsTable(knex);
+  }).then(() => {
+    return createVitalSignsDataBreaksTable(knex);
+  }).then(() => {
+    return createVitalSignsDataPointsTable(knex);
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('bmp_types_stormwater_remediation_sites').then(() => {
+  return knex.schema.dropTableIfExists('vital_signs_data_breaks').then(() => {
+    return knex.schema.dropTableIfExists('vital_signs_data_points');
+  }).then(() => {
+    return knex.schema.dropTableIfExists('vital_signs_indicators');
+  }).then(() => {
+    return knex.schema.dropTableIfExists('vital_signs_colors');
+  }).then(() => {
+    return knex.schema.dropTableIfExists('vital_signs_sections');
+  }).then(() => {
+    return knex.schema
+    .dropTableIfExists('bmp_types_stormwater_remediation_sites');
+  }).then(() => {
     return knex.schema.dropTableIfExists('stormwater_remediation_sites');
   }).then(() => {
     return knex
@@ -354,8 +445,8 @@ exports.down = function(knex, Promise) {
       .toString());
   }).then(() => {
     return Promise.all([
-      knex.schema.dropTableIfExists('csas'),
-      knex.schema.dropTableIfExists('nsas'),
+      knex.schema.dropTableIfExists('community_statistical_areas'),
+      knex.schema.dropTableIfExists('neighborhood_statistical_areas'),
       knex.schema.dropTableIfExists('subwatersheds')]);
   }).then(() => {
     return knex.schema.dropTableIfExists('boundaries');

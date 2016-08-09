@@ -9,5 +9,6 @@ module.exports = {
   nsas: require('./nsas'),
   stormwaters: require('./stormwaters'),
   subwatersheds: require('./subwatersheds'),
-  layerFilterOptions: require('./layer-filter-options')
+  layerFilterOptions: require('./layer-filter-options'),
+  test: require('./test')
 };

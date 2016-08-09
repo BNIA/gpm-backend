@@ -1,9 +1,7 @@
 var baseModel = require('./base');
 
-require('./boundary');
-
 var NeighborhoodStatisticalArea = baseModel.Model.extend({
-  tableName: 'nsas',
+  tableName: 'neighborhood_statistical_areas',
   hasTimestamps: true,
   visible: ['name', 'description'],
   boundary: function() {

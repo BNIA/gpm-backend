@@ -3,7 +3,7 @@ class Phase {
     this.shortName = shortName;
     this.name = name;
     this.imgPath = imgPath;
-    this.avatarClass = "my-phase-" + this.shortName + "-avatar";
+    this.avatarClass = "my-phases-card-" + this.shortName + "-avatar";
   }
 }
 

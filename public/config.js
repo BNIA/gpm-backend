@@ -15,6 +15,7 @@ System.config({
 
   map: {
     "angular": "github:angular/bower-angular@1.5.5",
+    "angular-cloudinary": "npm:angular-cloudinary@1.2.4",
     "angular-file-saver": "npm:angular-file-saver@1.1.2",
     "angular-jk-carousel": "npm:angular-jk-carousel@0.1.5",
     "angular-material": "github:angular/bower-material@1.0.9",
@@ -26,7 +27,10 @@ System.config({
     "core-js": "npm:core-js@1.2.7",
     "css": "github:systemjs/plugin-css@0.1.26",
     "leaflet": "github:Leaflet/Leaflet@0.7.7",
+    "leaflet.markercluster": "npm:leaflet.markercluster@0.5.0",
     "lodash": "npm:lodash@4.14.1",
+    "mdi": "npm:mdi@1.6.50",
+    "ng-file-upload": "npm:ng-file-upload@12.0.4",
     "text": "github:systemjs/plugin-text@0.0.8",
     "ui-leaflet": "npm:ui-leaflet@1.0.1",
     "github:Leaflet/Leaflet@0.7.7": {
@@ -69,7 +73,7 @@ System.config({
       "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.7"
+      "process": "npm:process@0.11.8"
     },
     "github:jspm/nodelibs-stream@0.1.0": {
       "stream-browserify": "npm:stream-browserify@1.0.0"
@@ -98,6 +102,10 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "module": "github:jspm/nodelibs-module@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:angular-cloudinary@1.2.4": {
+      "ng-file-upload": "npm:ng-file-upload@9.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular-file-saver@1.1.2": {
@@ -455,6 +463,15 @@ System.config({
     "npm:lazy-cache@1.0.4": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:leaflet.markercluster@0.5.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "crypto": "github:jspm/nodelibs-crypto@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "leaflet": "npm:leaflet@0.7.7",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
     "npm:levn@0.3.0": {
       "prelude-ls": "npm:prelude-ls@1.1.2",
       "type-check": "npm:type-check@0.3.2"
@@ -504,6 +521,12 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "minimist": "npm:minimist@0.0.8",
       "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:ng-file-upload@12.0.4": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:ng-file-upload@9.1.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:nopt@3.0.6": {
@@ -586,7 +609,7 @@ System.config({
     "npm:pinkie-promise@2.0.1": {
       "pinkie": "npm:pinkie@2.0.4"
     },
-    "npm:process@0.11.7": {
+    "npm:process@0.11.8": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "vm": "github:jspm/nodelibs-vm@0.1.0"

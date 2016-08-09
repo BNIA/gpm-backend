@@ -1,3 +1,4 @@
+import 'mdi/css/materialdesignicons.css!';
 // Angular
 import 'angular';
 

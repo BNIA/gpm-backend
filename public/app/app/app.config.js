@@ -2,7 +2,7 @@ import landingPageTemplate from './templates/landing-page.html!text';
 import mapPageTemplate from './templates/map-page.html!text';
 import disqusPageTemplate from './templates/disqus-page.html!text';
 
-let routeProviderConfig = function($routeProvider) {
+var routeProviderConfig = function($routeProvider) {
   $routeProvider.when('/home', {
     template: landingPageTemplate
   }).when('/map', {
@@ -16,4 +16,12 @@ let routeProviderConfig = function($routeProvider) {
 
 routeProviderConfig.$inject = ['$routeProvider'];
 
-export {routeProviderConfig};
+var angularCloudinaryConfig = function(cloudinaryProvider) {
+  cloudinaryProvider.config({
+    cloud_name: 'bnia-jfi'
+  });
+};
+
+angularCloudinaryConfig.$inject = ['cloudinaryProvider'];
+
+export {routeProviderConfig, angularCloudinaryConfig};

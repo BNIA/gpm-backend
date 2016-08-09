@@ -2,23 +2,25 @@
   <div layout="row" layout-md="column" layout-sm="column" layout-xs="column" flex="70" flex-md="100" flex-sm="100" flex-xs="100">
     <div flex="33" flex-md="100" flex-sm="100" flex-xs="100" class="md-padding">
       <a href="http://bniajfi.org/" target="_blank">
-        <img src={{$ctrl.imgPath}}/ alt="BNIA" title="BNIA">
+        <img ng-src={{$ctrl.imgPath}} alt="BNIA" title="BNIA">
       </a>
     </div>
     <div flex="33" flex-md="100" flex-sm="100" flex-xs="100" class="md-padding">
       <h3>Get In Touch</h3>
       <ul class="social-media">
         <li class="twitter">
-          <a href="https://twitter.com/bniajfi" target="_blank">
-            <span></span>Twitter
-          </a>
+            <md-icon class="mdi mdi-twitter-box mdi-24px"></md-icon>
+            <!-- href="https://twitter.com/bniajfi" target="_blank"> -->
+          <a href="https://twitter.com/bniajfi" target="_blank"><span></span>Twitter</a>
         </li>
         <li class="facebook">
+          <md-icon class="mdi mdi-facebook-box mdi-24px"></md-icon>
           <a href="http://facebook.com/bniajfi" target="_blank">
             <span></span>Facebook
           </a>
         </li>
         <li class="youtube">
+          <md-icon class="mdi mdi-youtube-play mdi-24px"></md-icon>
           <a href="https://www.youtube.com/user/bniajfi" target="_blank">
             <span></span>YouTube
           </a>

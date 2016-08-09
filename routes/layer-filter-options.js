@@ -36,7 +36,9 @@ router.post('/layers', (req, res, next) => {
   })
   .map(models => _.map(models, m => m.get('id')))
   .reduce((result, array) => _.union(array, result), [])
-  .then(ids => Models.Layers.query(qb => qb.whereIn('id', ids)).fetch())
+  .then(ids => Models.Layers.query(qb => qb.whereIn('id', ids)).fetch({
+    withRelated: 'layerDetail.status'
+  }))
   .then(collection => collection.toGeoJSON({pretty: true}))
   .then(geojson => res.json(geojson)).then(() => {
     next();

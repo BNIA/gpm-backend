@@ -4,13 +4,13 @@ var models = [
   'bmp-type',
   'boundary',
   'community-managed-open-space',
-  'csa',
+  'community-statistical-area',
   'dsgn-dfclt',
   'feasability',
   'image',
   'layer-filter-option',
   'layer',
-  'nsa',
+  'neighborhood-statistical-area',
   'priority',
   'retro-type',
   'site-use',
@@ -18,7 +18,12 @@ var models = [
   'status',
   'stormwater-remediation-site',
   'subwatershed',
-  'wtrshd-bft'
+  'wtrshd-bft',
+  'vital-signs-color',
+  'vital-signs-data-break',
+  'vital-signs-data-point',
+  'vital-signs-indicator',
+  'vital-signs-section'
 ];
 
 module.exports = _.reduce(models, (res, model) => {

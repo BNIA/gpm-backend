@@ -32,7 +32,7 @@
     "change-case": "3.0.0",
     "dotenv": "2.0.0",
     "eslint": "^2.13.1",
-    "eslint-config-google": "^0.6.0",
+    "eslint-config-google": "0.6.0",
     "fast-csv": "2.0.0",
     "gulp": "^3.9.1",
     "gulp-less": "3.1.0",
@@ -41,7 +41,8 @@
     "postgres-array": "1.0.0",
     "request": "2.73.0",
     "request-promise": "4.0.2",
-    "require-dir": "0.3.0"
+    "require-dir": "0.3.0",
+    "simple-statistics": "2.1.0"
   },
   "jspm": {
     "directories": {
@@ -49,6 +50,7 @@
     },
     "dependencies": {
       "angular": "github:angular/bower-angular@1.5.5",
+      "angular-cloudinary": "npm:angular-cloudinary@^1.2.4",
       "angular-file-saver": "npm:angular-file-saver@^1.1.2",
       "angular-jk-carousel": "npm:angular-jk-carousel@^0.1.5",
       "angular-material": "github:angular/bower-material@^1.0.9",
@@ -57,7 +59,10 @@
       "angular-utils-disqus": "npm:angular-utils-disqus@^1.0.1",
       "css": "github:systemjs/plugin-css@^0.1.26",
       "leaflet": "github:Leaflet/Leaflet@^0.7.7",
+      "leaflet.markercluster": "npm:leaflet.markercluster@^0.5.0",
       "lodash": "npm:lodash@^4.14.1",
+      "mdi": "npm:mdi@^1.6.50",
+      "ng-file-upload": "npm:ng-file-upload@^12.0.4",
       "text": "github:systemjs/plugin-text@^0.0.8",
       "ui-leaflet": "npm:ui-leaflet@^1.0.1"
     },

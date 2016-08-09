@@ -1,4 +1,4 @@
-<div layout="column" flex>
+<div layout="column" class="my-right-sidenav-content" flex>
   <md-toolbar class="md-accent">
     <div class="md-toolbar-tools" layout="row">
       <md-button
@@ -12,8 +12,8 @@
     </div>
   </md-toolbar>
   <md-divider></md-divider>
-  <md-content>
     <div ng-if="($ctrl.selectedVal.class == 'Layer Filter')">
+      <md-content>
       <div ng-repeat="(k,v) in $ctrl.selectedVal" ng-if="k != 'class'">
       <md-subheader>{{k}}</md-subheader>
       <md-list>
@@ -34,8 +34,10 @@
         </md-list-item>
       </md-list>
       </div>
+      </md-content>
     </div>
     <div ng-if="$ctrl.selected.type =='boundary-choice-config'">
+      <md-content>
       <md-list>
         <md-radio-group>
         <md-list-item ng-repeat="o in $ctrl.selected['opt']" layouy="row">
@@ -52,13 +54,19 @@
         </md-list-item>
         </md-radio-group>
       </md-list>
+      </md-content>
     </div>
-    <div ng-if="$ctrl.selectedVal.class =='Layer'">
+  <div ng-if="$ctrl.selectedVal.class =='Layer'">
+    <md-content layout-padding>
       <!---<p>{{$ctrl.selected.properties}}</p>---->
-<img ng-src="../../../assets/img/map.jpg"  style="width:95%;height:228px; margin-left:10px; margin-right:10px; padding-top:10px"/>
+<!-- <img ng-src="../../../assets/img/map.jpg"  style="width:95%;height:228px; margin-left:10px; margin-right:10px; padding-top:10px"/> -->
 
-<jk-carousel data="$ctrl.test" item-template-url="'../../app/templates/item-template.html'"auto-slide="true" max-width="700" max-height="400" >
-</jk-carousel>
+<div ng-if="$ctrl.selectedVal['Images Public Id']" layout='column' flex>
+  <carousel public-ids="$ctrl.selectedVal['Images Public Id']"></carousel>
+</div>
+
+<!-- <jk-carousel data="$ctrl.test" item-template-url="app/app/components/carousel/item-template.html'"auto-slide="true" max-width="700" max-height="400" >
+</jk-carousel> -->
 <md-button class="md-raised md-primary">Add picture +</md-button>
 <md-list>
 
@@ -91,8 +99,9 @@
 </md-list-item>
 
 </md-list>
-<div style="margin-left:10px; margin-right:10px">
+<div>
 <dir-disqus config="$ctrl.disqusConfig"></dir-disqus>
+</md-content>
 </div>
       <!-- <md-list>
         <md-radio-group>

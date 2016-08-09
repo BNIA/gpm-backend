@@ -1,9 +1,0 @@
-function main() {
-  setupDownloadLink = function(link, code) {
-    link.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(code);
-  };
-
-  window.onload = function() {
-    txt.value = main + '';
-  }
-}

@@ -1,8 +1,9 @@
-import {current, future} from '../../core/phases';
+import {current, future, clgr} from './phases';
 
 export default class PhasesCardController {
   constructor() {
     this.current = current;
     this.future = future;
+    this.clgr = clgr;
   }
 }

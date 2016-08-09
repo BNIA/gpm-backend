@@ -1,0 +1,57 @@
+[{
+    "name": "Education",
+    "color_1": "#FAF184",
+    "color_2": "#FAD156",
+    "color_3": "#F2A72D",
+    "color_4": "#AC5525",
+    "color_5": "#690B0D"
+}, {
+    "name": "Housing",
+    "color_1": "#F8E8D3",
+    "color_2": "#EABA9F",
+    "color_3": "#D88F70",
+    "color_4": "#C26746",
+    "color_5": "#AB4224"
+}, {
+    "name": "Socioeconomic/Demographics",
+    "color_1": "#E5D4E8",
+    "color_2": "#BFA3CD",
+    "color_3": "#9D78AD",
+    "color_4": "#7B4F8C",
+    "color_5": "#5E2C70"
+}, {
+    "name": "Arts and Culture",
+    "color_1": "#FFEBCC",
+    "color_2": "#FDCB97",
+    "color_3": "#FAAB67",
+    "color_4": "#F6903B",
+    "color_5": "#EE7722"
+}, {
+    "name": "Economic and Workforce Development",
+    "color_1": "#EFEBA9",
+    "color_2": "#C9BC87",
+    "color_3": "#A59065",
+    "color_4": "#856B49",
+    "color_5": "#674931"
+}, {
+    "name": "Health and Human Welfare",
+    "color_1": "#F9CBDF",
+    "color_2": "#F49EBF",
+    "color_3": "#E7719D",
+    "color_4": "#D94680",
+    "color_5": "#C61C65"
+}, {
+    "name": "Sustainability",
+    "color_1": "#D7E7AF",
+    "color_2": "#B5C989",
+    "color_3": "#98A767",
+    "color_4": "#7A8748",
+    "color_5": "#606B2E"
+}, {
+    "name": "Crime and Safety",
+    "color_1": "#D8EEEA",
+    "color_2": "#A0C3BE",
+    "color_3": "#6B9893",
+    "color_4": "#40736D",
+    "color_5": "#164F4A"
+}]

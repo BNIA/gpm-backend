@@ -2,7 +2,7 @@ import angular from 'angular';
 import './app.globals';
 
 // Import Configuration
-import {routeProviderConfig} from './app.config';
+import {routeProviderConfig, angularCloudinaryConfig} from './app.config';
 import mdThemeConfig from '../shared/md-theme-config';
 import mdIconConfig from '../shared/md-icon-config';
 
@@ -16,6 +16,8 @@ import OverlayComponent from
   './components/overlay/overlay.component';
 import ToolbarVertMenuComponent from
   './components/toolbar-vert-menu/toolbar-vert-menu.component';
+import CarouselComponent from
+  './components/carousel/carousel.component';
 
 // Import services
 import LayerFilterOptionsService from
@@ -30,7 +32,8 @@ var dependencies = [
   'mapPage',
   'angularUtils.directives.dirDisqus',
   'jkAngularCarousel',
-  'ngFileSaver'
+  'ngFileSaver',
+  'angular-cloudinary'
 ];
 
 let app = angular.module('app', dependencies);
@@ -39,6 +42,7 @@ let app = angular.module('app', dependencies);
 app.config(routeProviderConfig);
 app.config(mdThemeConfig);
 app.config(mdIconConfig);
+app.config(angularCloudinaryConfig);
 
 // Load components into the app
 app.component('app', AppComponent);
@@ -46,6 +50,7 @@ app.component('leftSidenavContent', LeftSidenavContentComponent);
 app.component('rightSidenavContent', RightSidenavContentComponent);
 app.component('overlay', OverlayComponent);
 app.component('toolbarVertMenu', ToolbarVertMenuComponent);
+app.component('carousel', CarouselComponent);
 
 // Load services into the app
 app.service('layerFilterOptionsService', LayerFilterOptionsService);

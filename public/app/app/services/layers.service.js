@@ -33,7 +33,13 @@ export default class LayersService {
 
   _extractLayerDetailData(data) {
     data = data.data || {};
-    console.log(data);
+    if (data['Images Public Id']) {
+      console.log("IMAGE");
+      console.log(data);
+      data['Images Public Id'] = map(data['Images Public Id'], p => {
+        return {public_id: p};
+      });
+    }
     data.class = 'Layer';
     return data;
   }
