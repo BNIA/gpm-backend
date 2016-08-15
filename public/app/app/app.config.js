@@ -24,4 +24,10 @@ var angularCloudinaryConfig = function(cloudinaryProvider) {
 
 angularCloudinaryConfig.$inject = ['cloudinaryProvider'];
 
-export {routeProviderConfig, angularCloudinaryConfig};
+var clickFixConfig = function($mdGestureProvider) {
+  $mdGestureProvider.skipClickHijack();
+};
+
+clickFixConfig.$inject = ['$mdGestureProvider'];
+
+export {routeProviderConfig, angularCloudinaryConfig, clickFixConfig};

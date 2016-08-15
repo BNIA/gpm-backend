@@ -232,8 +232,6 @@ bookshelf.Collection = bookshelf.Collection.extend({
       return res;
     }, []);
 
-    console.log(headVals);
-
     var rowVals = _.reduce(objs, (res, o) => {
       var row = [];
       _.forEach(headVals, v => {
@@ -248,14 +246,14 @@ bookshelf.Collection = bookshelf.Collection.extend({
     }, []);
     // var headVals = _.keys(obj);
     headVals = _.map(headVals, v => {
-      return '\\"' + v + '\\"';
+      return '"' + v + '"';
     });
     var headLine = headVals.join(", ");
     rowVals = _.map(rowVals, row => {
       var newRow = _.map(row, r => {
         var str = JSON.stringify(r);
         str = str.replace(/"/gi, '');
-        return '\\"' + str + '\\"';
+        return '"' + str + '"';
       });
       return newRow.join(', ');
     });

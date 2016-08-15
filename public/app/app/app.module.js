@@ -2,7 +2,8 @@ import angular from 'angular';
 import './app.globals';
 
 // Import Configuration
-import {routeProviderConfig, angularCloudinaryConfig} from './app.config';
+import {routeProviderConfig, angularCloudinaryConfig, clickFixConfig}
+  from './app.config';
 import mdThemeConfig from '../shared/md-theme-config';
 import mdIconConfig from '../shared/md-icon-config';
 
@@ -49,6 +50,7 @@ app.config(routeProviderConfig);
 app.config(mdThemeConfig);
 app.config(mdIconConfig);
 app.config(angularCloudinaryConfig);
+app.config(clickFixConfig);
 
 // Load components into the app
 app.component('app', AppComponent);

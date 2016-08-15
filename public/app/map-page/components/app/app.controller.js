@@ -27,6 +27,7 @@ export default class AppController {
       this.onSetBoundaries(boundaries);
     });
     this.$scope.$on('leafletDirectiveMarker.click', (event, marker) => {
+      console.log("HI");
       this.emitLayerClick(marker.model.properties || {});
     });
   }
