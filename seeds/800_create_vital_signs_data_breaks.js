@@ -42,7 +42,6 @@ exports.seed = function(knex, Promise) {
       return breaks;
     }).then(rows => _.flatten(rows))
     .map(row => {
-      console.log(row);
       return knex('vital_signs_colors')
         .select('id')
         .where({

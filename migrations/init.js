@@ -416,8 +416,8 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('vital_signs_data_breaks').then(() => {
-    return knex.schema.dropTableIfExists('vital_signs_data_points');
+  return knex.schema.dropTableIfExists('vital_signs_data_points').then(() => {
+    return knex.schema.dropTableIfExists('vital_signs_data_breaks');
   }).then(() => {
     return knex.schema.dropTableIfExists('vital_signs_indicators');
   }).then(() => {

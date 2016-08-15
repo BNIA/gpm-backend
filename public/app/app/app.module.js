@@ -24,6 +24,12 @@ import LayerFilterOptionsService from
   './services/layer-filter-options.service.js';
 import LayersService from
   './services/layers.service.js';
+import BoundaryFilterOptionsService from
+  './services/boundary-filter-options.service.js';
+import VitalSignsService from
+  './services/vital-signs.service.js';
+import GeocoderService from
+  './services/geocoder.service';
 
 var dependencies = [
   'ngMaterial',
@@ -55,6 +61,9 @@ app.component('carousel', CarouselComponent);
 // Load services into the app
 app.service('layerFilterOptionsService', LayerFilterOptionsService);
 app.service('layersService', LayersService);
+app.service('boundaryFilterOptionsService', BoundaryFilterOptionsService);
+app.service('vitalSignsService', VitalSignsService);
+app.service('geocoderService', GeocoderService);
 
 // Bootstrap the app
 angular.element(document).ready(() => {

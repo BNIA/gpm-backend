@@ -10,5 +10,7 @@ module.exports = {
   stormwaters: require('./stormwaters'),
   subwatersheds: require('./subwatersheds'),
   layerFilterOptions: require('./layer-filter-options'),
+  boundaryFilterOptions: require('./boundary-filter-options'),
+  vitalSigns: require('./vital-signs'),
   test: require('./test')
 };

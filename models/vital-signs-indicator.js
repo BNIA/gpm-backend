@@ -2,7 +2,7 @@ var baseModel = require('./base');
 
 var VitalSignsIndicator = baseModel.Model.extend({
   tableName: 'vital_signs_indicators',
-  visible: ['name', 'source_name', 'description'],
+  visible: ['name', 'source_name', 'description', 'id'],
   vitalSignsSection: function() {
     return this.belongsTo('VitalSignsSection');
   },

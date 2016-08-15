@@ -3,9 +3,12 @@ import template from './overlay.html!text';
 import controller from './overlay.controller';
 
 let bindings = {
-  boundaryChoices: '<',
-  onBoundaryChoicesChange: '&',
-  onBoundaryChoicesMore: '&'
+  boundaryFilters: '<',
+  selectedIndicator: '<',
+  onSelectBoundaryFilter: '&',
+  onSelectBoundaryFiltersMore: '&',
+  onSelectIndicator: '&',
+  onSelectIndicatorMore: '&'
 };
 
 export default {

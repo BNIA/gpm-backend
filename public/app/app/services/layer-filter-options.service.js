@@ -10,16 +10,13 @@ var processClassName = function(layer) {
   c += ' ' + kebabCase(layer.properties["Layer Detail Type"]) + '-layer';
   if (layer.properties['Layer Detail'] &&
   layer.properties['Layer Detail'].Status) {
-    console.log("HELLO");
     var status = layer.properties['Layer Detail'].Status;
-    console.log(status.Name);
     if (status.Name === 'Active') {
       c += " var-1";
     } else if (status.Name === 'Identified') {
       c += " var-2";
     }
   }
-  console.log(c);
   return c;
 };
 
@@ -63,7 +60,6 @@ export default class LayerFilterOptionsService {
       res = union(res, sub);
       return res;
     }, []);
-    console.log(ids);
     return ids;
   }
 
@@ -89,8 +85,6 @@ export default class LayerFilterOptionsService {
       res[k] = g;
       return res;
     }, {});
-
-    console.log(groups);
 
     return groups;
   }

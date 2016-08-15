@@ -25,9 +25,15 @@ exports.seed = function(knex, Promise) {
         return feature;
       });
   }).map(feature => {
+    feature.geojson = {
+      type: "Feature",
+      geometry: feature.geometry
+    };
+    return feature;
+  }).map(feature => {
     return knex('boundaries').insert({
       name: feature.properties.name,
-      geojson: feature.geometry,
+      geojson: feature.geojson,
       boundary_detail_type: 'subwatersheds',
       boundary_detail_id: feature.boundary_detail_id,
       geometry: knex.raw('ST_SetSRID(ST_GeomFromGeoJSON(?::text), ?)',

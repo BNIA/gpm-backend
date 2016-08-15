@@ -8,6 +8,9 @@ var VitalSignsDataBreak = baseModel.Model.extend({
   },
   vitalSignsColor: function() {
     return this.belongsTo('VitalSignsColor');
+  },
+  vitalSignsDataPoints: function() {
+    return this.hasMany('VitalSignsDataPoint');
   }
 });
 

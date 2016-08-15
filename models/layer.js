@@ -53,7 +53,6 @@ var Layer = baseModel.Model.extend({
 
 var Layers = baseModel.Collection.extend({
   model: Layer,
-  prettyName: 'Layers',
   toGeoJSON(options) {
     options = options || {};
     var features = _.map(this.models, m => {

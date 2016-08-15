@@ -1,7 +1,10 @@
 <map-page>
   <overlay
-    boundary-choices="$ctrl.boundaryChoices"
-    on-boundary-choices-change=""
-    on-boundary-choices-more="$ctrl.selectItem(opt)">
+    boundary-filters="$ctrl.boundaryFilters"
+    selected-indicator="$ctrl.selectedIndicator"
+    on-select-boundary-filter="$ctrl.selectBoundaryFilter(v)"
+    on-select-boundary-filters-more="$ctrl.selectBoundaryFiltersMore(value, key)"
+    on-select-indicator-more="$ctrl.selectIndicatorMore(value, key)"
+    on-select-indicator="$ctrl.selectVitalSignsIndicator(value, key)">
   </overlay>
 </map-page>

@@ -1,43 +1,43 @@
 import map from 'lodash/map';
 
-export default class LayersService {
+export default class BoundariesService {
   constructor($http) {
     this.$http = $http;
-    this._url = '/api/layers';
-    this._downloadLayersUrl = '/api/layers/download';
-    this._layerDetailUrl = "/api/layers/layer_detail";
+    this._url = '/api/boundaries';
+    this._downloadBoundariesUrl = '/api/boundaries/download';
+    this._boundaryDetailUrl = "/api/boundaries/boundary_detail";
   }
 
-  getLayerDetail(layerData) {
-    var query = JSON.stringify({id: layerData.Id});
-    return this.$http.post(this._layerDetailUrl, query)
-      .then(this._extractLayerDetailData)
+  getBoundaryDetail(boundaryData) {
+    var query = JSON.stringify({id: boundaryData.Id});
+    return this.$http.post(this._boundaryDetailUrl, query)
+      .then(this._extractBoundaryDetailData)
       .catch(this._handleError);
   }
 
-  getDownload(layerData, fileType) {
+  getDownload(boundaryData, fileType) {
     var query = JSON.stringify({
       type: fileType,
-      ids: this._preprocessLayerIds(layerData)
+      ids: this._preprocessBoundaryIds(boundaryData)
     });
-    return this.$http.post(this._downloadLayersUrl, query)
+    return this.$http.post(this._downloadBoundariesUrl, query)
       .then(this._extractDownloadData)
       .catch(this._handleError);
   }
 
-  _preprocessLayerIds(data) {
+  _preprocessBoundaryIds(data) {
     data = data || {};
     return map(data, d => d.properties.Id);
   }
 
-  _extractLayerDetailData(data) {
+  _extractBoundaryDetailData(data) {
     data = data.data || {};
     if (data['Images Public Id']) {
       data['Images Public Id'] = map(data['Images Public Id'], p => {
         return {public_id: p};
       });
     }
-    data.class = 'Layer';
+    data.class = 'Boundary';
     return data;
   }
 
@@ -52,4 +52,4 @@ export default class LayersService {
   }
 }
 
-LayersService.$inject = ["$http"];
+BoundariesService.$inject = ["$http"];

@@ -14,11 +14,14 @@ System.config({
   },
 
   map: {
-    "angular": "github:angular/bower-angular@1.5.5",
+    "angular": "github:angular/bower-angular@1.5.3",
+    "angular-animate": "github:angular/bower-angular-animate@1.5.3",
+    "angular-aria": "github:angular/bower-angular-aria@1.5.3",
     "angular-cloudinary": "npm:angular-cloudinary@1.2.4",
     "angular-file-saver": "npm:angular-file-saver@1.1.2",
     "angular-jk-carousel": "npm:angular-jk-carousel@0.1.5",
     "angular-material": "github:angular/bower-material@1.0.9",
+    "angular-messages": "github:angular/bower-angular-messages@1.5.3",
     "angular-route": "github:angular/bower-angular-route@1.5.8",
     "angular-simple-logger": "npm:angular-simple-logger@0.1.7",
     "angular-utils-disqus": "npm:angular-utils-disqus@1.0.1",
@@ -36,19 +39,22 @@ System.config({
     "github:Leaflet/Leaflet@0.7.7": {
       "css": "github:systemjs/plugin-css@0.1.26"
     },
-    "github:angular/bower-angular-animate@1.5.8": {
+    "github:angular/bower-angular-animate@1.5.3": {
       "angular": "github:angular/bower-angular@1.5.8"
     },
-    "github:angular/bower-angular-aria@1.5.8": {
+    "github:angular/bower-angular-aria@1.5.3": {
+      "angular": "github:angular/bower-angular@1.5.8"
+    },
+    "github:angular/bower-angular-messages@1.5.3": {
       "angular": "github:angular/bower-angular@1.5.8"
     },
     "github:angular/bower-angular-route@1.5.8": {
-      "angular": "github:angular/bower-angular@1.5.8"
+      "angular": "github:angular/bower-angular@1.5.3"
     },
     "github:angular/bower-material@1.0.9": {
       "angular": "github:angular/bower-angular@1.5.8",
-      "angular-animate": "github:angular/bower-angular-animate@1.5.8",
-      "angular-aria": "github:angular/bower-angular-aria@1.5.8",
+      "angular-animate": "github:angular/bower-angular-animate@1.5.3",
+      "angular-aria": "github:angular/bower-angular-aria@1.5.3",
       "css": "github:systemjs/plugin-css@0.1.26"
     },
     "github:jspm/nodelibs-assert@0.1.0": {

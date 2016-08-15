@@ -10,11 +10,18 @@ export default class OverlayController {
     this.originatorEv = ev;
     $mdOpenMenu(ev);
   }
-  boundaryChoicesChange(opt) {
-    this.onBoundaryChoicesChange({opt});
+  selectBoundaryFilter(value) {
+    value.on = !value.on;
+    this.onSelectBoundaryFilter({value});
   }
-  boundaryChoicesMore(opt) {
-    this.onBoundaryChoicesMore({opt});
+  selectBoundaryFiltersMore(value, key) {
+    this.onSelectBoundaryFiltersMore({value, key});
+  }
+  selectIndicator(value, key) {
+    this.onSelectIndicator({value, key});
+  }
+  selectIndicatorMore(value, key) {
+    this.onSelectIndicatorMore({value, key});
   }
 }
 

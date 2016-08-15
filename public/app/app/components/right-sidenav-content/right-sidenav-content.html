@@ -1,109 +1,130 @@
 <div layout="column" class="my-right-sidenav-content" flex>
-  <md-toolbar class="md-accent">
-    <div class="md-toolbar-tools" layout="row">
-      <md-button
-        aria-label="menu"
-        class="md-icon-button"
-        ng-click="$ctrl.navBack()"
-        ng-show="!($ctrl.$mdMedia('gt-md'))">
-          <i class="material-icons">arrow_back</i>
-      </md-button>
-      <h2>{{$ctrl.selectedKey}}</h2>
-    </div>
-  </md-toolbar>
-  <md-divider></md-divider>
+    <md-toolbar class="md-accent">
+        <div class="md-toolbar-tools" layout="row">
+            <md-button aria-label="menu" class="md-icon-button" ng-click="$ctrl.navBack()" ng-show="!($ctrl.$mdMedia('gt-md'))">
+                <i class="material-icons">arrow_back</i>
+            </md-button>
+            <h2>{{$ctrl.selectedKey}}</h2>
+        </div>
+    </md-toolbar>
+    <md-divider></md-divider>
     <div ng-if="($ctrl.selectedVal.class == 'Layer Filter')">
-      <md-content>
-      <div ng-repeat="(k,v) in $ctrl.selectedVal" ng-if="k != 'class'">
-      <md-subheader>{{k}}</md-subheader>
-      <md-list>
-        <md-list-item ng-repeat="n in v" layout="row">
-          <p flex="90">
-            {{n['Layer Filter']['Name']}}
-            <md-tooltip
-            ng-if="n['Layer Filter']['Description'] !== undefined"
-            md-delay="1000"
-            md-direction="left">{{n['Layer Filter']['Description']}}</md-tooltip>
-          </p>
-          <md-checkbox
-            class="md-secondary my-right-sidenav-checkbox"
-            ng-model="n.on"
-            ng-click="$ctrl.select(n)"
-            flex="10">
-          </md-checkbox>
-        </md-list-item>
-      </md-list>
-      </div>
-      </md-content>
+        <md-content>
+            <div ng-repeat="(k,v) in $ctrl.selectedVal" ng-if="k != 'class'">
+                <md-subheader>{{k}}</md-subheader>
+                <md-list>
+                    <md-list-item ng-repeat="n in v" layout="row">
+                        <p flex="90">
+                            {{n['Layer Filter']['Name']}}
+                            <md-tooltip ng-if="n['Layer Filter']['Description'] !== undefined" md-delay="1000" md-direction="left">{{n['Layer Filter']['Description']}}</md-tooltip>
+                        </p>
+                        <md-checkbox class="md-secondary my-right-sidenav-checkbox" ng-model="n.on" ng-click="$ctrl.select(n)" flex="10"></md-checkbox>
+                    </md-list-item>
+                </md-list>
+            </div>
+        </md-content>
     </div>
-    <div ng-if="$ctrl.selected.type =='boundary-choice-config'">
+    <div ng-if="$ctrl.selectedVal.class =='Boundary Filter'">
       <md-content>
-      <md-list>
-        <md-radio-group>
-        <md-list-item ng-repeat="o in $ctrl.selected['opt']" layouy="row">
-          <p flex="90">
-            {{o.val}}
-          </p>
-          <md-radio-button
-            class="md-secondary my-right-sidenav-checkbox"
-            ng-model="o.isOn"
-            ng-value="o.key"
-            ng-click="$ctrl.select(o)"
-            flex="10">
-          </md-radio-button>
-        </md-list-item>
+        <md-list>
+          <md-list-item>
+            <md-switch ng-model="$ctrl.selectedVal.on" aria-label="Display?" ng-change="$ctrl.selectBoundaryFilter(this.selectedVal)">
+              Display {{$ctrl.selectedKey}}
+            </md-switch>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item class="secondary-button-padding" ng-repeat="o in $ctrl.selectedVal.data" ng-click="$ctrl.selectBoundaryFilterOption(o)">
+            <md-checkbox class="md-secondary" ng-checked="o.on" ng-click="$ctrl.selectBoundaryFilterOption(o)" flex="10"></md-checkbox>
+            <p>
+              {{o['Name']}}
+            </p>
+          </md-list-item>
+        </md-list>
+      </md-content>
+        <!-- <md-content>
+            <md-list>
+                <md-radio-group>
+                    <md-list-item ng-repeat="o in $ctrl.selected['opt']" layouy="row">
+                        <p flex="90">
+                            {{o.val}}
+                        </p>
+                        <md-radio-button class="md-secondary my-right-sidenav-checkbox" ng-model="o.isOn" ng-value="o.key" ng-click="$ctrl.select(o)" flex="10"></md-radio-button>
+                    </md-list-item>
+                </md-radio-group>
+            </md-list>
+        </md-content> -->
+    </div>
+    <div ng-if="$ctrl.selectedVal.class =='Vital Signs Section'">
+      <md-content>
+        <md-list>
+          <md-radio-group ng-model="$ctrl.vitalSignsSections.selected">
+          <md-list-item ng-repeat="o in $ctrl.selectedVal.data" layout="row" ng-click="$ctrl.selectVitalSignsIndicator(o, true)">
+            <md-icon md-font-set="md" ng-click="$ctrl.showVitalSignsIndicatorInfo(o, $event)" flex-order="3" flex="10">info_outline</md-icon>
+            <p flex-order="2" flex="80">{{o['Name']}}</p>
+            <md-radio-button ng-value="o.Name" ng-model="o.on" flex-order="1" flex="10" ng-click="$ctrl.selectVitalSignsIndicator(o)"></md-radio-button>
+          </md-list-item>
         </md-radio-group>
-      </md-list>
+        </md-list>
+        <!-- <div ng-repeat="o in $ctrl.selectedVal.data" layout="row"> -->
+            <!-- <md-radio-button class="md-secondary my-right-sidenav-checkbox" ng-value="o.Name" ng-model="o.on" ng-click="$ctrl.selectBoundaryFilterOption(o)" flex="90">
+              {{o['Name']}}
+            </md-radio-button> -->
+              <!-- <md-button class="md-icon-button my-info-button">
+
+              </md-button> -->
+        <!-- </div> -->
       </md-content>
     </div>
-  <div ng-if="$ctrl.selectedVal.class =='Layer'">
-    <md-content layout-padding>
-      <!---<p>{{$ctrl.selected.properties}}</p>---->
-<!-- <img ng-src="../../../assets/img/map.jpg"  style="width:95%;height:228px; margin-left:10px; margin-right:10px; padding-top:10px"/> -->
+    <div ng-if="$ctrl.selectedVal.class =='Layer'">
+        <md-content layout-padding>
+            <!---<p>{{$ctrl.selected.properties}}</p>---->
+            <!-- <img ng-src="../../../assets/img/map.jpg"  style="width:95%;height:228px; margin-left:10px; margin-right:10px; padding-top:10px"/> -->
 
-<div ng-if="$ctrl.selectedVal['Images Public Id']" layout='column' flex>
-  <carousel public-ids="$ctrl.selectedVal['Images Public Id']"></carousel>
-</div>
+            <div ng-if="$ctrl.selectedVal['Images Public Id']" layout='column' flex>
+                <carousel public-ids="$ctrl.selectedVal['Images Public Id']"></carousel>
+            </div>
 
-<!-- <jk-carousel data="$ctrl.test" item-template-url="app/app/components/carousel/item-template.html'"auto-slide="true" max-width="700" max-height="400" >
+            <!-- <jk-carousel data="$ctrl.test" item-template-url="app/app/components/carousel/item-template.html'"auto-slide="true" max-width="700" max-height="400" >
 </jk-carousel> -->
-<md-button class="md-raised md-primary">Add picture +</md-button>
-<md-list>
+            <md-button class="md-raised md-primary">Add picture +</md-button>
+            <md-list>
 
-<md-list-item class="md-2-line" >
-  <div class="md-list-item-text">
-  <h3>Layer Type</h3>
-  <p>{{$ctrl.selectedVal['Layer Detail Type']}}</p>
-  </div>
-</md-list-item>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3>Layer Type</h3>
+                        <p>{{$ctrl.selectedVal['Layer Detail Type']}}</p>
+                    </div>
+                </md-list-item>
 
-<md-list-item class="md-2-line" ng-if="$ctrl.selectedVal['Later Detail Type'] === 'Stormwater Remediation Sites'">
-<div class="md-list-item-text">
-  <h3>Status</h3>
-  <p>{{$ctrl.selectedVal['Layer Detail Status Name']}}</p>
-</div>
-</md-list-item>
+                <md-list-item class="md-2-line" ng-if="$ctrl.selectedVal['Later Detail Type'] === 'Stormwater Remediation Sites'">
+                    <div class="md-list-item-text">
+                        <h3>Status</h3>
+                        <p>{{$ctrl.selectedVal['Layer Detail Status Name']}}</p>
+                    </div>
+                </md-list-item>
 
-<md-list-item class="md-2-line" ng-if="$ctrl.selectedVal['Later Detail Type'] === 'Community Managed Open Spaces'" >
-<div class="md-list-item-text">
-  <h3>Status</h3>
-  <p>{{$ctrl.selectedVal['Layer Detail Status Name']}}</p>
-</div>
-</md-list-item>
+                <md-list-item class="md-2-line" ng-if="$ctrl.selectedVal['Later Detail Type'] === 'Community Managed Open Spaces'">
+                    <div class="md-list-item-text">
+                        <h3>Status</h3>
+                        <p>{{$ctrl.selectedVal['Layer Detail Status Name']}}</p>
+                    </div>
+                </md-list-item>
 
-<md-list-item class="md-2-line" >
-<div class="md-list-item-text">
-  <h3>Sources</h3>
-  <p ng-repeat = "n in $ctrl.selectedVal['Sources Name']"> {{$last ? n : n + ','}} </p>
-</div>
-</md-list-item>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3>Sources</h3>
+                        <p ng-repeat="n in $ctrl.selectedVal['Sources Name']">
+                            {{$last ? n : n + ','}}
+                        </p>
+                    </div>
+                </md-list-item>
 
-</md-list>
-<div>
-<dir-disqus config="$ctrl.disqusConfig"></dir-disqus>
-</md-content>
-</div>
-      <!-- <md-list>
+            </md-list>
+            <div>
+                <dir-disqus config="$ctrl.disqusConfig"></dir-disqus>
+            </md-content>
+        </div>
+        <!-- <md-list>
         <md-radio-group>
         <md-list-item ng-repeat="o in $ctrl.selected['opt']" layouy="row">
           <p flex="90">
@@ -119,6 +140,6 @@
         </md-list-item>
         </md-radio-group>
       </md-list> -->
-</div>
+    </div>
 </md-content>
 </div>

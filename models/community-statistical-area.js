@@ -4,13 +4,13 @@ var CommunityStatisticalArea = baseModel.Model.extend({
   tableName: 'community_statistical_areas',
   hasTimestamps: true,
   boundary: function() {
-    return this.belongsTo('Boundary');
+    return this.morphOne('Boundary', 'boundary_detail');
   },
   layers: function() {
     return this.hasMany('Layer');
   },
-  vitalSignsDataPoint() {
-    return this.belongsTo('VitalSignsDataPoint');
+  vitalSignsDataPoints() {
+    return this.hasMany('VitalSignsDataPoint');
   }
 });
 

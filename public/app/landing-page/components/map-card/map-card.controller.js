@@ -6,7 +6,6 @@ export default class MapCardController {
     this.buttonTitle2 = 'Preconfigured Views';
   }
   clickButton(options) {
-    console.log("CLICK");
     this.onClickButton(options);
   }
 }

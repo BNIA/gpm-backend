@@ -4,14 +4,6 @@ var Models = require('../models');
 var LIMIT = 25;
 
 router.get('/', (req, res, nex) => {
-  return Models.Boundary.query(qb => {
-    qb.select()
-      .limit(LIMIT);
-  }).fetchAll({
-    debug: true
-  }).then(result => {
-    res.json(result);
-  });
 });
 
 module.exports = router;

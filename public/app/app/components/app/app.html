@@ -8,8 +8,8 @@
         layout="column">
         <left-sidenav-content
           layer-filters="$ctrl.layerFilters"
-          vital-signs="$ctrl.vitalSigns"
-          on-select="$ctrl.selectLayerFilter(value, key)"
+          vital-signs-sections="$ctrl.vitalSignsSections"
+          on-select="$ctrl.selectCollection(value, key)"
           on-nav-back="$ctrl.toggleSidenav('left',false)"
           layout="column"
           flex>
@@ -36,10 +36,25 @@
           </h2>
           <span flex></span>
           <!-- <input type="search" placeholder="Search"> -->
-          <!-- <md-autocomplete
-            md-disabled="true"
-            placeholder="Search by Address...">
-          </md-autocomplete> -->
+          <md-autocomplete ng-show="$ctrl.path == '/map'"
+            md-disabled="false"
+            placeholder="Search by Address..."
+            md-search-text="$ctrl.searchText"
+            md-items="item in $ctrl.searchAddress($ctrl.searchText)"
+            md-selected-item="$ctrl.selectedItem"
+            md-item-text="item.formatted_address"
+            >
+            <md-item-template>
+              <span md-highlight-text="$ctrl.searchText" md-highlight-flags="^i">{{item.formatted_address}}</span>
+            </md-item-template>
+            <md-button
+              aria-label="menu"
+              class="md-icon-button"
+              ng-click="$ctrl.toggleSidenav('left')"
+              ng-show="$ctrl.path == '/map' && !($ctrl.$mdMedia('gt-md'))">
+              <md-icon md-font-set="md">menu</md-icon>
+            </md-button>
+          </md-autocomplete>
           <md-button
             aria-label="map"
             ng-click="$ctrl.reroute('/map')">
@@ -65,11 +80,15 @@
         ng-show="$ctrl.path == '/map'"
         md-whiteframe="4">
         <right-sidenav-content
-        selected-key="$ctrl.selectedKey"
-        selected-val="$ctrl.selectedVal"
-        disqus-config="$ctrl.disqusConfig"
-        on-select-layer-filter-option="$ctrl.selectLayerFilterOption(opt)"
-        on-nav-back="$ctrl.toggleSidenav('right',false)">
+          selected-key="$ctrl.selectedKey"
+          selected-val="$ctrl.selectedVal"
+          vital-signs-sections="$ctrl.vitalSignsSections"
+          disqus-config="$ctrl.disqusConfig"
+          on-select-layer-filter-option="$ctrl.selectLayerFilterOption(opt)"
+          on-select-boundary-filter="$ctrl.selectBoundaryFilter(value)"
+          on-select-boundary-filter-option="$ctrl.selectBoundaryFilterOption(value)"
+          on-select-vital-signs-indicator="$ctrl.selectVitalSignsIndicator(value)"
+          on-nav-back="$ctrl.toggleSidenav('right',false)">
         </right-sidenav-content>
     </md-sidenav>
 </section>

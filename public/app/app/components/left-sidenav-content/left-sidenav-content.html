@@ -36,14 +36,14 @@
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky my-nav-subhead">Vital Signs</md-subheader>
     <md-list>
-      <md-list-item ng-repeat="o in $ctrl.vitalSigns">
+      <md-list-item ng-repeat="(k,v) in $ctrl.vitalSignsSections">
         <md-button
-          ng-class="($ctrl.selected.key == o.key) ?
+          ng-class="($ctrl.selectedKey == k) ?
             'my-nav-button md-focused' :
             'my-nav-button'"
-          ng-click="$ctrl.selectItem(o)"
+          ng-click="$ctrl.selectItem(v, k)"
           flex>
-          {{o.val}}
+          {{k}}
       </md-list-item>
     </md-list>
   <md-divider></md-divider>

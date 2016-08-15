@@ -1,7 +1,7 @@
 export default class AppController {
   constructor($scope, $rootScope, $route, $location, $mdSidenav, $mdMedia,
-    FileSaver, Blob, cloudinary, layerFilterOptionsService, layersService) {
-    var self = this;
+    FileSaver, Blob, cloudinary, layerFilterOptionsService, layersService,
+    boundaryFilterOptionsService, vitalSignsService, geocoderService) {
     this.$scope = $scope;
     this.$rootScope = $rootScope; // The Root Scope of the app
     this.$route = $route;
@@ -11,10 +11,12 @@ export default class AppController {
     this.FileSaver = FileSaver;
     this.Blob = Blob;
     this.cloudinary = cloudinary;
-    // this.optionsService = optionsService;
-    // this.layersService = layersService;
     this.layerFilterOptionsService = layerFilterOptionsService;
     this.layersService = layersService;
+    this.boundaryFilterOptionsService = boundaryFilterOptionsService;
+    this.vitalSignsService = vitalSignsService;
+    this.geocoderService = geocoderService;
+
     this.disqusConfig = {
       disqus_shortname: 'greenpatternmap',
       disqus_identifier: '2583577',
@@ -23,38 +25,20 @@ export default class AppController {
 
     this.disqusUrlBase = 'https://greenpatternmap.disqus.com/layers/';
 
-    this.vertMenuItems = [
-      {title: 'Download Layers', items: [
-        {title: '... as CSV', icon: 'file_download', action: function() {
-          self.downloadLayers('csv');
-        }},
-        {title: '... as JSON', icon: 'file_download', action: function() {
-          self.downloadLayers('json');
-        }},
-        {title: '... as GeoJSON', icon: 'file_download', action: function() {
-          self.downloadLayers('geojson');
-        }}
-      ]},
-      {title: 'Download Boundary', items: [
-        {title: '... as GeoJSON', icon: 'file_download', action: null}
-      ]}
-    ];
     // Assign local variables
     this.title = 'Green Pattern Map';
     this.layers = null;
     this.layerFilters = null;
-    this.layerFilters = null;
-    this.boundaryChoices = null;
-    this.vitalSigns = null;
+    this.boundaryFilters = null;
+    this.vitalSignsSections = null;
     this.selectedKey = null;
     this.selectedVal = null;
-    // this.selected = null;
+    this.selectedIndicator = null;
     this.path = null;
 
     // Assign to scope for children to access
     this.$rootScope.title = this.title;
     this.$rootScope.$on('layerClick', (event, layer) => {
-      console.log(layer);
       this.layersService.getLayerDetail(layer).then(layerDetail => {
         this.selectLayerDetail(layerDetail);
       });
@@ -84,7 +68,8 @@ export default class AppController {
     this.selectedVal = obj;
     this.toggleSidenav('right', true);
   }
-  selectLayerFilter(value, key) {
+  selectCollection(value, key) {
+    console.log('collection selected');
     this.selectedKey = key;
     this.selectedVal = value;
     this.toggleSidenav('right', true);
@@ -95,6 +80,28 @@ export default class AppController {
         this.setLayers(layers);
       });
   }
+  selectBoundaryFilter(value) {
+    this.boundaryFilterOptionsService.getBoundaries(this.boundaryFilters)
+      .then(boundaries => {
+        this.setBoundaries(boundaries);
+      });
+  }
+  selectBoundaryFilterOption(value) {
+    this.boundaryFilterOptionsService.getBoundaries(this.boundaryFilters)
+    .then(boundaries => {
+      this.setBoundaries(boundaries);
+    });
+  }
+  selectBoundaryFiltersMore(value, key) {
+    this.selectedKey = key;
+    this.selectedVal = value;
+    this.toggleSidenav('right', true);
+  }
+  selectIndicatorMore(value, key) {
+    this.selectedKey = key;
+    this.selectedVal = value;
+    this.toggleSidenav('right', true);
+  }
   selectFilter(opt) {
     if (opt.type === 'layer-filter-option') {
       this.layersService.getLayers(this.layerFilters)
@@ -103,9 +110,25 @@ export default class AppController {
         });
     }
   }
+  selectVitalSignsIndicator(value) {
+    this.vitalSignsService.getBoundary(value)
+      .then(boundaries => {
+        this.setVitalSignsBoundary(boundaries, value);
+      });
+  }
   setLayers(layers) {
     this.layers = layers;
     this.$rootScope.$broadcast('setLayers', layers);
+  }
+  setVitalSignsBoundary(boundaries, indicator) {
+    this.selectedVitalSignsBoundary = boundaries;
+    this.selectedIndicator = indicator;
+    this.boundaries = boundaries;
+    this.$rootScope.$broadcast('setBoundaries', boundaries);
+  }
+  setBoundaries(boundaries) {
+    this.boundaries = boundaries;
+    this.$rootScope.$broadcast('setBoundaries', boundaries);
   }
   openVertMenu($mdOpenMenu, ev) {
     this.originatorEv = ev;
@@ -131,9 +154,22 @@ export default class AppController {
       });
     }
   }
+  searchAddress(address) {
+    return this.geocoderService.geocode(address).then(data => data);
+  }
   $onInit() {
     this.layerFilterOptionsService.getLayerFilters().then(data => {
       this.layerFilters = data;
+    }).then(() => {
+      return this.boundaryFilterOptionsService.getBoundaryFilters();
+    }).then(data => {
+      this.boundaryFilters = data;
+    }).then(() => {
+      return this.vitalSignsService.getSections();
+    }).then(data => {
+      this.vitalSignsSections = data;
+    }).then(() => {
+      return this.geocoderService.geocode('2712 Guilford Avenue Baltimore, MD');
     });
     // this.optionsService.getLayerFilters().then(data => {
     //   this.layerFilters = data;
@@ -159,5 +195,8 @@ AppController.$inject = [
   'Blob',
   'cloudinary',
   'layerFilterOptionsService',
-  'layersService'
+  'layersService',
+  'boundaryFilterOptionsService',
+  'vitalSignsService',
+  'geocoderService'
 ];

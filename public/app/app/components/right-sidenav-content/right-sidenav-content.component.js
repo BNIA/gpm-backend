@@ -5,7 +5,11 @@ import template from './right-sidenav-content.html!text';
 let bindings = {
   selectedKey: '<',
   selectedVal: '<',
+  vitalSignsSections: '<',
   onSelectLayerFilterOption: '&',
+  onSelectBoundaryFilter: '&',
+  onSelectBoundaryFilterOption: '&',
+  onSelectVitalSignsIndicator: '&',
   onNavBack: '&',
   disqusConfig: '<'
 };

@@ -8,16 +8,26 @@
   <div layout="column">
     <md-menu-item
       layout="row"
-      ng-repeat="o in $ctrl.boundaryChoices.opt">
-      <md-checkbox ng-model="o.isOn" ng-click="$ctrl.boundaryChoicesChange(o)">
-        {{o.val}}
+      ng-repeat="(k,v) in $ctrl.boundaryFilters">
+      <md-checkbox ng-checked="v.on" ng-click="$ctrl.selectBoundaryFilter(v)">
+        {{k}}
+      </md-checkbox>
+    </md-menu-item>
+    <md-menu-item ng-if="$ctrl.selectedIndicator" layout="row">
+      <md-checkbox ng-checked="v.on" ng-click="$ctrl.selectIndicator($ctrl.selectedIndicator)">
+        {{$ctrl.selectedIndicator.Name}}
       </md-checkbox>
     </md-menu-item>
   </div>
   <div layout="column">
-    <md-menu-item ng-repeat="o in $ctrl.boundaryChoices.opt">
-      <md-button class="md-icon-button" ng-click="$ctrl.boundaryChoicesMore(o)" ng-if="o.configs.length > 0">
-        <i class="material-icons">more_vert</i>
+    <md-menu-item ng-repeat="(k,v) in $ctrl.boundaryFilters">
+      <md-button aria-label="more" class="md-icon-button" ng-click="$ctrl.selectBoundaryFiltersMore(v,k)">
+          <md-icon md-font-set="md">more_vert</i>
+      </md-button>
+    </md-menu-item>
+    <md-menu-item ng-if="$ctrl.selectedIndicator">
+      <md-button aria-label="more" class="md-icon-button" ng-click="$ctrl.selectIndicatorMore($ctrl.selectedIndicator,$ctrl.selectedIndicator.Name)">
+          <md-icon md-font-set="md">more_vert</i>
       </md-button>
     </md-menu-item>
   </div>

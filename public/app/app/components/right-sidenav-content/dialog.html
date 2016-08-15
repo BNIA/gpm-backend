@@ -1,0 +1,25 @@
+<md-dialog class="my-info-dialog" flex="60">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h3 flex>
+          <span>{{$ctrl.title}}</span>
+      </h3>
+    </div>
+  </md-toolbar>
+  <md-dialog-content layout-padding>
+    <div ng-if="$ctrl.description">
+      <p>
+        {{$ctrl.description}}
+      </p>
+    </div>
+      <md-divider></md-divider>
+    <div ng-if="$ctrl.source">
+      <p>
+        <b>Source: </b>{{$ctrl.source}}
+      </p>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button ng-click="$ctrl.hide()">Close</md-button>
+  </md-dialog-actions>
+</md-dialog>

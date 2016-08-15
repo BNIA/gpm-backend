@@ -4,6 +4,7 @@ import template from './left-sidenav-content.html!text';
 
 let bindings = {
   layerFilters: '<',
+  vitalSignsSections: '<',
   onLayerFiltersChange: '&',
   vitalSigns: '<',
   onVitalSignsChange: '&',
