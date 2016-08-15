@@ -31,12 +31,12 @@
             class="s36"
             ng-show="$ctrl.path == '/home' || ($ctrl.path == '/map' && !$ctrl.$mdMedia('gt-md'))">
           </md-icon>
-          <h2 ng-show="$ctrl.path == '/home' || ($ctrl.path == '/map' && !$ctrl.$mdMedia('gt-md'))">
-              <span>{{$ctrl.title}}</span>
+          <h2 ng-show="($ctrl.path == '/home' || ($ctrl.path == '/map' && !$ctrl.$mdMedia('gt-md'))) && $ctrl.$mdMedia('gt-sm')">
+              <span ng-show="$ctrl.path">{{$ctrl.title}}</span>
           </h2>
           <span flex></span>
           <!-- <input type="search" placeholder="Search"> -->
-          <md-autocomplete ng-show="$ctrl.path == '/map'"
+          <md-autocomplete ng-show="$ctrl.path == '/map' && $ctrl.$mdMedia('gt-sm')"
             md-disabled="false"
             placeholder="Search by Address..."
             md-search-text="$ctrl.searchText"
@@ -65,7 +65,7 @@
             ng-click="$ctrl.reroute('/home')">
             Home
           </md-button>
-          <toolbar-vert-menu
+          <toolbar-vert-menu ng-show="$ctrl.path == '/map'"
             on-select-layers-download="$ctrl.layersDownload(fileType)">
           </toolbar-vert-menu>
       </div>
