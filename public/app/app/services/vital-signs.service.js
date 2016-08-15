@@ -57,7 +57,6 @@ export default class BoundariesService {
       };
     });
     bySection.selected = null;
-    console.log(bySection);
     return bySection;
   }
 
@@ -82,7 +81,6 @@ export default class BoundariesService {
         };
       }
     };
-    console.log(data);
     return data;
   }
 

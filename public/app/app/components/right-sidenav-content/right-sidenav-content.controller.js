@@ -58,7 +58,6 @@ export default class RightSidenavContentController {
   selectVitalSignsIndicator(value, toggle) {
     if (toggle === true) {
       value.on = !value.on;
-      console.log(this.vitalSignsSections.selected);
       this.vitalSignsSections.selected = value.Name;
     }
     this.onSelectVitalSignsIndicator({value});

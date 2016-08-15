@@ -16,7 +16,6 @@ export default class GeocoderService {
   }
   _extractGeodata(data) {
     data = data.data.results || [];
-    console.log(data);
     return data;
   }
   _handleError(error) {

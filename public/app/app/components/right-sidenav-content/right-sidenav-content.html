@@ -89,28 +89,56 @@
             <md-button class="md-raised md-primary">Add picture +</md-button>
             <md-list>
 
-                <md-list-item class="md-2-line">
+                <md-list-item class="">
                     <div class="md-list-item-text">
                         <h3>Layer Type</h3>
                         <p>{{$ctrl.selectedVal['Layer Detail Type']}}</p>
                     </div>
                 </md-list-item>
 
-                <md-list-item class="md-2-line" ng-if="$ctrl.selectedVal['Later Detail Type'] === 'Stormwater Remediation Sites'">
+                <md-list-item class="" ng-if="$ctrl.selectedVal['Layer Detail Type'] === 'Stormwater Remediation Sites'">
+                    <div class="md-list-item-text">
+                        <h3>Location</h3>
+                        <p>Latitude: {{$ctrl.selectedVal['Latitude']}}</p>
+                        <p>Longitude: {{$ctrl.selectedVal['Longitude']}}</p>
+                    </div>
+                </md-list-item>
+
+                <md-list-item class="" ng-if="$ctrl.selectedVal['Layer Detail Type'] === 'Stormwater Remediation Sites'">
                     <div class="md-list-item-text">
                         <h3>Status</h3>
                         <p>{{$ctrl.selectedVal['Layer Detail Status Name']}}</p>
                     </div>
                 </md-list-item>
 
-                <md-list-item class="md-2-line" ng-if="$ctrl.selectedVal['Later Detail Type'] === 'Community Managed Open Spaces'">
+                <md-list-item class="" ng-if="$ctrl.selectedVal['Layer Detail Type'] === 'Stormwater Remediation Sites'">
                     <div class="md-list-item-text">
-                        <h3>Status</h3>
-                        <p>{{$ctrl.selectedVal['Layer Detail Status Name']}}</p>
+                        <h3>Best Management Practices </h3>
+                        <p ng-repeat="n in $ctrl.selectedVal['Layer Detail Best Management Practices Name']">
+                            {{$last ? n : n + ','}}
+                        </p>
                     </div>
                 </md-list-item>
 
-                <md-list-item class="md-2-line">
+                <md-list-item class="" ng-if="$ctrl.selectedVal['Layer Detail Type'] === 'Community Managed Open Spaces'">
+                    <div class="md-list-item-text">
+                        <h3>Location</h3>
+                        <p ng-if="$ctrl.selectedVal['Layer Detail Address']">Address: {{$ctrl.selectedVal['Layer Detail Address']}}</p>
+                        <p ng-if="$ctrl.selectedVal['Layer Detail Block']">Block: {{$ctrl.selectedVal['Layer Detail Block']}}</p>
+                        <p ng-if="$ctrl.selectedVal['Layer Detail Lot']">Lot: {{$ctrl.selectedVal['Layer Detail Lot']}}</p>
+                    </div>
+                </md-list-item>
+
+                <md-list-item class="" ng-if="$ctrl.selectedVal['Layer Detail Type'] === 'Community Managed Open Spaces'">
+                    <div class="md-list-item-text">
+                        <h3>Site Uses</h3>
+                        <p ng-repeat="n in $ctrl.selectedVal['Layer Detail Site Uses Name']">
+                            {{$last ? n : n + ','}}
+                        </p>
+                    </div>
+                </md-list-item>
+
+                <md-list-item class="">
                     <div class="md-list-item-text">
                         <h3>Sources</h3>
                         <p ng-repeat="n in $ctrl.selectedVal['Sources Name']">

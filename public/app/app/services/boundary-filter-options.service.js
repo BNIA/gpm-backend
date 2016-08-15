@@ -37,7 +37,6 @@ export default class BoundaryFilterOptionsService {
   _preprocessBoundaryFiltersData(data) {
     var ids = reduce(data, (res, val, key) => {
       var sub = [];
-      console.log(val);
       if (val.on) {
         forEach(val.data, v => {
           if (v.on === true) {
@@ -48,7 +47,6 @@ export default class BoundaryFilterOptionsService {
       res = union(res, sub);
       return res;
     }, []);
-    console.log(ids);
     return ids;
   }
 
@@ -75,7 +73,6 @@ export default class BoundaryFilterOptionsService {
       };
       return res;
     }, {});
-    console.log(groups);
     return groups;
   }
 

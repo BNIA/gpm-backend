@@ -65,11 +65,11 @@ export default class AppController {
     this.selectedKey = obj['Layer Detail Name'] ||
     obj['Layer Detail Address'] ||
     obj['Layer Detail Type'] + " " + obj['Site Id'];
+    console.log(obj);
     this.selectedVal = obj;
     this.toggleSidenav('right', true);
   }
   selectCollection(value, key) {
-    console.log('collection selected');
     this.selectedKey = key;
     this.selectedVal = value;
     this.toggleSidenav('right', true);
