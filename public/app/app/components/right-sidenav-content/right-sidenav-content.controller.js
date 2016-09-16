@@ -23,9 +23,14 @@ export default class RightSidenavContentController {
     title += '-toolbar';
   }
   select(item) {
+    console.log(item);
+    item.on = !item.on;
     if (item.class === 'Layer Filter Option') {
       this.onSelectLayerFilterOption({item});
     }
+  }
+  checkItem(item) {
+    return item.on;
   }
   showVitalSignsIndicatorInfo(item, ev) {
     return this.showDialog({

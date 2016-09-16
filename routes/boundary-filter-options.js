@@ -20,6 +20,7 @@ router.post('/boundaries', (req, res, next) => {
     'boundaryDetail'
   ]}).then(collection => {
     var geo = collection.toGeoJSON({pretty: true});
+    console.log("okay");
     res.json(geo);
     next();
   });

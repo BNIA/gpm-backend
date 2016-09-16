@@ -5,6 +5,7 @@ import controller from './overlay.controller';
 let bindings = {
   boundaryFilters: '<',
   selectedIndicator: '<',
+  selectedAddress: '<',
   onSelectBoundaryFilter: '&',
   onSelectBoundaryFiltersMore: '&',
   onSelectIndicator: '&',

@@ -19,6 +19,8 @@ import ToolbarVertMenuComponent from
   './components/toolbar-vert-menu/toolbar-vert-menu.component';
 import CarouselComponent from
   './components/carousel/carousel.component';
+import LegendCardComponent from
+  './components/legend-card/legend-card.component';
 
 // Import services
 import LayerFilterOptionsService from
@@ -31,6 +33,8 @@ import VitalSignsService from
   './services/vital-signs.service.js';
 import GeocoderService from
   './services/geocoder.service';
+import CircleService from
+  './services/circle.service';
 
 var dependencies = [
   'ngMaterial',
@@ -59,6 +63,7 @@ app.component('rightSidenavContent', RightSidenavContentComponent);
 app.component('overlay', OverlayComponent);
 app.component('toolbarVertMenu', ToolbarVertMenuComponent);
 app.component('carousel', CarouselComponent);
+app.component('legendCard', LegendCardComponent);
 
 // Load services into the app
 app.service('layerFilterOptionsService', LayerFilterOptionsService);
@@ -66,6 +71,7 @@ app.service('layersService', LayersService);
 app.service('boundaryFilterOptionsService', BoundaryFilterOptionsService);
 app.service('vitalSignsService', VitalSignsService);
 app.service('geocoderService', GeocoderService);
+app.service('circleService', CircleService);
 
 // Bootstrap the app
 angular.element(document).ready(() => {

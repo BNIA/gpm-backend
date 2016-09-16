@@ -1,7 +1,12 @@
+import forEach from 'lodash/forEach';
+import cloneDeep from 'lodash/cloneDeep';
+
 export default class AppController {
   constructor($scope, $rootScope, $route, $location, $mdSidenav, $mdMedia,
     FileSaver, Blob, cloudinary, layerFilterOptionsService, layersService,
-    boundaryFilterOptionsService, vitalSignsService, geocoderService) {
+    boundaryFilterOptionsService, vitalSignsService, geocoderService,
+    circleService) {
+    var self = this;
     this.$scope = $scope;
     this.$rootScope = $rootScope; // The Root Scope of the app
     this.$route = $route;
@@ -16,6 +21,7 @@ export default class AppController {
     this.boundaryFilterOptionsService = boundaryFilterOptionsService;
     this.vitalSignsService = vitalSignsService;
     this.geocoderService = geocoderService;
+    this.circleService = circleService;
 
     this.disqusConfig = {
       disqus_shortname: 'greenpatternmap',
@@ -35,6 +41,25 @@ export default class AppController {
     this.selectedVal = null;
     this.selectedIndicator = null;
     this.path = null;
+    this.boundaries = {
+      data: {type: 'FeatureCollection', features: []},
+      style: function(feature) {
+        var fillColor = 'rgba(0,0,0,.5)';
+        var color = 'black';
+
+        return {
+          fillColor: fillColor,
+          weight: 2,
+          opacity: 1,
+          color: color,
+          dashArray: '3',
+          fillOpacity: 0.7
+        };
+      }
+    };
+    this.layerFiltersConfig = {};
+    this.circleBoundaries = null;
+    this.boundaryText = null;
 
     // Assign to scope for children to access
     this.$rootScope.title = this.title;
@@ -42,6 +67,23 @@ export default class AppController {
       this.layersService.getLayerDetail(layer).then(layerDetail => {
         this.selectLayerDetail(layerDetail);
       });
+    });
+    this.$rootScope.$on('boundaryOver', (event, feature) => {
+      console.log(feature);
+      if (feature.properties && feature.properties.Name) {
+        self.boundaryText = feature.properties.Name;
+      } else if (feature.properties && feature.properties.communityStatisticalArea) {
+        self.boundaryText =
+          feature.properties.communityStatisticalArea.boundary.name + ' - ' +
+          feature.properties.value;
+      } else if (feature.properties && feature.properties.is_circle === true) {
+        self.boundaryText = self.selectedAddress.formatted_address;
+      }
+    });
+
+    this.$rootScope.$on('boundaryOut', event => {
+      console.log("out");
+      self.boundaryText = null;
     });
   }
   reroute(route) {
@@ -75,9 +117,27 @@ export default class AppController {
     this.toggleSidenav('right', true);
   }
   selectLayerFilterOption(item) {
-    this.layerFilterOptionsService.getLayers(this.layerFilters)
+    var opt = {};
+    if (this.selectedAddress) {
+      opt.radius = this.selectedAddress.geometry.location;
+    }
+    this.layerFilterOptionsService.getLayers(this.layerFilters,
+      opt)
       .then(layers => {
         this.setLayers(layers);
+      })
+      .then(() => {
+        var q;
+        if (opt.radius) {
+          q = this.circleService.getCircle(opt.radius).then(circle => {
+            this.circleBoundaries = circle;
+            return this.setBoundaries(this.boundaries);
+          });
+        } else {
+          this.circleBoundaries = null;
+          q = this.setBoundaries(this.boundaries);
+        }
+        return q;
       });
   }
   selectBoundaryFilter(value) {
@@ -113,6 +173,7 @@ export default class AppController {
   selectVitalSignsIndicator(value) {
     this.vitalSignsService.getBoundary(value)
       .then(boundaries => {
+        this.selectedIndicator = value;
         this.setVitalSignsBoundary(boundaries, value);
       });
   }
@@ -124,11 +185,24 @@ export default class AppController {
     this.selectedVitalSignsBoundary = boundaries;
     this.selectedIndicator = indicator;
     this.boundaries = boundaries;
-    this.$rootScope.$broadcast('setBoundaries', boundaries);
+    console.log(boundaries);
+    var bds = cloneDeep(boundaries, true);
+    if (this.circleBoundaries !== null && this.circleBoundaries !== undefined) {
+      forEach(this.circleBoundaries.features, f => {
+        bds.data.features.push(f);
+      });
+    }
+    this.$rootScope.$broadcast('setBoundaries', bds);
   }
   setBoundaries(boundaries) {
     this.boundaries = boundaries;
-    this.$rootScope.$broadcast('setBoundaries', boundaries);
+    var bds = cloneDeep(boundaries, true);
+    if (this.circleBoundaries !== null && this.circleBoundaries !== undefined) {
+      forEach(this.circleBoundaries.features, f => {
+        bds.data.features.push(f);
+      });
+    }
+    this.$rootScope.$broadcast('setBoundaries', bds);
   }
   openVertMenu($mdOpenMenu, ev) {
     this.originatorEv = ev;
@@ -156,6 +230,11 @@ export default class AppController {
   }
   searchAddress(address) {
     return this.geocoderService.geocode(address).then(data => data);
+  }
+  selectAddress(address) {
+    this.selectedAddress = address;
+    this.selectLayerFilterOption({});
+    // console.log(address);
   }
   $onInit() {
     this.layerFilterOptionsService.getLayerFilters().then(data => {
@@ -198,5 +277,6 @@ AppController.$inject = [
   'layersService',
   'boundaryFilterOptionsService',
   'vitalSignsService',
-  'geocoderService'
+  'geocoderService',
+  'circleService'
 ];

@@ -6,7 +6,10 @@ var _ = require('lodash');
 router.get('/indicators', (req, res, next) => {
   return Models.VitalSignsIndicators.query(qb => qb.select())
   .fetch({
-    withRelated: ['vitalSignsSection']
+    withRelated: [
+      'vitalSignsSection',
+      'vitalSignsDataBreaks.vitalSignsColor'
+    ]
   })
   .then(rows => rows.toJSON({pretty: true}))
   .then(rows => {

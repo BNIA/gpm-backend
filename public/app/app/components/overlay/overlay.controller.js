@@ -1,6 +1,15 @@
+import BottomSheetController from './bottom-sheet.controller';
+import angular from 'angular';
+
+var BottomSheetFactory = function() {
+  return new BottomSheetController();
+};
+
 export default class OverlayController {
-  constructor($element) {
+  constructor($element, $mdMedia, $mdBottomSheet) {
     this.$element = $element;
+    this.$mdMedia = $mdMedia;
+    this.$mdBottomSheet = $mdBottomSheet;
     this.originatorEv = null;
   }
   $onInit() {
@@ -23,6 +32,21 @@ export default class OverlayController {
   selectIndicatorMore(value, key) {
     this.onSelectIndicatorMore({value, key});
   }
+  showBottomSheet() {
+    var locals = {
+      selectedIndicator: this.selectedIndicator,
+      selectedAddress: this.selectedAddress
+    };
+
+    this.$mdBottomSheet.show({
+      templateUrl:  'app/app/components/overlay/bottom-sheet.html',
+      controller: BottomSheetController,
+      controllerAs: '$ctrl',
+      bindToController: true,
+      locals: locals,
+      parent: angular.element(document.body),
+    });
+  }
 }
 
-OverlayController.$inject = ["$element"];
+OverlayController.$inject = ["$element", "$mdMedia", "$mdBottomSheet"];

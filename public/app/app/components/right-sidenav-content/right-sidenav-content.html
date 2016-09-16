@@ -18,7 +18,7 @@
                             {{n['Layer Filter']['Name']}}
                             <md-tooltip ng-if="n['Layer Filter']['Description'] !== undefined" md-delay="1000" md-direction="left">{{n['Layer Filter']['Description']}}</md-tooltip>
                         </p>
-                        <md-checkbox class="md-secondary my-right-sidenav-checkbox" ng-model="n.on" ng-click="$ctrl.select(n)" flex="10"></md-checkbox>
+                        <md-checkbox class="md-secondary my-right-sidenav-checkbox" ng-checked="$ctrl.checkItem(n)" ng-click="$ctrl.select(n)" flex="10"></md-checkbox>
                     </md-list-item>
                 </md-list>
             </div>
@@ -59,7 +59,7 @@
         <md-list>
           <md-radio-group ng-model="$ctrl.vitalSignsSections.selected">
           <md-list-item ng-repeat="o in $ctrl.selectedVal.data" layout="row" ng-click="$ctrl.selectVitalSignsIndicator(o, true)">
-            <md-icon md-font-set="md" ng-click="$ctrl.showVitalSignsIndicatorInfo(o, $event)" flex-order="3" flex="10">info_outline</md-icon>
+            <md-icon class="my-info-button" md-font-set="md" ng-click="$ctrl.showVitalSignsIndicatorInfo(o, $event)" flex-order="3" flex="10">info_outline</md-icon>
             <p flex-order="2" flex="80">{{o['Name']}}</p>
             <md-radio-button ng-value="o.Name" ng-model="o.on" flex-order="1" flex="10" ng-click="$ctrl.selectVitalSignsIndicator(o)"></md-radio-button>
           </md-list-item>

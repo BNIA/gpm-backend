@@ -12,5 +12,6 @@ module.exports = {
   layerFilterOptions: require('./layer-filter-options'),
   boundaryFilterOptions: require('./boundary-filter-options'),
   vitalSigns: require('./vital-signs'),
+  circle: require('./circle'),
   test: require('./test')
 };

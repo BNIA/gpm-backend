@@ -37,3 +37,17 @@
 
 </md-menu-content>
 </md-menu>
+<div class="my-top-left-container" flex>
+  <legend-card
+    selected-indicator="$ctrl.selectedIndicator"
+    selected-address="$ctrl.selectedAddress"
+    ng-show="($ctrl.$mdMedia('gt-md'))"
+    >
+  </legend-card>
+</div>
+<md-button
+  class="md-fab my-top-right-ctrl-2"
+  ng-show="(!$ctrl.$mdMedia('gt-md'))"
+  ng-click="$ctrl.showBottomSheet()">
+  <md-icon md-font-set="md">toc</md-icon>
+</md-button>

@@ -3,7 +3,7 @@ import groupBy from 'lodash/groupBy';
 import mapValues from 'lodash/mapValues';
 import get from 'lodash/get';
 
-export default class BoundariesService {
+export default class VitalSignsService {
   constructor($http) {
     this.$http = $http;
     this._url = '/api/vital-signs';
@@ -65,17 +65,23 @@ export default class BoundariesService {
     data = {
       data: data,
       style: function(feature) {
+        var color = 'white';
         var fillColor = get(
           feature,
           'properties.vitalSignsDataBreak.vitalSignsColor.value',
           'rgba(0,0,0,0)'
       );
+        console.log(feature);
+        if (feature.properties && feature.properties.is_circle === true) {
+          fillColor = 'rgba(255,255,255,.50)';
+          color = 'black';
+        }
 
         return {
           fillColor: fillColor,
           weight: 2,
           opacity: 1,
-          color: 'white',
+          color: color,
           dashArray: '3',
           fillOpacity: 0.7
         };
@@ -94,4 +100,4 @@ export default class BoundariesService {
   }
 }
 
-BoundariesService.$inject = ["$http"];
+VitalSignsService.$inject = ["$http"];

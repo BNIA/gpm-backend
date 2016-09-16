@@ -15,6 +15,8 @@ router.get('/', (req, res, next) => {
 
 router.post('/layers', (req, res, next) => {
   var ids = JSON.parse(req.body.ids);
+  var opts = JSON.parse(req.body.options);
+  console.log(opts);
   Models.LayerFilterOptions.query(qb => qb.whereIn('id', ids))
   .fetch({withRelated: [
     'layerFilter',
@@ -36,11 +38,22 @@ router.post('/layers', (req, res, next) => {
   })
   .map(models => _.map(models, m => m.get('id')))
   .reduce((result, array) => _.union(array, result), [])
-  .then(ids => Models.Layers.query(qb => qb.whereIn('id', ids)).fetch({
+  .then(ids => Models.Layers.query(qb => {
+    qb.whereIn('id', ids);
+    if (opts.radius) {
+      qb.whereRaw('ST_DWithin(??, ST_SetSRID(ST_MakePoint(?,?), ?), ?)',
+    ['geometry', opts.radius.lng, opts.radius.lat, '4326', '.015']);
+    }
+  }).fetch({
     withRelated: 'layerDetail.status'
   }))
   .then(collection => collection.toGeoJSON({pretty: true}))
+  .then(geojson => {
+    console.log(geojson);
+    return geojson;
+  })
   .then(geojson => res.json(geojson)).then(() => {
+
     next();
   });
 });

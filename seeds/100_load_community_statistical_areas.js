@@ -1,10 +1,12 @@
 var fs = require('fs');
 var path = require('path');
+var simplify = require('simplify-geojson');
 
 exports.seed = function(knex, Promise) {
   var dataPath = path.join(__dirname,
   './data/community_statistical_areas.geojson');
   var data = JSON.parse(fs.readFileSync(dataPath));
+  // data = simplify(data, 100);
   var features = data.features;
 
   return knex('boundaries').del().where({
@@ -30,11 +32,12 @@ exports.seed = function(knex, Promise) {
   }).map(feature => {
     return knex('boundaries').insert({
       name: feature.properties.name,
-      geojson: feature.geojson,
+      geojson: knex.raw('(?||ST_AsGeoJSON(st_transform(st_simplify(st_transform(ST_SetSRID(ST_GeomFromGeoJSON(?::text), ?), ?), ?), ?))||?)::json',
+        ['{"type":"Feature","geometry":', feature.geometry,'4326', '2249', '300', '4326', '}']),
       boundary_detail_type: 'community_statistical_areas',
       boundary_detail_id: feature.boundary_detail_id,
-      geometry: knex.raw('ST_SetSRID(ST_GeomFromGeoJSON(?::text), ?)',
-        [feature.geometry, '4326']),
+      geometry: knex.raw('st_transform(st_simplify(st_transform(ST_SetSRID(ST_GeomFromGeoJSON(?::text), ?), ?), ?), ?)',
+        [feature.geometry, '4326', '2249', '300', '4326']),
       updated_at: knex.fn.now()
     });
   });

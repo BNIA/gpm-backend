@@ -20,7 +20,7 @@ System.config({
     "angular-cloudinary": "npm:angular-cloudinary@1.2.4",
     "angular-file-saver": "npm:angular-file-saver@1.1.2",
     "angular-jk-carousel": "npm:angular-jk-carousel@0.1.5",
-    "angular-material": "github:angular/bower-material@1.0.9",
+    "angular-material": "github:angular/bower-material@1.1.0",
     "angular-messages": "github:angular/bower-angular-messages@1.5.3",
     "angular-route": "github:angular/bower-angular-route@1.5.8",
     "angular-simple-logger": "npm:angular-simple-logger@0.1.7",
@@ -51,7 +51,7 @@ System.config({
     "github:angular/bower-angular-route@1.5.8": {
       "angular": "github:angular/bower-angular@1.5.3"
     },
-    "github:angular/bower-material@1.0.9": {
+    "github:angular/bower-material@1.1.0": {
       "angular": "github:angular/bower-angular@1.5.8",
       "angular-animate": "github:angular/bower-angular-animate@1.5.3",
       "angular-aria": "github:angular/bower-angular-aria@1.5.3",

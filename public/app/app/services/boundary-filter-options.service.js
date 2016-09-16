@@ -78,12 +78,15 @@ export default class BoundaryFilterOptionsService {
 
   _extractBoundariesData(data) {
     data = data.data || {};
-
     data = {
       data: data,
       style: function(feature) {
+        var bdt = null;
+        var color = 'white';
         var fillColor;
-        var bdt = feature.properties['Boundary Detail Type'];
+        if (feature.properties && feature.properties['Boundary Detail Type']) {
+          bdt = feature.properties['Boundary Detail Type'];
+        }
 
         if (bdt === 'Community Statistical Areas') {
           fillColor = 'red';
@@ -91,19 +94,21 @@ export default class BoundaryFilterOptionsService {
           fillColor = 'green';
         } else if (bdt === 'Subwatersheds') {
           fillColor = 'blue';
+        } else {
+          fillColor = 'rgba(0,0,0,.5)';
+          color = 'black';
         }
 
         return {
           fillColor: fillColor,
           weight: 2,
           opacity: 1,
-          color: 'white',
+          color: color,
           dashArray: '3',
           fillOpacity: 0.7
         };
       }
     };
-
     return data;
     // var len = data.length;
     // var markers = map(data, d => {

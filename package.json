@@ -55,7 +55,7 @@
       "angular-cloudinary": "npm:angular-cloudinary@^1.2.4",
       "angular-file-saver": "npm:angular-file-saver@^1.1.2",
       "angular-jk-carousel": "npm:angular-jk-carousel@^0.1.5",
-      "angular-material": "github:angular/bower-material@^1.0.9",
+      "angular-material": "github:angular/bower-material@^1.1.0",
       "angular-messages": "github:angular/bower-angular-messages@1.5.3",
       "angular-route": "github:angular/bower-angular-route@^1.5.8",
       "angular-simple-logger": "npm:angular-simple-logger@^0.1.7",

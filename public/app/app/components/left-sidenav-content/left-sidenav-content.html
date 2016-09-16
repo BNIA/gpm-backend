@@ -36,7 +36,7 @@
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky my-nav-subhead">Vital Signs</md-subheader>
     <md-list>
-      <md-list-item ng-repeat="(k,v) in $ctrl.vitalSignsSections">
+      <md-list-item ng-repeat="(k,v) in $ctrl.vitalSignsSections" ng-if="k !== 'selected'">
         <md-button
           ng-class="($ctrl.selectedKey == k) ?
             'my-nav-button md-focused' :

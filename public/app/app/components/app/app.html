@@ -34,6 +34,8 @@
           <h2 ng-show="($ctrl.path == '/home' || ($ctrl.path == '/map' && !$ctrl.$mdMedia('gt-md'))) && $ctrl.$mdMedia('gt-sm')">
               <span ng-show="$ctrl.path">{{$ctrl.title}}</span>
           </h2>
+          <span style="width:20px;"></span>
+          <span style="font-size:12px;">{{$ctrl.boundaryText}}</span>
           <span flex></span>
           <!-- <input type="search" placeholder="Search"> -->
           <md-autocomplete ng-show="$ctrl.path == '/map' && $ctrl.$mdMedia('gt-sm')"
@@ -41,18 +43,21 @@
             placeholder="Search by Address..."
             md-search-text="$ctrl.searchText"
             md-items="item in $ctrl.searchAddress($ctrl.searchText)"
-            md-selected-item="$ctrl.selectedItem"
+            md-selected-item="$ctrl.selectedAddress"
+            md-selected-item-change="$ctrl.selectAddress(item)"
             md-item-text="item.formatted_address"
             >
             <md-item-template>
-              <span md-highlight-text="$ctrl.searchText" md-highlight-flags="^i">{{item.formatted_address}}</span>
+              <span md-highlight-text="$ctrl.searchText" md-highlight-flags="^i"
+              >
+              {{item.formatted_address}}
+            </span>
             </md-item-template>
             <md-button
               aria-label="menu"
               class="md-icon-button"
               ng-click="$ctrl.toggleSidenav('left')"
               ng-show="$ctrl.path == '/map' && !($ctrl.$mdMedia('gt-md'))">
-              <md-icon md-font-set="md">menu</md-icon>
             </md-button>
           </md-autocomplete>
           <md-button

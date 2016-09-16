@@ -37,10 +37,13 @@ export default class LayerFilterOptionsService {
       .then(this._extractLayerFiltersData, this._handleError);
   }
 
-  getLayers(data) {
+  getLayers(data, options) {
+    options = options || {};
+    console.log(options);
     var ids = this._preprocessLayerFiltersData(data);
     var query = {
-      ids: JSON.stringify(ids)
+      ids: JSON.stringify(ids),
+      options: JSON.stringify(options)
     };
     return this.$http.post(this._layersUrl, query)
       .then(this._extractLayersData)

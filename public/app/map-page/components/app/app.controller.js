@@ -4,6 +4,7 @@ import {baltimore, cartodbPositron as tileChoice} from './parameters.js';
 
 export default class AppController {
   constructor($scope, $rootScope, $element) {
+    var self = this;
     this.$scope = $scope;
     this.$rootScope = $rootScope;
     this.$element = $element;
@@ -27,12 +28,28 @@ export default class AppController {
       this.onSetBoundaries(boundaries);
     });
     this.$scope.$on('leafletDirectiveMarker.click', (event, marker) => {
-      console.log("HI");
       this.emitLayerClick(marker.model.properties || {});
     });
+
+    this.$scope.$on("leafletDirectiveGeoJson.mouseover", (ev, leafletPayload) => {
+      console.log(leafletPayload);
+      self.emitBoundaryOver(
+        leafletPayload.leafletObject.feature, leafletPayload.leafletEvent);
+    });
+
+    this.$scope.$on("leafletDirectiveGeoJson.mouseout", (ev) => {
+      self.emitBoundaryOut(ev);
+    });
+
   }
   emitLayerClick(layer) {
     this.$rootScope.$emit('layerClick', layer);
+  }
+  emitBoundaryOver(feature, event) {
+    this.$rootScope.$emit('boundaryOver', feature);
+  }
+  emitBoundaryOut(event) {
+    this.$rootScope.$emit('boundaryOut', event);
   }
   onSetBoundaries(boundaries) {
     console.log(boundaries);

@@ -34,6 +34,7 @@ app.use('/api/images', routes.images);
 app.use('/api/layer-filter-options', routes.layerFilterOptions);
 app.use('/api/boundary-filter-options', routes.boundaryFilterOptions);
 app.use('/api/vital-signs', routes.vitalSigns);
+app.use('/api/circle', routes.circle);
 app.use('/test', routes.test);
 
 app.listen(process.env.PORT || 8080, () => {

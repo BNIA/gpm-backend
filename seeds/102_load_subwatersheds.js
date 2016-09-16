@@ -33,11 +33,12 @@ exports.seed = function(knex, Promise) {
   }).map(feature => {
     return knex('boundaries').insert({
       name: feature.properties.name,
-      geojson: feature.geojson,
+      geojson: knex.raw('(?||ST_AsGeoJSON(st_transform(st_simplify(st_transform(ST_SetSRID(ST_GeomFromGeoJSON(?::text), ?), ?), ?), ?))||?)::json',
+        ['{"type":"Feature","geometry":', feature.geometry,'4326', '2249', '300', '4326', '}']),
       boundary_detail_type: 'subwatersheds',
       boundary_detail_id: feature.boundary_detail_id,
-      geometry: knex.raw('ST_SetSRID(ST_GeomFromGeoJSON(?::text), ?)',
-        [feature.geometry, '4326']),
+      geometry: knex.raw('st_transform(st_simplify(st_transform(ST_SetSRID(ST_GeomFromGeoJSON(?::text), ?), ?), ?), ?)',
+        [feature.geometry, '4326', '2249', '300', '4326']),
       updated_at: knex.fn.now()
     });
   });
