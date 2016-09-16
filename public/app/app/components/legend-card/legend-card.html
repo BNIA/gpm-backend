@@ -1,0 +1,98 @@
+<div class="my-legend-card">
+  <md-card style="width:250px;" >
+       <!-- <md-toolbar class="my-toolbar">
+         <div class="md-toolbar-tools">
+             <md-button
+               aria-label="menu"
+               class="md-icon-button"
+               ng-click="$ctrl.toggleSidenav('left')"
+               ng-show="($ctrl.$mdMedia('gt-md'))">
+               <md-icon md-font-set="md">menu</md-icon>
+             </md-button>
+       </md-toolbar> -->
+    <!-- <md-card-header>
+      <md-card-title-text>
+        <md-card-header-text>
+          <span class="md-title">Title</span>
+          <span class="md-subhead">subhead</span>
+        </md-card-header-text>
+
+    </md-card-header> -->
+      <md-card-content>
+        <md-list class="md-dense" flex>
+          <!-- <md-subheader class="md-no-sticky">Stormwater Remediation Sites</md-subheader> -->
+          <md-list-item class="md-2-line">
+            <div class="md-list-item-text">
+              <h3>Status</h3>
+              <p>Active</p>
+            </div>
+              <div class="md-secondary leaflet-marker-icon layer-point stormwater-remediation-sites-layer var-1"
+                       style="width: 12px; height: 12px; position: relative; margin-left: 16px; margin-right: 0px;">
+                     </div>
+
+          </md-list-item>
+          <md-list-item class="md-2-line">
+            <div class="md-list-item-text">
+              <h3>Status</h3>
+              <p>Identified</p>
+            </div>
+              <div class="md-secondary leaflet-marker-icon layer-point stormwater-remediation-sites-layer var-2"
+                       style="width: 12px; height: 12px; position: relative; margin-left: 16px; margin-right: 0px;">
+                     </div>
+
+          </md-list-item>
+        <!-- <md-subheader class="md-no-sticky">Community Managed Open Spaces</md-subheader> -->
+        <md-list-item class="md-2-line">
+            <div class="md-list-item-text">
+            <h3>CMOS</h3>
+          </div>
+            <div class="md-secondary leaflet-marker-icon layer-point community-managed-open-spaces-layer"
+                     style="width: 12px; height: 12px; position: relative; margin-left: 16px; margin-right: 0px;">
+                   </div>
+
+        </md-list-item>
+        <md-list-item class="md-2-line">
+          <div class="md-list-item-text">
+            <h3>CSAs</h3>
+          </div>
+          <div class="md-secondary"
+            style="width: 12px; height: 12px; position: relative; margin-left: 16px; margin-right: 0px; background-color: red">
+          </div>
+        </md-list-item>
+        <md-list-item class="md-2-line">
+          <div class="md-list-item-text">
+            <h3>NSAs</h3>
+          </div>
+          <div class="md-secondary"
+            style="width: 12px; height: 12px; position: relative; margin-left: 16px; margin-right: 0px; background-color: green">
+          </div>
+        </md-list-item>
+        <md-list-item class="md-2-line">
+          <div class="md-list-item-text">
+            <h3>Subwatersheds</h3>
+          </div>
+          <div class="md-secondary"
+            style="width: 12px; height: 12px; position: relative; margin-left: 16px; margin-right: 0px; background-color: blue">
+          </div>
+        </md-list-item>
+        <md-list-item class="md-2-line" ng-if="$ctrl.selectedAddress">
+          <div class="md-list-item-text">
+            <h3>Address</h3>
+          </div>
+          <div class="md-secondary"
+            style="width: 12px; height: 12px; position: relative; margin-left: 16px; margin-right: 0px; background-color: grey;border-color:black; border-width:1px;">
+          </div>
+        </md-list-item>
+        <md-subheader class="md-no-sticky" ng-if="$ctrl.selectedIndicator">{{$ctrl.selectedIndicator.Name}}</md-subheader>
+        <md-list-item class="md-2-line" ng-if="$ctrl.selectedIndicator" ng-repeat="b in $ctrl.selectedIndicator['Vital Signs Data Breaks']">
+          <div class="md-list-item-text">
+            <h3>{{b['Lower Bound']}} - {{b['Upper Bound']}}</h3>
+          </div>
+          <div class="md-secondary"
+            style="width: 12px; height: 12px; position: relative; margin-left: 16px; margin-right: 0px; background-color: {{b['Vital Signs Color'].Value}}">
+          </div>
+        </md-list-item>
+        </md-list>
+      </md-card-content>
+  </md-card>
+</div>
