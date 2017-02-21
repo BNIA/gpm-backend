@@ -1,0 +1,17 @@
+var path = require('path');
+var fs = require('fs');
+
+exports.seed = function(knex, Promise) {
+  var dataPath = path.join(__dirname, './data/wtrshd_bfts.json');
+  var data = JSON.parse(fs.readFileSync(dataPath));
+  console.log('logging seeds wtrsh bfts');
+  console.log(data);
+  return knex('wtrshd_bfts').del().return(data)
+    .map(row => {
+      return knex('wtrshd_bfts').insert({
+        id: row.id,
+        name: row.name,
+        description: row.description
+      });
+    });
+};
