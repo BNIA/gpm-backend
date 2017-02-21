@@ -4,6 +4,7 @@ export default class CircleService {
     this._url = '/api/circle';
   }
   getCircle(data) {
+console.log('services.cirlce getCircle');
     var query = JSON.stringify({
       point: data
     });
@@ -12,9 +13,11 @@ export default class CircleService {
   }
 
   _extractCircleData(data) {
+console.log('services.circle extractCircleData');
     return data.data || {};
   }
   _handleError(error) {
+console.log('services.circle error');
     let errMsg = error.message || 'Server error';
     console.log(errMsg);
   }

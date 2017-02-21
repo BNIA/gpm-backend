@@ -11,20 +11,22 @@ export default class BoundaryFilterOptionsService {
   constructor($http) {
     this.$http = $http;
     this._url = '/api/boundary-filter-options';
-    this._boundariesUrl = '/api/boundary-filter-options/boundaries';
-  }
+    this._boundariesUrl = '/api/boundary-filter-options/boundaries'; }
 
   getBoundaryFilterOptions() {
+console.log('services.BFO getBoundaryFilterOptions()');
     return this.$http.get(this._url)
       .then(this._extractBoundaryFilterOptionsData, this._handleError);
   }
 
   getBoundaryFilters() {
+console.log('services.BFO getBoundaryFilters');
     return this.$http.get(this._url)
       .then(this._extractBoundaryFiltersData, this._handleError);
   }
 
   getBoundaries(data) {
+console.log('services.BFO getBoundaries');
     var ids = this._preprocessBoundaryFiltersData(data);
     var query = {
       ids: JSON.stringify(ids)
@@ -35,6 +37,7 @@ export default class BoundaryFilterOptionsService {
   }
 
   _preprocessBoundaryFiltersData(data) {
+console.log('services.BFO preprocessBoundaryFiltersData');
     var ids = reduce(data, (res, val, key) => {
       var sub = [];
       if (val.on) {
@@ -51,11 +54,13 @@ export default class BoundaryFilterOptionsService {
   }
 
   _extractBoundaryFilterOptionsData(data) {
+console.log('services.bfo extractboundaryfilteroptionsdata');
     data = data.data || {};
     return data;
   }
 
   _extractBoundaryFiltersData(data) {
+console.log('serices.bfo extractboundaryfiltersdata');
     data = data.data || {};
 
     data = map(data, d => {
@@ -77,6 +82,7 @@ export default class BoundaryFilterOptionsService {
   }
 
   _extractBoundariesData(data) {
+console.log('services.bfo extractBoundariesData');
     data = data.data || {};
     data = {
       data: data,
@@ -129,12 +135,11 @@ export default class BoundaryFilterOptionsService {
     //   return m;
     // });
     // return markers;
-    return null;
   }
 
   _handleError(error) {
     let errMsg = error.message || 'Server error';
-    console.log(errMsg);
+    console.log('services.bfo'+errMsg);
   }
 }
 
