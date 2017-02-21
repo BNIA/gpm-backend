@@ -1,9 +1,13 @@
+// Loads DB environment variables from .env file into process.env
 var dotenv = require('dotenv');
+// MVC serverside framework (handles routing, requests and views)
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var app = express();
 dotenv.config();
+
+app.use(require('browser-logger')({pretty:false}));
 
 var routes = require('./routes');
 
@@ -14,6 +18,8 @@ app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// setting found in config folder
+// Not sure what it does yet.
 if (env === 'production') {
   app.locals.prod = true;
   app.locals.dev = false;
@@ -21,7 +27,8 @@ if (env === 'production') {
   app.locals.prod = false;
   app.locals.dev = true;
 }
-
+//First parameter is an alias url being called
+//second parameter is a file outside the public folder being redirected to
 app.use('/', routes.app);
 app.use('/api/layers', routes.layers);
 app.use('/api/layers/stormwaters', routes.stormwaters);
