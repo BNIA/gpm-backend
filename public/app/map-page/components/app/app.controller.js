@@ -22,36 +22,44 @@ export default class AppController {
     });
 
     this.$rootScope.$on('setLayers', (event, layers) => {
+console.log('map-page-app-controller onSetLayer');
       this.onSetLayers(layers);
     });
     this.$rootScope.$on('setBoundaries', (event, boundaries) => {
       this.onSetBoundaries(boundaries);
+console.log('map-page-app-controller onSetBoundaries');
     });
     this.$scope.$on('leafletDirectiveMarker.click', (event, marker) => {
       this.emitLayerClick(marker.model.properties || {});
+console.log('map-page-app-controller emitLayerClick')
     });
 
     this.$scope.$on("leafletDirectiveGeoJson.mouseover", (ev, leafletPayload) => {
-      console.log(leafletPayload);
+      console.log('map-page-app-controller leafletMouseover');
       self.emitBoundaryOver(
         leafletPayload.leafletObject.feature, leafletPayload.leafletEvent);
     });
 
     this.$scope.$on("leafletDirectiveGeoJson.mouseout", (ev) => {
       self.emitBoundaryOut(ev);
+console.log('map-page-app-controller leafletmouseOut');
     });
 
   }
   emitLayerClick(layer) {
+console.log('map-page-app-controller emitLayerClick');
     this.$rootScope.$emit('layerClick', layer);
   }
   emitBoundaryOver(feature, event) {
+console.log('map-page-app-controller emitBoundaryOver');
     this.$rootScope.$emit('boundaryOver', feature);
   }
   emitBoundaryOut(event) {
+console.log('map-page-app-controller emitBoundaryOut');
     this.$rootScope.$emit('boundaryOut', event);
   }
   onSetBoundaries(boundaries) {
+console.log('map-page-app-controller onSetBoundaries');
     console.log(boundaries);
     this.geojson = boundaries;
     angular.extend(this.$scope, {
@@ -59,6 +67,7 @@ export default class AppController {
     });
   }
   onSetLayers(layers) {
+console.log('map-page-app-controller onSetLayers');
     this.markers = layers;
     angular.extend(this.$scope, {
       baltimore: baltimore,
@@ -71,6 +80,7 @@ export default class AppController {
     });
   }
   $onInit() {
+console.log('map-page-app-controller onINIT()');
     this.$element.addClass('flex layout-column');
   }
   $routerOnActivate() {}
