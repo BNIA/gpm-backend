@@ -3,7 +3,9 @@ var fs = require('fs');
 
 exports.seed = function(knex, Promise) {
   var dataPath = path.join(__dirname, './data/layer_filter_types.json');
+	console.log('logging seed loadlayerfilteroptions');
   var data = JSON.parse(fs.readFileSync(dataPath));
+console.log(data);
   return knex('layer_filter_options').del().then(() => {
     return Promise.map(data, row => {
       return knex(row.name)

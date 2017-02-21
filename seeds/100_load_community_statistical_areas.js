@@ -8,7 +8,8 @@ exports.seed = function(knex, Promise) {
   var data = JSON.parse(fs.readFileSync(dataPath));
   // data = simplify(data, 100);
   var features = data.features;
-
+  console.log('logging community statistical areas');
+  console.log(data);
   return knex('boundaries').del().where({
     boundary_detail_type: 'community_statistical_areas'
   }).then(() => {

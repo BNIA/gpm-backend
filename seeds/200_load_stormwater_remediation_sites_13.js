@@ -6,7 +6,8 @@ exports.seed = function(knex, Promise) {
   var dataPath = path.join(__dirname,
     './data/stormwater_remediation_sites_13.csv');
   var data = helpers.readCsv(dataPath);
-
+  console.log('logging seed stormwater remediation sites');
+  console.log(data);
   return knex('layers').select('id').where(
     {layer_detail_type: 'stormwater_remediation_sites'
   }).map(row => {
@@ -54,6 +55,8 @@ exports.seed = function(knex, Promise) {
       .returning('id')
       .then(id => {
         row.stormwater_remediation_site_id = parseInt(id, 10);
+console.log('cmos row1');
+//console.log(row);
         return row;
       });
   }).map(row => {
@@ -77,6 +80,8 @@ exports.seed = function(knex, Promise) {
     }).returning('id')
       .then(id => {
         row.layer_id = parseInt(id, 10);
+console.log('cmos row2');
+//console.log(row);
         return row;
       });
   }).map(row => {

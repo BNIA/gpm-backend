@@ -6,7 +6,8 @@ exports.seed = function(knex, Promise) {
   var dataPath = path.join(__dirname,
     './data/load_community_managed_open_spaces_11.csv');
   var data = helpers.readCsv(dataPath);
-
+  console.log('logging seed cmos 11');
+  console.log(data);
   return knex('layers').select('id', 'layer_detail_id').where({
     layer_detail_type: 'community_managed_open_spaces',
     data_date: '2011-01-01'
