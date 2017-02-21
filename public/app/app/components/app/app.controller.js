@@ -1,6 +1,6 @@
 import forEach from 'lodash/forEach';
 import cloneDeep from 'lodash/cloneDeep';
-
+console.log('begining of App.Controller');
 export default class AppController {
   constructor($scope, $rootScope, $route, $location, $mdSidenav, $mdMedia,
     FileSaver, Blob, cloudinary, layerFilterOptionsService, layersService,
@@ -64,12 +64,14 @@ export default class AppController {
     // Assign to scope for children to access
     this.$rootScope.title = this.title;
     this.$rootScope.$on('layerClick', (event, layer) => {
+	console.log('app.controller layerclick->getLayerDetail');
       this.layersService.getLayerDetail(layer).then(layerDetail => {
         this.selectLayerDetail(layerDetail);
+	console.log('app.controller layerclick->getLayerDetail->selectLayerDetail');
       });
     });
     this.$rootScope.$on('boundaryOver', (event, feature) => {
-      console.log(feature);
+      console.log('app.controller boundaryOver' + feature);
       if (feature.properties && feature.properties.Name) {
         self.boundaryText = feature.properties.Name;
       } else if (feature.properties && feature.properties.communityStatisticalArea) {
@@ -82,7 +84,7 @@ export default class AppController {
     });
 
     this.$rootScope.$on('boundaryOut', event => {
-      console.log("out");
+      console.log("app.controller Boundaryout");
       self.boundaryText = null;
     });
   }
@@ -107,16 +109,19 @@ export default class AppController {
     this.selectedKey = obj['Layer Detail Name'] ||
     obj['Layer Detail Address'] ||
     obj['Layer Detail Type'] + " " + obj['Site Id'];
-    console.log(obj);
+console.log('app.controller selectLayerDetail');    
+console.log(obj);
     this.selectedVal = obj;
     this.toggleSidenav('right', true);
   }
   selectCollection(value, key) {
+console.log('app.controller selectCollection');
     this.selectedKey = key;
     this.selectedVal = value;
     this.toggleSidenav('right', true);
   }
   selectLayerFilterOption(item) {
+console.log('selectLayerFilterOption');
     var opt = {};
     if (this.selectedAddress) {
       opt.radius = this.selectedAddress.geometry.location;
@@ -141,28 +146,33 @@ export default class AppController {
       });
   }
   selectBoundaryFilter(value) {
+console.log('selectBoundaryFilter');
     this.boundaryFilterOptionsService.getBoundaries(this.boundaryFilters)
       .then(boundaries => {
         this.setBoundaries(boundaries);
       });
   }
   selectBoundaryFilterOption(value) {
+console.log('app.controller selectBoundaryFilterOption(value)');
     this.boundaryFilterOptionsService.getBoundaries(this.boundaryFilters)
     .then(boundaries => {
       this.setBoundaries(boundaries);
     });
   }
   selectBoundaryFiltersMore(value, key) {
+console.log('app.controller selectBoundaryFiltersMore(value,Key)');
     this.selectedKey = key;
     this.selectedVal = value;
     this.toggleSidenav('right', true);
   }
   selectIndicatorMore(value, key) {
+console.log('app.controller selectIndicatorMore(value,Key)');
     this.selectedKey = key;
     this.selectedVal = value;
     this.toggleSidenav('right', true);
   }
   selectFilter(opt) {
+console.log('app.controller selectFilter(option)');
     if (opt.type === 'layer-filter-option') {
       this.layersService.getLayers(this.layerFilters)
         .then(layers => {
@@ -171,6 +181,7 @@ export default class AppController {
     }
   }
   selectVitalSignsIndicator(value) {
+console.log('app.controller selectVitalSignsIndicator');
     this.vitalSignsService.getBoundary(value)
       .then(boundaries => {
         this.selectedIndicator = value;
@@ -178,6 +189,7 @@ export default class AppController {
       });
   }
   setLayers(layers) {
+console.log('app.controller selectLayers');
     this.layers = layers;
     this.$rootScope.$broadcast('setLayers', layers);
   }
@@ -185,7 +197,7 @@ export default class AppController {
     this.selectedVitalSignsBoundary = boundaries;
     this.selectedIndicator = indicator;
     this.boundaries = boundaries;
-    console.log(boundaries);
+console.log('app.controller SetVitalSignsBoundary');
     var bds = cloneDeep(boundaries, true);
     if (this.circleBoundaries !== null && this.circleBoundaries !== undefined) {
       forEach(this.circleBoundaries.features, f => {
@@ -196,6 +208,7 @@ export default class AppController {
   }
   setBoundaries(boundaries) {
     this.boundaries = boundaries;
+console.log('app.controller setBoundaries');
     var bds = cloneDeep(boundaries, true);
     if (this.circleBoundaries !== null && this.circleBoundaries !== undefined) {
       forEach(this.circleBoundaries.features, f => {
@@ -205,10 +218,12 @@ export default class AppController {
     this.$rootScope.$broadcast('setBoundaries', bds);
   }
   openVertMenu($mdOpenMenu, ev) {
+console.log('app.controller openVertMenu');
     this.originatorEv = ev;
     $mdOpenMenu(ev);
   }
   layersDownload(fileType) {
+console.log('app.controller layersDownload');
     var mimeType;
     if (fileType === 'csv') {
       mimeType = 'text/csv;charset-utf-8';
@@ -229,23 +244,31 @@ export default class AppController {
     }
   }
   searchAddress(address) {
+console.log('app.controller searchAddres');
     return this.geocoderService.geocode(address).then(data => data);
   }
   selectAddress(address) {
     this.selectedAddress = address;
     this.selectLayerFilterOption({});
-    // console.log(address);
+    console.log('app.controller selectAddress' + address);
   }
   $onInit() {
+console.log('app.controller onInit()');
     this.layerFilterOptionsService.getLayerFilters().then(data => {
-      this.layerFilters = data;
+      	console.log('app.controller getLayerFilters :' );
+	console.log(data);
+	this.layerFilters = data;
     }).then(() => {
       return this.boundaryFilterOptionsService.getBoundaryFilters();
     }).then(data => {
+	console.log('app.controller boundaryFilters : ' + data);
       this.boundaryFilters = data;
+	console.log(this.boundaryFilters);
     }).then(() => {
       return this.vitalSignsService.getSections();
     }).then(data => {
+	console.log('app.controller vitalSignsSections : ' + data);
+	console.log(data);
       this.vitalSignsSections = data;
     }).then(() => {
       return this.geocoderService.geocode('2712 Guilford Avenue Baltimore, MD');

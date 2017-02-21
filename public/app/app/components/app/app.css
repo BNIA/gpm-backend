@@ -1,0 +1,45 @@
+.my-app-container {
+  position: relative;
+}
+.my-sidenav-left {
+  z-index: 99;
+  background-color: #007db6 !important;
+}
+.my-sidenav-right {
+  z-index: 100;
+  width: 500px!important;
+}
+.my-toolbar {
+  z-index: 98;
+}
+.my-overlay {
+  z-index: 97;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+.my-boundaries-button {
+  position: absolute;
+  bottom: 16px;
+  right: 24px;
+}
+.md-dialog-container {
+  z-index: 200!important;
+}
+.my-toolbar {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+.my-toolbar button {
+  color: #000 !important;
+}
+.my-toolbar md-icon {
+  color: #000 !important;
+}
+.s36,
+.s36 svg {
+  width: 36px!important;
+  height: 36px!important;
+}
