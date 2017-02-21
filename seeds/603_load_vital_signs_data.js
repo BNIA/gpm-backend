@@ -5,6 +5,8 @@ var _ = require('lodash');
 exports.seed = function(knex, Promise) {
   var dataPath = path.join(__dirname, './data/vital_signs_data_points.csv');
   var data = helpers.readCsv(dataPath);
+  console.log('logging vital signs data');
+  console.log(data);
   return knex('vital_signs_data_points').del().then(() => {
     return data;
   }).then(data => {

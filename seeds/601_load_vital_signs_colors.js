@@ -5,6 +5,8 @@ var _ = require('lodash');
 exports.seed = function(knex, Promise) {
   var dataPath = path.join(__dirname, './data/vital_signs_sections.json');
   var data = JSON.parse(fs.readFileSync(dataPath));
+  console.log('logging seed vital signs color');
+  console.log(data);
   return knex('vital_signs_colors').del().then(() => {
     return data;
   }).then(rows => {

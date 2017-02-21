@@ -5,7 +5,8 @@ exports.seed = function(knex, Promise) {
   var dataPath = path.join(__dirname, './data/subwatersheds.geojson');
   var data = JSON.parse(fs.readFileSync(dataPath));
   var features = data.features;
-
+  console.log('logging seed subwatersheds');
+  console.log(data);
   return knex('boundaries').del().where({
     boundary_detail_type: 'subwatersheds'
   }).then(() => {

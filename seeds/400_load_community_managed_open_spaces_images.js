@@ -5,6 +5,8 @@ exports.seed = function(knex, Promise) {
   var dataPath = path.join(__dirname,
     './data/community_managed_open_spaces_images.json');
   var data = JSON.parse(fs.readFileSync(dataPath));
+  console.log('logging seeds cmos images');
+  console.log(data);
   return knex('images')
     .del()
     .then(() => {
