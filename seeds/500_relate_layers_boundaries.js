@@ -49,7 +49,10 @@ exports.seed = function(knex, Promise) {
       'subwatersheds'
     ]
   ).toString();
-
+  console.log('logging seed related layers boundaries');
+  console.log(subwatershedQuery);
+  console.log(csaQuery);
+  console.log(nsaQuery);
   return knex.raw(csaQuery)
     .then(() => {
       return knex.raw(nsaQuery);

@@ -2,6 +2,7 @@ var _ = require('lodash');
 var pgArray = require('postgres-array');
 
 exports.seed = function(knex, Promise) {
+  console.log('logging seed cmos duplicator, no data after this message');
   return knex('community_managed_open_spaces')
   .select([
     'site_id',

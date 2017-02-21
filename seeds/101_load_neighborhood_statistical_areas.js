@@ -6,7 +6,8 @@ exports.seed = function(knex, Promise) {
   './data/neighborhood_statistical_areas.geojson');
   var data = JSON.parse(fs.readFileSync(dataPath));
   var features = data.features;
-
+  console.log('logging seed neighborhood_statistical_area');
+  console.log(data);
   return knex('boundaries').del().where({
     boundary_detail_type: 'neighborhood_statistical_areas'
   }).then(() => {
