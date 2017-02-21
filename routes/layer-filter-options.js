@@ -2,13 +2,14 @@ var express = require('express');
 var router = new express.Router();
 var Models = require('../models');
 var _ = require('lodash');
-
+console.log('layer-filter-options-routes');
 router.get('/', (req, res, next) => {
+  console.log('layer-filter-options-routes-GET');
   return Models.LayerFilterOptions.query(qb => qb.select())
   .fetch({withRelated: 'layerFilter'})
   .then(rows => rows.toJSON({pretty: true}))
   .then(rows => {
-    res.json(rows);
+	res.json(rows);
     next();
   });
 });
@@ -16,7 +17,7 @@ router.get('/', (req, res, next) => {
 router.post('/layers', (req, res, next) => {
   var ids = JSON.parse(req.body.ids);
   var opts = JSON.parse(req.body.options);
-  console.log(opts);
+  console.log('layer-filter-options-routes-POST');
   Models.LayerFilterOptions.query(qb => qb.whereIn('id', ids))
   .fetch({withRelated: [
     'layerFilter',
@@ -40,6 +41,7 @@ router.post('/layers', (req, res, next) => {
   .reduce((result, array) => _.union(array, result), [])
   .then(ids => Models.Layers.query(qb => {
     qb.whereIn('id', ids);
+    console.log ('routes/ layer filter ids:' + id);
     if (opts.radius) {
       qb.whereRaw('ST_DWithin(??, ST_SetSRID(ST_MakePoint(?,?), ?), ?)',
     ['geometry', opts.radius.lng, opts.radius.lat, '4326', '.015']);
@@ -49,7 +51,6 @@ router.post('/layers', (req, res, next) => {
   }))
   .then(collection => collection.toGeoJSON({pretty: true}))
   .then(geojson => {
-    console.log(geojson);
     return geojson;
   })
   .then(geojson => res.json(geojson)).then(() => {
