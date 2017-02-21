@@ -9,6 +9,7 @@ export default class BoundariesService {
   }
 
   getBoundaryDetail(boundaryData) {
+    console.log('service.boundaries getBoundaryDetail');
     var query = JSON.stringify({id: boundaryData.Id});
     return this.$http.post(this._boundaryDetailUrl, query)
       .then(this._extractBoundaryDetailData)
@@ -16,6 +17,7 @@ export default class BoundariesService {
   }
 
   getDownload(boundaryData, fileType) {
+    console.log('service.boundaries getDownload');
     var query = JSON.stringify({
       type: fileType,
       ids: this._preprocessBoundaryIds(boundaryData)
@@ -26,11 +28,13 @@ export default class BoundariesService {
   }
 
   _preprocessBoundaryIds(data) {
+    console.log('service.boundaries preprocessBoundaryIds');
     data = data || {};
     return map(data, d => d.properties.Id);
   }
 
   _extractBoundaryDetailData(data) {
+    console.log('extractBoundaryDetailData');
     data = data.data || {};
     if (data['Images Public Id']) {
       data['Images Public Id'] = map(data['Images Public Id'], p => {
@@ -42,11 +46,13 @@ export default class BoundariesService {
   }
 
   _extractDownloadData(data) {
+    console.log('service.boundaries extractDownloadData');
     data = data.data || {};
     return data;
   }
 
   _handleError(error) {
+    console.log('service.boundaries handleError');
     let errMsg = error.message || 'Server error';
     console.log(errMsg);
   }

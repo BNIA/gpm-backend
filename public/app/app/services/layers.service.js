@@ -9,6 +9,7 @@ export default class LayersService {
   }
 
   getLayerDetail(layerData) {
+console.log('services.layers getLayerDetail');
     var query = JSON.stringify({id: layerData.Id});
     return this.$http.post(this._layerDetailUrl, query)
       .then(this._extractLayerDetailData)
@@ -16,6 +17,7 @@ export default class LayersService {
   }
 
   getDownload(layerData, fileType) {
+console.log('services.layers getDownload');
     var query = JSON.stringify({
       type: fileType,
       ids: this._preprocessLayerIds(layerData)
@@ -26,11 +28,13 @@ export default class LayersService {
   }
 
   _preprocessLayerIds(data) {
+console.log('services.layers preprocesslayersids');
     data = data || {};
     return map(data, d => d.properties.Id);
   }
 
   _extractLayerDetailData(data) {
+console.log('services.layers extractLayerDetailData');
     data = data.data || {};
     if (data['Images Public Id']) {
       data['Images Public Id'] = map(data['Images Public Id'], p => {
@@ -42,11 +46,13 @@ export default class LayersService {
   }
 
   _extractDownloadData(data) {
+console.log('extractDownloadData');
     data = data.data || {};
     return data;
   }
 
   _handleError(error) {
+console.log('handleError');
     let errMsg = error.message || 'Server error';
     console.log(errMsg);
   }

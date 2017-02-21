@@ -12,12 +12,14 @@ export default class VitalSignsService {
   }
 
   getSections() {
+console.log('services.VS getSections');
     return this.$http.get(this._indicatorsUrl)
       .then(this._extractSectionsData)
       .catch(this._handleError);
   }
 
   getBoundary(indicator) {
+console.log('services.VS getBoundary');
     var id = this._preprocessIndicator(indicator);
     var query = {
       id: JSON.stringify(id)
@@ -28,6 +30,7 @@ export default class VitalSignsService {
   }
 
   getBoundaryDetail(boundaryData) {
+console.log('services.VS getBoundaryDetail');
     var query = JSON.stringify({id: boundaryData.Id});
     return this.$http.post(this._boundaryDetailUrl, query)
       .then(this._extractBoundaryDetailData)
@@ -35,6 +38,7 @@ export default class VitalSignsService {
   }
 
   getDownload(boundaryData, fileType) {
+console.log('services.vs getDonwload');
     var query = JSON.stringify({
       type: fileType,
       ids: this._preprocessBoundaryIds(boundaryData)
@@ -45,6 +49,7 @@ export default class VitalSignsService {
   }
 
   _extractSectionsData(indicatorsData) {
+console.log('services.vs extractSectionsData');
     indicatorsData = indicatorsData.data || {};
     var bySection = groupBy(indicatorsData, 'Vital Signs Section.Name');
     bySection = mapValues(bySection, values => {
@@ -61,6 +66,7 @@ export default class VitalSignsService {
   }
 
   _extractBoundaryData(data) {
+console.log('extractBoundaryData');
     data = data.data || {};
     data = {
       data: data,
@@ -91,10 +97,12 @@ export default class VitalSignsService {
   }
 
   _preprocessIndicator(indicator) {
+console.log('services.vs preprocessIndicator');
     return indicator.Id || null;
   }
 
   _handleError(error) {
+console.log('services.vs handleError');
     let errMsg = error.message || 'Server error';
     console.log(errMsg);
   }

@@ -28,18 +28,21 @@ export default class LayerFilterOptionsService {
   }
 
   getLayerFilterOptions() {
+console.log('services.LFO getLayerFilterOptions');
     return this.$http.get(this._url)
       .then(this._extractLayerFilterOptionsData, this._handleError);
   }
 
   getLayerFilters() {
+console.log('services.lfo getLayerFilters');
     return this.$http.get(this._url)
       .then(this._extractLayerFiltersData, this._handleError);
   }
 
   getLayers(data, options) {
+console.log('services.lfo getLayers');
     options = options || {};
-    console.log(options);
+    console.log('options' + options);
     var ids = this._preprocessLayerFiltersData(data);
     var query = {
       ids: JSON.stringify(ids),
@@ -51,6 +54,7 @@ export default class LayerFilterOptionsService {
   }
 
   _preprocessLayerFiltersData(data) {
+console.log('services.lfo preprocessLayerFiltersData');
     var ids = reduce(data, (res, val, key) => {
       var sub = reduce(val, (r, v, k) => {
         if (k !== 'class') {
@@ -67,11 +71,13 @@ export default class LayerFilterOptionsService {
   }
 
   _extractLayerFilterOptionsData(data) {
+console.log('services.lfo extractLayerFilterOptionsData');
     data = data.data || {};
     return data;
   }
 
   _extractLayerFiltersData(data) {
+console.log('services.lfo extract layerFilterData');
     data = data.data || {};
 
     data = map(data, d => {
@@ -88,11 +94,11 @@ export default class LayerFilterOptionsService {
       res[k] = g;
       return res;
     }, {});
-
     return groups;
   }
 
   _extractLayersData(data) {
+console.log('services.lfo extractLayersData');
     data = data.data.features || {};
     var len = data.length;
     var markers = map(data, d => {
@@ -116,6 +122,7 @@ export default class LayerFilterOptionsService {
   }
 
   _handleError(error) {
+console.log('services.lfo handleError');
     let errMsg = error.message || 'Server error';
     console.log(errMsg);
   }
