@@ -7,8 +7,6 @@ var path = require('path');
 var app = express();
 dotenv.config();
 
-app.use(require('browser-logger')({pretty:false}));
-
 var routes = require('./routes');
 
 var env = process.env.NODE_ENV || 'development';
